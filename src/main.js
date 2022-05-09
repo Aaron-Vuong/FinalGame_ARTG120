@@ -1,7 +1,8 @@
 let config = {
     type: Phaser.CANVAS,
-    width: 1080, 
-    height: 520,
+    //fit all planets in one screen hence widescreen, align to middle of screen?
+    width: 1000, 
+    height: 500,
     physics: {
         default: 'arcade',
         arcade: {
