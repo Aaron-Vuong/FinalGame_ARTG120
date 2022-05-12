@@ -22,11 +22,14 @@ class StatsScreen extends Phaser.Scene {
         this.stat1 = this.add.text(game.config.width/2, game.config.height/2 + 50, "Strength: 100, Speed 70, Sociability: 40", menuConfig).setOrigin(0.5);
         this.stat2 = this.add.text(game.config.width/2, game.config.height/2 + 5, "Strength: 50, Speed 90, Sociability: 70", menuConfig).setOrigin(0.5);
         this.stat3 = this.add.text(game.config.width/2, game.config.height/2 - 50, "Strength: 70, Speed 40, Sociability: 60", menuConfig).setOrigin(0.5);
+        this.stat4 = this.add.text(game.config.width/2, game.config.height/2 - 100, "Strength: 30, Speed 60, Sociability: 90", menuConfig).setOrigin(0.5);
+
 
         //make text interactive
         this.stat1.setInteractive(new Phaser.Geom.Rectangle(0,0, this.stat1.width, this.stat1.height), Phaser.Geom.Rectangle.Contains);
         this.stat2.setInteractive(new Phaser.Geom.Rectangle(0,0, this.stat2.width, this.stat2.height), Phaser.Geom.Rectangle.Contains);
         this.stat3.setInteractive(new Phaser.Geom.Rectangle(0,0, this.stat3.width, this.stat3.height), Phaser.Geom.Rectangle.Contains);
+        this.stat4.setInteractive(new Phaser.Geom.Rectangle(0,0, this.stat4.width, this.stat4.height), Phaser.Geom.Rectangle.Contains);
 
 
         //listen for when the stat1 is clicked on
@@ -54,6 +57,16 @@ class StatsScreen extends Phaser.Scene {
             game.settings.strength = 70;
             game.settings.speed = 40;
             game.settings.soc = 60;
+            this.scene.start("planetPlayScene");
+            console.log(game.settings);
+            
+        }, this);
+
+        //listen if stat4 is clicked on
+        this.stat4.on("pointerdown", function(pointer) {
+            game.settings.strength = 30;
+            game.settings.speed = 60;
+            game.settings.soc = 90;
             this.scene.start("planetPlayScene");
             console.log(game.settings);
             
