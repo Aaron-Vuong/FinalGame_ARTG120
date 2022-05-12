@@ -6,12 +6,15 @@ class PlanetPlay extends Phaser.Scene {
     preload() {
         this.load.image('stars', './assets/stars.png');
         this.load.image('planets', './assets/planets.png');
+        this.load.image('planet1', './assets/Planet1.png');
+        this.load.image('planet2', './assets/Planet2.png');
     }
 
     create() {
 
         this.stars = this.add.tileSprite(0, 0, 1000, 500, 'stars').setOrigin(0,0);
         this.planets = this.add.tileSprite(0,0, 1000, 500, 'planets').setOrigin(0,0);
+
 
         let menuConfig = {
             fontFamily: 'Courier',
@@ -33,5 +36,6 @@ class PlanetPlay extends Phaser.Scene {
     update() {
         this.stars.tilePositionX += 3;
         this.planets.tilePositionX +=2;
+
     }
 }
