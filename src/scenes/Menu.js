@@ -37,14 +37,11 @@ class Menu extends Phaser.Scene {
         let x = 0;
         //menu text
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 30, "Housing Crisis", menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2, "Press Space to Play", menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2 + 50, "Use <--> to Move", menuConfig).setOrigin(0.5);
 
- 
         // test button
         const button = new Button(80, 30, 'Start Game', config, this, () => this.scene.start("instructionScreenScene"));
         game.settings = {
-            stat1: 0,
+            strength: 0,
             score: 0
         }
     }
