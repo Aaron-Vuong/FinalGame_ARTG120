@@ -20,6 +20,7 @@ class StatsScreen extends Phaser.Scene {
 
         this.button = new Button(80, 30, 'Start Game', config, this, 
                                 () => this.testX.text = "Starting stuff: " + (game.settings.stat1 += 1));
+        // https://gamedevacademy.org/creating-a-preloading-screen-in-phaser-3/?a=13
 
     }
     update() {
