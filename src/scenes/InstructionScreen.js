@@ -2,11 +2,18 @@ class InstructionScreen extends Phaser.Scene {
     constructor() {
         super("instructionScreenScene");
     }
+
+    preload() {
+        this.load.image('stars', './assets/stars.png');
+    }
+
     create() {
+        this.space = this.add.tileSprite(0, 0, 1000, 500, 'stars').setOrigin(0,0);
+
         let menuConfig = {
             fontFamily: 'Courier',
             fontSize: '36px',
-            color: '#ffffff',
+            color: '#e6c0fc',
             align: 'center',
             padding: {
                 top: 5,
@@ -21,5 +28,9 @@ class InstructionScreen extends Phaser.Scene {
 
         const button = new Button(80, 30, 'Continue', config, this, () => this.scene.start("statsScreenScene"));
 
+    }
+
+    update() {
+        this.space.tilePositionX += 3;
     }
 }

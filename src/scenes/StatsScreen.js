@@ -2,11 +2,21 @@ class StatsScreen extends Phaser.Scene {
     constructor() {
         super("statsScreenScene");
     }
+
+    preload() {
+        this.load.image('stars', './assets/stars.png');
+        //this.load.image('planets', './assets/planets.png');
+    }
+
     create() {
+
+        this.space = this.add.tileSprite(0, 0, 1000, 500, 'stars').setOrigin(0,0);
+        //this.planets = this.add.tileSprite(0, 0, 1000, 500, 'planets').setOrigin(0,0);
+
         let menuConfig = {
             fontFamily: 'Courier',
             fontSize: '36px',
-            color: '#ffffff',
+            color: '#e6c0fc',
             align: 'center',
             padding: {
                 top: 5,
@@ -80,5 +90,7 @@ class StatsScreen extends Phaser.Scene {
         //so far 30 mins on stat input
 
     update() {
+        this.space.tilePositionX += 3;
+        //this.planets.tilePositionX += 2;
     }
 }

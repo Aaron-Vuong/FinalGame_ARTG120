@@ -5,10 +5,13 @@ class Menu extends Phaser.Scene {
     preload() {
         this.load.spritesheet('FoldOut', './assets/MenuAnims.png', {frameWidth: 1000, frameHeight: 500, startFrame: 0, endFrame: 44});
         this.load.image('MenuLast', './assets/44.png)');
+        this.load.image('stars', './assets/stars.png');
         
     }
 
     create() {
+        this.stars = this.add.tileSprite(0, 0, 1000, 500, 'stars').setOrigin(0,0);
+
         //Broshore animation
         this.anims.create({
             key: 'Menu',
@@ -26,7 +29,7 @@ class Menu extends Phaser.Scene {
         let menuConfig = {
             fontFamily: 'Courier',
             fontSize: '36px',
-            color: '#ffffff',
+            color: '#e6c0fc',
             align: 'center',
             padding: {
                 top: 5,
@@ -53,5 +56,7 @@ class Menu extends Phaser.Scene {
             this.broshore.anims.stop();
             this.broshore.anims.setCurrentFrame(this.broshore.anims.currentAnim.frames[44]);    
         }
+
+        this.stars.tilePositionX += 3;
     }
 }
