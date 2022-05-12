@@ -12,16 +12,17 @@ class Menu extends Phaser.Scene {
         //Broshore animation
         this.anims.create({
             key: 'Menu',
-            frames: this.anims.generateFrameNumbers('FoldOut', {start: 0, end: 44, first: 0}),
-            frameRate: 15
+            frames: this.anims.generateFrameNumbers('FoldOut', {start: 0, end: 44, first: 44}),
+            frameRate: 15,
+            repeat: 0
         });
-        const Menu = this.add.sprite(500, 300);
-        Menu.play('Menu');
+        this.broshore = this.add.sprite(500, 300);
+        this.broshore.play('Menu');
 
         //tried adding just last frame of animation to show up after animatio0n plays
         this.add.sprite('MenuLast',1000, 500);
-        
 
+        console.log(this.broshore.anims.isPlaying);
         let menuConfig = {
             fontFamily: 'Courier',
             fontSize: '36px',
@@ -49,5 +50,9 @@ class Menu extends Phaser.Scene {
     }
 
     update() {
+        if (this.broshore.anims.getProgress() == 1) {
+            this.broshore.anims.stop();
+            this.broshore.anims.setCurrentFrame(this.broshore.anims.currentAnim.frames[44]);    
+        }
     }
 }
