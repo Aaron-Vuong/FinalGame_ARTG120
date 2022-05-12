@@ -2,7 +2,26 @@ class Menu extends Phaser.Scene {
     constructor() {
         super("menuScene");
     }
+    preload() {
+        this.load.spritesheet('FoldOut', './assets/MenuAnims.png', {frameWidth: 1000, frameHeight: 500, startFrame: 0, endFrame: 44});
+        this.load.image('MenuLast', './assets/44.png)');
+        
+    }
+
     create() {
+        //Broshore animation
+        this.anims.create({
+            key: 'Menu',
+            frames: this.anims.generateFrameNumbers('FoldOut', {start: 0, end: 44, first: 0}),
+            frameRate: 15
+        });
+        const Menu = this.add.sprite(500, 300);
+        Menu.play('Menu');
+
+        //tried adding just last frame of animation to show up after animatio0n plays
+        this.add.sprite('MenuLast',1000, 500);
+        
+
         let menuConfig = {
             fontFamily: 'Courier',
             fontSize: '36px',
@@ -16,10 +35,9 @@ class Menu extends Phaser.Scene {
         }
         let x = 0;
         //menu text
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 30, "Blop", menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 30, "Housing Crisis", menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2, "Press Space to Play", menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2 + 50, "Avoid the animals!", menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2 + 100, "Use <--> to Move", menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 + 50, "Use <--> to Move", menuConfig).setOrigin(0.5);
 
  
         // test button

@@ -15,14 +15,29 @@ class StatsScreen extends Phaser.Scene {
             fixedWidth: 0
         }
 
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 30, "Stats Screen", menuConfig).setOrigin(0.5);
-        this.testX = this.add.text(game.config.width/2, game.config.height/2 + 100, "Starting stuff: " + game.settings.stat1, menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 150, "Stats Screen", menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, "Strength", menuConfig).setOrigin(0.5);
+
+        var textEntry = this.add.text(game.config.width/2, game.config.height/2, " " + game.settings.stat1, menuConfig).setOrigin(0.5);
+
+        this.input.keyboard.on('keydown', function(event) {
+            if(event.keyCode === 8 && textEntry.text.length > 0) {
+                textEntry.text = textEntry.text.substr(0, textEntry.text.length - 1);
+            } 
+            else if (event.keyCode === 32 || (event.keyCode >= 48 && event.keyCode < 90)) {
+                textEntry.text += event.key;
+            }
+        });
+
+        var int = parseInt(textEntry);
 
         this.button = new Button(80, 30, 'Start Game', config, this, 
-                                () => this.testX.text = "Starting stuff: " + (game.settings.stat1 += 1));
+                                () => this.textEntry.text = "Strength: " + (game.settings.stat1 += this.int));
+        console.log(game.settings.stat1);
+        }
         // https://gamedevacademy.org/creating-a-preloading-screen-in-phaser-3/?a=13
+        //so far 30 mins on stat input
 
-    }
     update() {
     }
 }
