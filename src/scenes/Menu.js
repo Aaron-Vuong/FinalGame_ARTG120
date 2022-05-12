@@ -4,16 +4,23 @@ class Menu extends Phaser.Scene {
     }
     preload() {
         this.load.spritesheet('FoldOut', './assets/MenuAnims.png', {frameWidth: 1000, frameHeight: 500, startFrame: 0, endFrame: 44});
+        this.load.image('MenuLast', './assets/44.png)');
         
     }
 
     create() {
-        this.scene.anims.create({
-            key: 'FoldOut',
+        //Broshore animation
+        this.anims.create({
+            key: 'Menu',
             frames: this.anims.generateFrameNumbers('FoldOut', {start: 0, end: 44, first: 0}),
-            frameRate: 30
+            frameRate: 15
         });
-        this.anims.play('FoldOut')
+        const Menu = this.add.sprite(500, 300);
+        Menu.play('Menu');
+
+        //tried adding just last frame of animation to show up after animatio0n plays
+        this.add.sprite('MenuLast',1000, 500);
+        
 
         let menuConfig = {
             fontFamily: 'Courier',
