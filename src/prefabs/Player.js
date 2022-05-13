@@ -17,6 +17,7 @@ class Player extends Phaser.GameObjects.Sprite {
         else {
             this.sprite.setVelocityX(0);
         }
+        
     }
     
 }
