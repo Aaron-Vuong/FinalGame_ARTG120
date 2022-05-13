@@ -27,10 +27,17 @@ class PlanetPlay extends Phaser.Scene {
             },
             fixedWidth: 0
         }
+        this.planet1 = this.add.image(game.config.width/2, game.config.height/2 + 50, 'planet1');
 
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, "This is a play scene", menuConfig).setOrigin(0.5);
-
-        
+        this.planet1.setInteractive(new Phaser.Geom.Rectangle(game.config.width / 3, game.config.height/2, this.planet1.width, this.planet1.height), Phaser.Geom.Rectangle.Contains);
+        // this.stat1.setInteractive(new Phaser.Geom.Rectangle(2*game.config.width / 3, game.config.height/2, this.stat1.width, this.stat1.height), Phaser.Geom.Rectangle.Contains);
+        console.log(this.planet1.width);
+        this.input.on("pointerdown", function(pointer) {
+            game.settings.planet = "earth";
+            this.scene.start("shipPlayScene");
+            console.log(game.settings.planet);
+        }, this); 
     }
 
     update() {
