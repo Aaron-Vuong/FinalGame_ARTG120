@@ -2,7 +2,7 @@
 // https://www.webtips.dev/webtips/phaser/interactive-buttons-in-phaser3
 
 class Button {
-    constructor(x, y, label, config, scene, callback) {
+    constructor(x, y, label, config, scene, callback,) {
         const button = scene.add.text(x, y, label, config)
             .setOrigin(0.5)
             .setPadding(10)

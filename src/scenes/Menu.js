@@ -6,7 +6,7 @@ class Menu extends Phaser.Scene {
         this.load.spritesheet('FoldOut', './assets/MenuAnims.png', {frameWidth: 1000, frameHeight: 500, startFrame: 0, endFrame: 44});
         this.load.image('MenuLast', './assets/44.png)');
         this.load.image('stars', './assets/stars.png');
-        
+        this.load.audio('SoundButton', './assets/ButtonSoundEffect.wav');
     }
 
     create() {
@@ -46,8 +46,7 @@ class Menu extends Phaser.Scene {
                 this.House.delay = 2000;
         
                 // test button
-                const button = new MenuButton(540, 300, 'Start Game', config, this, () => this.scene.start("instructionScreenScene"));
-
+                const button = new MenuButton(540, 300, 'Start Game', config, this, this.ButtonPress());
             },
 
         })
@@ -67,6 +66,11 @@ class Menu extends Phaser.Scene {
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     }
 
+    ButtonPress() {
+        this.scene.start("instructionScreenScene"); 
+        this.sound.play('SoundButton');
+    }
+    
     update() {
         if (this.broshore.anims.getProgress() == 1) {
             this.broshore.anims.stop();
