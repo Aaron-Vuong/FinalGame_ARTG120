@@ -25,7 +25,7 @@ class Alien extends Phaser.GameObjects.Sprite {
     }
 
     update() {
-        AnimationPositionHandler();
+        this.AnimationPositionHandler();
     }
 
     AnimationPositionHandler() {
