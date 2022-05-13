@@ -41,7 +41,7 @@ class Menu extends Phaser.Scene {
         this.House.angle = -18;
         
         // test button
-        const button = new Button(540, 300, 'Start Game', config, this, () => this.scene.start("instructionScreenScene"));
+        const button = new MenuButton(540, 300, 'Start Game', config, this, () => this.scene.start("instructionScreenScene"));
 
         game.settings = {
             strength: 0,
