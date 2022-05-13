@@ -52,7 +52,7 @@ class CutScreen extends Phaser.Scene {
                 ++i;
             },
             repeat: length - 1,
-            delay: 180
+            delay: 80
         })
 
     }

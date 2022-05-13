@@ -10,7 +10,8 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
-        this.stars = this.add.tileSprite(0, 0, 1000, 500, 'stars').setOrigin(0,0);
+        this.stars = this.add.tileSprite(0, 0, 1000, 500, 'stars').setOrigin(0,0).setInteractive();
+        this.stars.on('pointerdown', () => this.EndAnim());
 
         //Broshore animation
         this.anims.create({
@@ -22,34 +23,6 @@ class Menu extends Phaser.Scene {
 
         this.broshore = this.add.sprite(550, 250);
         this.broshore.play('Menu');
-
-        let menuConfig = {
-            fontFamily: 'Courier',
-            fontSize: '36px',
-            color: '#e6c0fc',
-            align: 'center',
-            padding: {
-                top: 5,
-                bottom: 5,
-            },
-            fixedWidth: 0
-        }
-        
-        this.time.addEvent({
-            delay : 3500,
-            callback: ()=>{
-                //menu text
-                this.House = this.add.text(game.config.width/2-5, game.config.height/2 - borderUISize - borderPadding - 30, "Housing Crisis", menuConfig).setOrigin(0.5);
-                this.House.scale= 0.8;
-                this.House.angle = -18;
-                this.House.delay = 2000;
-        
-                // test button
-                const button = new MenuButton(540, 300, 'Start Game', config, this, () => this.scene.start("instructionScreenScene"), 
-                                                                                    () => this.sound.play('SoundButton'));
-            },
-
-        })
         
         game.settings = {
             strength: 0,
@@ -68,12 +41,38 @@ class Menu extends Phaser.Scene {
     }
 
     update() {
-        if (this.broshore.anims.getProgress() == 1) {
-            this.broshore.anims.stop();
-            this.broshore.anims.setCurrentFrame(this.broshore.anims.currentAnim.frames[44]);    
+        if ( this.broshore.anims.getProgress() == 1 ) {
+            this.EndAnim();
         }
+        this.stars.tilePositionX += 3;   
+    }
 
-        this.stars.tilePositionX += 3;
-        
+    EndAnim() {
+        this.broshore.anims.stop();
+        this.broshore.anims.setCurrentFrame(this.broshore.anims.currentAnim.frames[44]);
+        this.MenuLoad();
+    }
+
+    MenuLoad() {
+        let menuConfig = {
+            fontFamily: 'Courier',
+            fontSize: '36px',
+            color: '#e6c0fc',
+            align: 'center',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
+        //menu text
+        this.House = this.add.text(game.config.width/2-5, game.config.height/2 - borderUISize - borderPadding - 30, "Housing Crisis", menuConfig).setOrigin(0.5);
+        this.House.scale= 0.8;
+        this.House.angle = -18;
+        this.House.delay = 2000;
+
+        // test button
+        const button = new MenuButton(540, 300, 'Start Game', config, this, () => this.scene.start("instructionScreenScene"), 
+                                                                            () => this.sound.play('SoundButton'));
     }
 }
