@@ -19,10 +19,10 @@ class Menu extends Phaser.Scene {
             frameRate: 15,
             repeat: 0
         });
+
         this.broshore = this.add.sprite(550, 250);
         this.broshore.play('Menu');
 
-        console.log(this.broshore.anims.isPlaying);
         let menuConfig = {
             fontFamily: 'Courier',
             fontSize: '36px',
@@ -34,7 +34,6 @@ class Menu extends Phaser.Scene {
             },
             fixedWidth: 0
         }
-        let x = 0;
         
         this.time.addEvent({
             delay : 3500,
@@ -52,7 +51,6 @@ class Menu extends Phaser.Scene {
 
         })
         
-        
         game.settings = {
             strength: 0,
             speed: 0,
@@ -65,6 +63,8 @@ class Menu extends Phaser.Scene {
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        keyUP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
     }
 
     update() {
