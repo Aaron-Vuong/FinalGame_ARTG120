@@ -3,6 +3,6 @@ class Alien extends Phaser.GameObjects.Sprite {
         super(scene, x, y, texture, frame);
     }
 
-
+    
     
 }
