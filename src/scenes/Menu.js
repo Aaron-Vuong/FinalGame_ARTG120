@@ -46,7 +46,8 @@ class Menu extends Phaser.Scene {
                 this.House.delay = 2000;
         
                 // test button
-                const button = new MenuButton(540, 300, 'Start Game', config, this, this.ButtonPress());
+                const button = new MenuButton(540, 300, 'Start Game', config, this, () => this.scene.start("instructionScreenScene"), 
+                                                                                    () => this.sound.play('SoundButton'));
             },
 
         })
@@ -66,11 +67,6 @@ class Menu extends Phaser.Scene {
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     }
 
-    ButtonPress() {
-        this.scene.start("instructionScreenScene"); 
-        this.sound.play('SoundButton');
-    }
-    
     update() {
         if (this.broshore.anims.getProgress() == 1) {
             this.broshore.anims.stop();

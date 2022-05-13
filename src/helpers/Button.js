@@ -15,7 +15,7 @@ class Button {
 }
 
 class MenuButton {
-    constructor(x, y, label, config, scene, callback) {
+    constructor(x, y, label, config, scene, callback, callback2) {
         const button = scene.add.text(x, y, label, config)
             .setOrigin(0.5)
             .setAngle(-18)
@@ -23,6 +23,7 @@ class MenuButton {
             .setStyle({ backgroundColor: '#111' })
             .setInteractive({ useHandCursor: true })
             .on('pointerdown', () => callback())
+            .on('pointerdown', () => callback2())
             .on('pointerover', () => button.setStyle({ fill: '#f39c12' }))
             .on('pointerout', () => button.setStyle({ fill: '#FFF' }));
     }
