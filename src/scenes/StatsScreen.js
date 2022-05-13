@@ -83,7 +83,7 @@ class StatsScreen extends Phaser.Scene {
         }, this);
 
 
-        this.button = new Button(80, 30, 'Continue', config, this, 
+        this.button = new Button(500, 400, 'Continue', config, this, 
                                 () => this.scene.start("cutScreenScene"));
         }
         // https://gamedevacademy.org/creating-a-preloading-screen-in-phaser-3/?a=13

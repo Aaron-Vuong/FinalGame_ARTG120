@@ -26,7 +26,7 @@ class InstructionScreen extends Phaser.Scene {
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 30, "Instruction Screen", menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 + 50, "Use Arrow Keys to Move", menuConfig).setOrigin(0.5);
 
-        const button = new Button(80, 30, 'Continue', config, this, () => this.scene.start("statsScreenScene"));
+        const button = new Button(500, 400, 'Continue', config, this, () => this.scene.start("statsScreenScene"));
 
     }
 
