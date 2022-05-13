@@ -47,7 +47,7 @@ class StatsScreen extends Phaser.Scene {
             game.settings.strength = 100;
             game.settings.speed = 70;
             game.settings.soc = 40;
-            this.scene.start("planetPlayScene");
+            this.scene.start("cutScreenScene");
             console.log(game.settings);
             
         }, this); 
@@ -57,7 +57,7 @@ class StatsScreen extends Phaser.Scene {
             game.settings.strength = 50;
             game.settings.speed = 90;
             game.settings.soc = 70;
-            this.scene.start("planetPlayScene");
+            this.scene.start("cutScreenScene");
             console.log(game.settings);
             
         }, this);
@@ -67,7 +67,7 @@ class StatsScreen extends Phaser.Scene {
             game.settings.strength = 70;
             game.settings.speed = 40;
             game.settings.soc = 60;
-            this.scene.start("planetPlayScene");
+            this.scene.start("cutScreenScene");
             console.log(game.settings);
             
         }, this);
@@ -77,17 +77,16 @@ class StatsScreen extends Phaser.Scene {
             game.settings.strength = 30;
             game.settings.speed = 60;
             game.settings.soc = 90;
-            this.scene.start("planetPlayScene");
+            this.scene.start("cutScreenScene");
             console.log(game.settings);
             
         }, this);
 
 
-        this.button = new Button(80, 30, 'Start Game', config, this, 
-                                () => this.scene.start("planetPlayScene"));
+        this.button = new Button(80, 30, 'Continue', config, this, 
+                                () => this.scene.start("cutScreenScene"));
         }
         // https://gamedevacademy.org/creating-a-preloading-screen-in-phaser-3/?a=13
-        //so far 30 mins on stat input
 
     update() {
         this.space.tilePositionX += 3;

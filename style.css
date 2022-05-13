@@ -1,0 +1,11 @@
+body {
+    background-color: #311378;
+    background-image: url("./assets/stars.png");
+}
+
+canvas {
+    display: block;
+    margin: 80px auto;
+    border: solid white 5px;
+    border-radius: 25px;;
+}
