@@ -19,11 +19,8 @@ class Menu extends Phaser.Scene {
             frameRate: 15,
             repeat: 0
         });
-        this.broshore = this.add.sprite(500, 300);
+        this.broshore = this.add.sprite(550, 250);
         this.broshore.play('Menu');
-
-        //tried adding just last frame of animation to show up after animatio0n plays
-        this.add.sprite('MenuLast',1000, 500);
 
         console.log(this.broshore.anims.isPlaying);
         let menuConfig = {
@@ -39,10 +36,13 @@ class Menu extends Phaser.Scene {
         }
         let x = 0;
         //menu text
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 30, "Housing Crisis", menuConfig).setOrigin(0.5);
- 
+        this.House = this.add.text(game.config.width/2-5, game.config.height/2 - borderUISize - borderPadding - 30, "Housing Crisis", menuConfig).setOrigin(0.5);
+        this.House.scale= 0.8;
+        this.House.angle = -18;
+        
         // test button
-        const button = new Button(80, 30, 'Start Game', config, this, () => this.scene.start("instructionScreenScene"));
+        const button = new Button(540, 300, 'Start Game', config, this, () => this.scene.start("instructionScreenScene"));
+
         game.settings = {
             strength: 0,
             speed: 0,
@@ -64,5 +64,6 @@ class Menu extends Phaser.Scene {
         }
 
         this.stars.tilePositionX += 3;
+        
     }
 }
