@@ -5,7 +5,7 @@ class ShipPlay extends Phaser.Scene {
 
     preload() {
         this.load.image("player", "./assets/AlienProtag.png");
-        this.load.image("alien", "./assets/alien-1.png");
+        this.load.image("alien", "./assets/NPC1.png");
         this.load.image("floor", "./assets/sampleFloor.png");
         this.load.spritesheet('dialogueAnim', './assets/talkingDialogueAnim.png', {frameWidth: 15, frameHeight: 15, startFrame: 0, endFrame: 7});
 
