@@ -15,22 +15,8 @@ class PlanetPlay extends Phaser.Scene {
         this.stars = this.add.tileSprite(0, 0, 1000, 500, 'stars').setOrigin(0,0);
         this.planets = this.add.tileSprite(0,0, 1000, 500, 'planets').setOrigin(0,0);
 
-
-        let menuConfig = {
-            fontFamily: 'Courier',
-            fontSize: '36px',
-            color: '#ffffff',
-            align: 'center',
-            padding: {
-                top: 5,
-                bottom: 5,
-            },
-            fixedWidth: 0
-        }
-
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, "This is a play scene", menuConfig).setOrigin(0.5);
-
-        
+        this.planet1 = new Planet(this, game.config.width/3, game.config.height/2 + 80, 'planet1');       
+        this.planet1 = new Planet(this, 2*game.config.width/3, game.config.height/2 + 80, 'planet2');
     }
 
     update() {

@@ -41,7 +41,7 @@ class CutScreen extends Phaser.Scene {
 
 
 
-        this.button = new Button(80, 30, 'Start Playing', config, this, 
+        this.button = new Button(500, 30, 'Start Playing', config, this, 
                                 () => this.scene.start("planetPlayScene"));
     }
 
@@ -63,7 +63,7 @@ class CutScreen extends Phaser.Scene {
                 ++i;
             },
             repeat: length - 1,
-            delay: 180
+            delay: 80
         })
 
     }

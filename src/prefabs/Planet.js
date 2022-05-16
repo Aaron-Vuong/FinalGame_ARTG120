@@ -1,21 +1,20 @@
 class Planet extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y, texture, frame) {
         super(scene, x, y, texture, frame);
-        scene.add.existing(this);
         this.moveSpeed = 3;
+
+        this.planet = this.scene.add.image(x, y, texture).setInteractive();
+        this.planet.input.alwaysEnabled = true;
+        this.planet.alpha = 0.7;
+        this.planet.on("pointerover", () => { this.planet.alpha = 1; })
+        this.planet.on("pointerout", () => { this.planet.alpha = 0.7; });
+        this.planet.on("pointerdown", () => { game.settings.planet = texture;
+                                              this.scene.scene.start("shipPlayScene");
+        });
     }
 
     update() {
-        this.x += this.moveSpeed;
 
-        //wrap around screen
-        if(this.x <= 0 - this.width) {
-            this.reset();
-        }
-    }
-
-    reset() {
-        this.x = game.config.width;
     }
     
 }

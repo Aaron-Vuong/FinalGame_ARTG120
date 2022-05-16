@@ -2,13 +2,28 @@
 // https://www.webtips.dev/webtips/phaser/interactive-buttons-in-phaser3
 
 class Button {
-    constructor(x, y, label, config, scene, callback) {
+    constructor(x, y, label, config, scene, callback,) {
         const button = scene.add.text(x, y, label, config)
             .setOrigin(0.5)
             .setPadding(10)
             .setStyle({ backgroundColor: '#111' })
             .setInteractive({ useHandCursor: true })
             .on('pointerdown', () => callback())
+            .on('pointerover', () => button.setStyle({ fill: '#f39c12' }))
+            .on('pointerout', () => button.setStyle({ fill: '#FFF' }));
+    }
+}
+
+class MenuButton {
+    constructor(x, y, label, config, scene, callback, callback2) {
+        const button = scene.add.text(x, y, label, config)
+            .setOrigin(0.5)
+            .setAngle(-18)
+            .setPadding(10)
+            .setStyle({ backgroundColor: '#111' })
+            .setInteractive({ useHandCursor: true })
+            .on('pointerdown', () => callback())
+            .on('pointerdown', () => callback2())
             .on('pointerover', () => button.setStyle({ fill: '#f39c12' }))
             .on('pointerout', () => button.setStyle({ fill: '#FFF' }));
     }
