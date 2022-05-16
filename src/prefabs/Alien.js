@@ -1,5 +1,5 @@
 class Alien extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y, texture, frame, playersprite) {
+    constructor(scene, x, y, texture, frame, playersprite, characterType) {
         super(scene, x, y, texture, frame);
 
         let textureData = this.scene.textures.get(texture).getSourceImage();
@@ -38,4 +38,25 @@ class Alien extends Phaser.GameObjects.Sprite {
             console.log("blolkbaerp");
         }
     }
+
+    StartConversation() {
+        let speech = this.game.cache.getJSON('sampleDialogue');
+        let convo = speech['Planets'];
+        console.log(convo);
+        this.game.paused = true;
+        this.activeConversation = convo;
+        this.updateConversationState(this.activeConversation.start);
+    };
+    
+    StopConversation() {
+        this.activeConversation = null;
+        this.activeConversationState = null;
+        this.game.paused = false;
+    };
+    
+    UpdateConversationState(stateId) {
+        this.activeConversationState = stateId;
+        // $showConversationState is a jQuery function that manages the DOM
+        $showConversationState(this.activeConversation, stateId);
+    };
 }

@@ -1,4 +1,4 @@
-let config = {
+ let config = {
     type: Phaser.CANVAS,
     //fit all planets in one screen hence widescreen, align to middle of screen?
     width: 1000, 
