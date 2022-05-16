@@ -17,7 +17,7 @@ class CutScreen extends Phaser.Scene {
             key: 'idle',
             frames: this.anims.generateFrameNumbers('idleShip', {start: 0, end: 6, first: 0}),
             frameRate: 10,
-            repeat: true
+            repeat: -1
         });
         this.idling = this.add.sprite(100,100);
         this.idling.play('idle');
