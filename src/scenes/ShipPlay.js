@@ -13,7 +13,6 @@ class ShipPlay extends Phaser.Scene {
     }
 
     create() {
-
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, "Planet: " + game.settings.planet).setOrigin(0.5);
         this.player = new Player(this, game.config.width/2, game.config.height/2, "player", 0);
         this.npc = new Alien(this, game.config.width/2, game.config.height - 80, "alien", 0, this.player.sprite);
@@ -35,14 +34,17 @@ class ShipPlay extends Phaser.Scene {
 
         this.cam1 = this.cameras.main.setViewport(0, 0, game.config.width, game.config.height);
         this.cameras.main.setBounds(0, 0, 2000, 3000);
-        this.cam1.startFollow(this.player.sprite);
-        this.cam1.setLerp(0.1,0);
+        this.cam1.startFollow(this.player.sprite, true);
+        this.cam1.setLerp(0.1,0.1);
         this.cam1.setDeadzone(300);
+        this.cam1.setZoom(2);
 
+        this.physics.world.setBounds(0, -3000 + game.config.height, 2000, 3000);
         let controlConfig = {
             camera: this.cameras.main,      // which camera?
-            left: keyLEFT,             // define keys...
-            right: keyRIGHT,
+            left: keyJ,             // define keys...
+            right: keyL,
+            down: keyK,
             zoomIn: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q),
             zoomOut: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E),
             zoomSpeed: 0.01,
@@ -52,7 +54,7 @@ class ShipPlay extends Phaser.Scene {
         }
         
         this.camControl = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
-
+        // this.cam1.zoom = 2;
         this.actionsContainer = document.body.appendChild(document.createElement("div"));
         let button = this.actionsContainer.appendChild(document.createElement("button"));
 
@@ -64,6 +66,11 @@ class ShipPlay extends Phaser.Scene {
         keyUP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
+        
+        keyI = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.I);
+        keyJ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
+        keyK = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
+        keyL = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
     }
 
     update() {
