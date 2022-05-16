@@ -5,11 +5,22 @@ class CutScreen extends Phaser.Scene {
 
     preload() {
         this.load.image('stars', './assets/stars.png');
+        this.load.spritesheet('idleShip', './assets/idleShip.png', {frameWidth: 100, frameHeight: 100, startFrame: 0, endFrame: 6});
     }
 
     create() {
         //add scrolling background
         this.space = this.add.tileSprite(0, 0, 1000, 500, 'stars').setOrigin(0,0);
+
+        //create idle ship animation
+        this.anims.create({
+            key: 'idle',
+            frames: this.anims.generateFrameNumbers('idleShip', {start: 0, end: 6, first: 0}),
+            frameRate: 10,
+            repeat: true
+        });
+        this.idling = this.add.sprite(100,100);
+        this.idling.play('idle');
 
         //text config
         let menuConfig = {
