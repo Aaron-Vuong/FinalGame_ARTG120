@@ -22,7 +22,11 @@ class ShipPlay extends Phaser.Scene {
         this.booton = this.add.image(game.config.width/2 + 200, game.config.height/2 - 100, "buttonSettings").setOrigin(0);
         this.booton.setInteractive();
         this.booton.setScrollFactor(0,0);
-        this.booton.on("pointerdown", () => console.log("button press"));
+        this.booton.on("pointerdown", () => {
+            game.settings.prevScene = "shipPlayScene";
+            this.scene.pause("shipPlayScene");
+            this.scene.launch("settingsScene");
+        });
 
         this.floor = this.physics.add.sprite(game.config.width, game.config.height, "floor", 0).setImmovable(true);
         this.floorGrp = this.add.group({
@@ -56,8 +60,10 @@ class ShipPlay extends Phaser.Scene {
         this.camControl = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
         
         this.physics.world.setBounds(0, -3000 + game.config.height, 2000, 3000);
-        this.actionsContainer = document.body.appendChild(document.createElement("div"));
-        let button = this.actionsContainer.appendChild(document.createElement("button"));
+        // this.actionsContainer = document.body.appendChild(document.createElement("div"));
+        // let button = this.actionsContainer.appendChild(document.createElement("button"));
+
+        
 
         // Set up keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);

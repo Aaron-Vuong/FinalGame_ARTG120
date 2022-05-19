@@ -10,7 +10,13 @@
             debug : true
         }
     },
-    scene: [Menu, InstructionScreen, CutScreen, StatsScreen, ShipPlay, PlanetPlay] 
+    scene: [Menu, 
+            InstructionScreen, 
+            CutScreen, 
+            StatsScreen, 
+            ShipPlay, 
+            PlanetPlay, 
+            Settings]
 }
 
 let game = new Phaser.Game(config); 

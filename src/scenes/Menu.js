@@ -32,7 +32,8 @@ class Menu extends Phaser.Scene {
             speed: 0,
             soc: 0,
             score: 0,
-            planet: "water"
+            planet: "water",
+            prevScene: "menuScene"
         }
 
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
