@@ -5,7 +5,7 @@ class CutScreen extends Phaser.Scene {
 
     preload() {
         this.load.image('stars', './assets/stars.png');
-        this.load.spritesheet('idleShip', './assets/idleShip.png', {frameWidth: 100, frameHeight: 100, startFrame: 0, endFrame: 6});
+        this.load.spritesheet('idleShip', './assets/idleShip.png', {frameWidth: 100, frameHeight: 100, startFrame: 0, endFrame: 5});
     }
 
     create() {
@@ -15,12 +15,14 @@ class CutScreen extends Phaser.Scene {
         //create idle ship animation
         this.anims.create({
             key: 'idle',
-            frames: this.anims.generateFrameNumbers('idleShip', {start: 0, end: 6, first: 0}),
+            frames: this.anims.generateFrameNumbers('idleShip', {start: 0, end: 5, first: 0}),
             frameRate: 10,
             repeat: -1
         });
         this.idling = this.add.sprite(100,100);
         this.idling.play('idle');
+
+        this.input.on('pointerdown', _ => console.info(_))
 
         //text config
         let menuConfig = {
@@ -47,6 +49,9 @@ class CutScreen extends Phaser.Scene {
 
     update() {
         this.space.tilePositionX += 3;
+
+        this.idling.x = game.input.mousePointer.x;
+        this.idling.y = game.input.mousePointer.y;
     }
 
     /**
