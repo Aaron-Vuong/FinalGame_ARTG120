@@ -10,11 +10,8 @@ class Player extends Phaser.GameObjects.Sprite {
     update() {
         this.MovementHandler();
     }
-    
-    Interact
-
     MovementHandler() {
-        if (this.sprite.body.onFloor() && (keySPACE.isDown || keyUP.isDown)) {
+        if (this.sprite.body.onFloor() && (keySPACE.isDown || keyUP.isDown || keyW.isDown)) {
             this.sprite.setVelocityY(-this.moveSpeed);
         }
         if(keyLEFT.isDown || keyA.isDown) {
