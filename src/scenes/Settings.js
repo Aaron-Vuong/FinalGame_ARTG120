@@ -4,7 +4,6 @@ class Settings extends Phaser.Scene {
     }
     create() {
         this.booton = this.add.rectangle(0,0, game.config.width * 2, game.config.height * 2, 0x6006ff);
-
     //    this.booton = this.add.image(game.config.width - 100, game.config.height - 100, "buttonSettings").setOrigin(0);
         this.booton.setAlpha(0.5);
         this.booton.setInteractive();

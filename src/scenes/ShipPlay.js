@@ -19,8 +19,9 @@ class ShipPlay extends Phaser.Scene {
         this.shop = this.add.tileSprite(100, 370, 240, 116, 'Shop', 0).setOrigin(0,0);
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, "Planet: " + game.settings.planet).setOrigin(0.5);
         this.player = new Player(this, game.config.width/2, game.config.height/2, "player", 0);
-        this.npc = new Alien(this, game.config.width/2, game.config.height - 80, "alien", 0, this.player.sprite);
+        this.npc = new Alien(this, game.config.width/2, game.config.height - 80, "alien", 0, this.player.sprite, "Shop");
 
+        // Settings Button
         this.booton = this.add.image(game.config.width/2 + 200, game.config.height/2 - 100, "buttonSettings").setOrigin(0);
         this.booton.setInteractive();
         this.booton.setScrollFactor(0,0);
@@ -29,6 +30,7 @@ class ShipPlay extends Phaser.Scene {
             this.scene.pause("shipPlayScene");
             this.scene.launch("settingsScene");
         });
+        
 
         this.floor = this.physics.add.sprite(game.config.width, game.config.height, "floor", 0).setImmovable(true);
         this.floorGrp = this.add.group({

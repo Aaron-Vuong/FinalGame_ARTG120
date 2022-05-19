@@ -5,6 +5,7 @@ class Alien extends Phaser.GameObjects.Sprite {
         let textureData = this.scene.textures.get(texture).getSourceImage();
         this.player = playersprite;
 
+        this.type = characterType;
         // Create and set values for the physics sprite owned by this class.
         this.sprite = this.scene.physics.add.sprite(Phaser.Math.Between(textureData.width, game.config.width - textureData.width), 0, texture);
         this.scene.physics.add.collider(this.sprite);
@@ -20,6 +21,8 @@ class Alien extends Phaser.GameObjects.Sprite {
             repeat: -1
         });
         
+        this.activeConversation = false;
+
         this.animat = this.scene.add.sprite(this.player.x + 100, this.player.y);
         this.animat.play('bubble');
     }
@@ -34,24 +37,25 @@ class Alien extends Phaser.GameObjects.Sprite {
     }
 
     OverlapObstacle() {
-        if (keyF.isDown) {
+        if (keyF.isDown && !this.activeConversation) {
             console.log("blolkbaerp");
+            this.StartConversation();
         }
     }
 
     StartConversation() {
-        let speech = this.game.cache.getJSON('sampleDialogue');
-        let convo = speech['Planets'];
-        console.log(convo);
-        this.game.paused = true;
-        this.activeConversation = convo;
-        this.updateConversationState(this.activeConversation.start);
+        let speech = this.scene.cache.json.get('sampleDialogue');
+        console.log( speech.Planets[game.settings.planet].NPCs.Shop);
+        this.activeConversation = true;
+        this.scene.add.text(this.sprite.x, this.sprite.y + 50, "Welcome to " + game.settings.planet).setOrigin(0.5);
+        this.scene.add.text(this.sprite.x, this.sprite.y + 100, speech.Planets[game.settings.planet].NPCs[this.type].Dialogue).setOrigin(0.5);
+
     };
     
     StopConversation() {
-        this.activeConversation = null;
+        this.activeConversation = false;
         this.activeConversationState = null;
-        this.game.paused = false;
+        this.scene.scene.isPaused = false;
     };
     
     UpdateConversationState(stateId) {

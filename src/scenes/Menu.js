@@ -8,7 +8,7 @@ class Menu extends Phaser.Scene {
         this.load.image('stars', './assets/stars.png');
         this.load.audio('SoundButton', './assets/ButtonSoundEffect.wav');
 
-        // this.game.load.json("./src/dialogue/sampleDialogue.json");
+        this.load.json("sampleDialogue", "./src/dialogue/sampleDialogue.json");
         
     }
 

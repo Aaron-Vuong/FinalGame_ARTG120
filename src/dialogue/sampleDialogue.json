@@ -2,20 +2,19 @@
     "Planets": {
         "Earth": {
             "Initial Text": "This is Earth, lots of nice trees.",
-            "NPCs": [
-                {
-                    "Character": "Shop",
+            "NPCs": {
+                "Shop": { 
                     "Dialogue": "Come see what i'm selling!",
                     "Sell": "Sell some things",
                     "Buy": "Buy some things"
                 },
-                {
-
-                    "Character": "RandoAlien",
-                    "Dialogue": "&^%#*)!}E{{{QWP"
-
+                "RandoAlien": {
+                    "Dialogue": "(*#&%&*@^)!@&$^)"
                 }
-            ]
+            }
+        },
+        "Mars": {
+
         }
     }
 }
