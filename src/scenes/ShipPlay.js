@@ -11,6 +11,8 @@ class ShipPlay extends Phaser.Scene {
         this.load.image("buttonSettings", "./assets/ButtonX.png");
         this.load.image("Shop", "./assets/Shop.png");
         this.load.spritesheet('dialogueAnim', './assets/talkingDialogueAnim.png', {frameWidth: 15, frameHeight: 15, startFrame: 0, endFrame: 7});
+        this.load.spritesheet('AlienAnim', './assets/AlienAnims.png', {frameWidth: 31, frameHeight: 56, startFrame: 0, endFrame: 12});
+
 
     }
 
