@@ -5,6 +5,9 @@ class CutScreen extends Phaser.Scene {
 
     preload() {
         this.load.image('stars', './assets/stars.png');
+        this.load.image('heart', './assets/heartbeenbroke.png');
+        this.load.image('explorer', './assets/explorer.png');
+        this.load.image('house', './assets/house.png');
         this.load.spritesheet('idleShip', './assets/idleShip.png', {frameWidth: 100, frameHeight: 100, startFrame: 0, endFrame: 5});
     }
 
@@ -37,14 +40,34 @@ class CutScreen extends Phaser.Scene {
             fixedWidth: 650
         }
 
+
         this.label = this.add.text(game.config.width/2, game.config.height/2 + 20, " ", menuConfig).setOrigin(0.5).setWordWrapWidth(650);
         
         this.typewriterText('A long time ago you lived on a planet called Planet-284. You loved it there, but you never quite fit in. Since you are all grown up now, it is time to explore the universe to find a new home! You must go around interacting with the locals of each planet and see how well you fit in.');
 
 
-
         this.button = new Button(500, 30, 'Start Playing', config, this, 
                                 () => this.scene.start("planetPlayScene"));
+
+        //timed events 
+        timedEvent = this.time.addEvent({
+            delay: 8000,
+            callback: this.addHeart,
+            callbackScope: this,
+            loop: false
+        })
+        Explore = this.time.addEvent({
+            delay: 13500,
+            callback: this.addSpace,
+            callbackScope: this,
+            loop: false
+        })
+        House = this.time.addEvent({
+            delay: 15800,
+            callback: this.addHouse,
+            callbackScope: this,
+            loop: false
+        })
     }
 
     update() {
@@ -52,6 +75,18 @@ class CutScreen extends Phaser.Scene {
 
         this.idling.x = game.input.mousePointer.x;
         this.idling.y = game.input.mousePointer.y;
+    }
+
+    addHeart() {
+        this.add.image(900, 100, 'heart');
+    }
+
+    addSpace() {
+        this.add.image(50, 275, 'explorer');
+    }
+
+    addHouse() {
+        this.add.image(900, 350, 'house');
     }
 
     /**
