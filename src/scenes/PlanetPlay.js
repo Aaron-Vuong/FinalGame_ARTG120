@@ -8,6 +8,7 @@ class PlanetPlay extends Phaser.Scene {
         this.load.image('planets', './assets/planets.png');
         this.load.image('Earth', './assets/Planet1.png');
         this.load.image('planet2', './assets/Planet2.png');
+        this.load.audio('boop', './assets/boopAudio.wav');
     }
 
     create() {
@@ -17,6 +18,12 @@ class PlanetPlay extends Phaser.Scene {
 
         this.planet1 = new Planet(this, game.config.width/3, game.config.height/2 + 80, 'Earth');       
         this.planet1 = new Planet(this, 2*game.config.width/3, game.config.height/2 + 80, 'planet2');
+
+        let music = this.sound.add('boop');
+
+        this.input.on("pointerdown", () => {
+            music.play();
+        });
     }
 
     update() {
