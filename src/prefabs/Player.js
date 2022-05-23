@@ -5,10 +5,23 @@ class Player extends Phaser.GameObjects.Sprite {
         this.sprite = this.scene.physics.add.sprite(game.config.width/2, game.config.height/2 - borderUISize*4 - borderPadding*2+330, texture).setOrigin(0.5,0.5);
         this.sprite.setCollideWorldBounds(true);
         this.moveSpeed = 300;
+
+        this.scene.anims.create({
+            key: 'walk',
+            frames: this.anims.generateFrameNumbers('AlienAnim', {start: 0, end: 12, first: 0}),
+            frameRate: 8
+        });
+        
+        this.activeConversation = false;
+
+        this.walkAnim = this.scene.add.sprite(this.sprite.x, this.sprite.y);
+        this.walkAnim.alpha = 0;
+
     }
 
     update() {
         this.MovementHandler();
+        this.AnimationHandler();
     }
     MovementHandler() {
         if (this.sprite.body.onFloor() && (keySPACE.isDown || keyUP.isDown || keyW.isDown)) {
@@ -21,6 +34,15 @@ class Player extends Phaser.GameObjects.Sprite {
         }
         else {
             this.sprite.setVelocityX(0);
+        }
+    }
+
+    AnimationHandler() {
+        this.walkAnim.x = this.sprite.x;
+        this.walkAnim.y = this.sprite.y;
+        if (this.sprite.body.velocity.x != 0 && !this.walkAnim.anims.isPlaying) {
+            this.walkAnim.alpha = 1;
+            this.walkAnim.anims.play('walk');
         }
     }
 }
