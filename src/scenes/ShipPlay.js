@@ -10,6 +10,9 @@ class ShipPlay extends Phaser.Scene {
         this.load.image("BG", "./assets/TestBG.png");
         this.load.image("buttonSettings", "./assets/ButtonX.png");
         this.load.image("Shop", "./assets/Shop.png");
+        this.load.image("vinyl", "./assets/vinyl.png");
+        this.load.audio("vinylAudio", "./assets/song_sfx.wav");
+        this.load.spritesheet("note", "./assets/note.png", {frameWidth: 20, frameHeight: 20, startFrame: 0, endFrame: 5});
         this.load.spritesheet('dialogueAnim', './assets/talkingDialogueAnim.png', {frameWidth: 15, frameHeight: 15, startFrame: 0, endFrame: 7});
         this.load.spritesheet('AlienAnim', './assets/AlienAnims.png', {frameWidth: 31, frameHeight: 56, startFrame: 0, endFrame: 12});
 
@@ -22,6 +25,12 @@ class ShipPlay extends Phaser.Scene {
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, "Planet: " + game.settings.planet).setOrigin(0.5);
         this.player = new Player(this, game.config.width/2, game.config.height/2, "player", 0);
         this.npc = new Alien(this, game.config.width/2, game.config.height - 80, "alien", 0, this.player.sprite, "Shop");
+        this.recPlay = new MusicPlayer(this, game.config.width/2, game.config.height - 35, "vinyl", 0, this.player.sprite, "Shop");
+
+        this.recPlay.setInteractive();
+        this.recPlay.on("pointerdown", () => {
+            this.sound.play("vinylAudio");
+        });
 
         // Settings Button
         this.booton = this.add.image(game.config.width/2 + 200, game.config.height/2 - 100, "buttonSettings").setOrigin(0);
@@ -41,6 +50,8 @@ class ShipPlay extends Phaser.Scene {
         });
         this.floorGrp.add(this.floor);
         this.physics.add.collider(this.floorGrp, this.player.sprite);
+        this.physics.add.collider(this.player.sprite, this.recPlay.sprite);
+        this.physics.add.collider(this.floorGrp, this.recPlay.sprite);
         this.physics.add.collider(this.floorGrp, this.npc.sprite);
         this.floor.body.setAllowGravity(false);
 
@@ -91,5 +102,6 @@ class ShipPlay extends Phaser.Scene {
         this.camControl.update();
         this.npc.update();
         this.player.update();
+        this.recPlay.update();
     }
 }
