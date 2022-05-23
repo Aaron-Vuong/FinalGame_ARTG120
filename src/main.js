@@ -25,4 +25,8 @@ let game = new Phaser.Game(config);
 let borderUISize = game.config.height / 15;
 let borderPadding = borderUISize / 3;
 
-let keyLEFT, keyA, keyRIGHT, keyD, keySPACE, keyUP, keyF, keyI, keyJ, keyK, keyL, keyW, timedEvent, Explore, House;
+//move variables
+let keyLEFT, keyA, keyRIGHT, keyD, keySPACE, keyUP, keyF, keyI, keyJ, keyK, keyL, keyW;
+
+//timer variables
+let timedEvent, Explore, House;
