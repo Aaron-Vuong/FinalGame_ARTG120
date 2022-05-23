@@ -17,7 +17,8 @@
             StatsScreen, 
             ShipPlay, 
             PlanetPlay, 
-            Settings]
+            Settings,
+            Shop]
 }
 
 let game = new Phaser.Game(config); 
