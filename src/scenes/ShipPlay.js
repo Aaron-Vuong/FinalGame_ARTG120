@@ -28,6 +28,11 @@ class ShipPlay extends Phaser.Scene {
         this.recPlay = new MusicPlayer(this, game.config.width/2, game.config.height - 35, "vinyl", 0, this.player.sprite, "Shop");
         this.npc = new Alien(this, 280, 370, "alien", 0, this.player.sprite, "Shop");
 
+        this.recPlay.setInteractive();
+        this.recPlay.on("pointerdown", () => {
+            this.sound.play("vinylAudio");
+        });
+
         // Settings Button
         this.booton = this.add.image(game.config.width/2 + 200, game.config.height/2 - 100, "buttonSettings").setOrigin(0);
         this.booton.setInteractive();
