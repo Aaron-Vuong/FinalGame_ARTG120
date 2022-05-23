@@ -21,7 +21,7 @@ class ShipPlay extends Phaser.Scene {
 
     create() {
         this.bg = this.add.tileSprite(0, 200, 2000, 400, 'BG', 0).setOrigin(0,0);
-        this.shop = this.add.tileSprite(100, 370, 240, 116, 'Shop', 0).setOrigin(0,0);
+        this.shop = this.add.tileSprite(100, 350, 240, 136, 'Shop', 0).setOrigin(0,0);
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, "Planet: " + game.settings.planet).setOrigin(0.5);
         this.player = new Player(this, game.config.width/2, game.config.height/2, "player", 0);
         this.npc = new Alien(this, game.config.width/2, game.config.height - 80, "alien", 0, this.player.sprite, "Shop");
