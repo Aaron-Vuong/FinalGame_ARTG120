@@ -7,7 +7,7 @@ class Alien extends Phaser.GameObjects.Sprite {
 
         this.type = characterType;
         // Create and set values for the physics sprite owned by this class.
-        this.sprite = this.scene.physics.add.sprite(Phaser.Math.Between(textureData.width, game.config.width - textureData.width), 0, texture);
+        this.sprite = this.scene.physics.add.sprite(x, y, texture);
         this.scene.physics.add.collider(this.sprite);
         
         this.sprite.setCollideWorldBounds(true);
@@ -43,15 +43,24 @@ class Alien extends Phaser.GameObjects.Sprite {
         }
     }
 
+    ListChoices(speech) {
+        let place = 50;
+        for (let choice in speech.Planets[game.settings.planet].NPCs[this.type].Choices) {
+            this.scene.add.text(this.sprite.x, this.sprite.y + place, speech.Planets[game.settings.planet].NPCs[this.type].Choices[choice].Text, game.settings.textConfig).setOrigin(0.5);
+            console.log(speech.Planets[game.settings.planet].NPCs[this.type].Choices[choice].Text);
+            place += 50;
+        }
+    };
+
     StartConversation() {
         let speech = this.scene.cache.json.get('sampleDialogue');
         console.log( speech.Planets[game.settings.planet].NPCs.Shop);
         this.activeConversation = true;
-        this.scene.add.text(this.sprite.x, this.sprite.y + 50, "Welcome to " + game.settings.planet).setOrigin(0.5);
-        this.scene.add.text(this.sprite.x, this.sprite.y + 100, speech.Planets[game.settings.planet].NPCs[this.type].Dialogue).setOrigin(0.5);
-
+        this.scene.add.text(this.sprite.x, this.sprite.y - 100, "Welcome to " + game.settings.planet).setOrigin(0.5);
+        this.scene.add.text(this.sprite.x, this.sprite.y - 50, speech.Planets[game.settings.planet].NPCs[this.type].Dialogue).setOrigin(0.5);
+        this.ListChoices(speech);
     };
-    
+
     StopConversation() {
         this.activeConversation = false;
         this.activeConversationState = null;

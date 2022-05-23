@@ -5,8 +5,14 @@
             "NPCs": {
                 "Shop": { 
                     "Dialogue": "Come see what i'm selling!",
-                    "Sell": "Sell some things",
-                    "Buy": "Buy some things"
+                    "Choices" : [
+                    {
+                        "Text": "Sell some things"
+                    },
+                    {
+                        "Text": "Buy some things"
+                    }
+                ]
                 },
                 "RandoAlien": {
                     "Dialogue": "(*#&%&*@^)!@&$^)"
