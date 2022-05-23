@@ -8,8 +8,8 @@ class Menu extends Phaser.Scene {
         this.load.image('stars', './assets/stars.png');
         this.load.audio('SoundButton', './assets/ButtonSoundEffect.wav');
 
-        this.load.json("sampleDialogue", "./src/dialogue/sampleDialogue.json");
-        
+        this.load.json("sampleDialogue", "./src/json/Dialogue.json");
+        this.load.json("items", "./src/json/ItemList.json");
     }
 
     create() {
@@ -28,12 +28,30 @@ class Menu extends Phaser.Scene {
         this.broshore.play('Menu');
         
         game.settings = {
-            strength: 0,
-            speed: 0,
-            soc: 0,
             score: 0,
             planet: "water",
-            prevScene: "menuScene"
+            prevScene: "menuScene",
+            textConfig: {
+                fontFamily: 'Courier',
+                fontSize: '36px',
+                color: '#e6c0fc',
+                align: 'center',
+                padding: {
+                    top: 5,
+                    bottom: 5,
+                },
+                fixedWidth: 0
+            },
+
+            playerSTRENGTH: 0,
+            playerSPEED: 0,
+            playerSOCIAL: 0,
+            playerFUEL: 2,
+            playerMONEY: 100
+        }
+
+        game.playerSettings = {
+            test: 1
         }
 
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);

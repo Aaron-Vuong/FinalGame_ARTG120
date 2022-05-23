@@ -44,9 +44,9 @@ class StatsScreen extends Phaser.Scene {
 
         //listen for when the stat1 is clicked on
         this.stat1.on("pointerdown", function(pointer) {
-            game.settings.strength = 100;
-            game.settings.speed = 70;
-            game.settings.soc = 40;
+            game.settings.playerSTRENGTH = 100;
+            game.settings.playerSPEED = 70;
+            game.settings.playerSOCIAL = 40;
             this.scene.start("cutScreenScene");
             console.log(game.settings);
             
@@ -54,9 +54,9 @@ class StatsScreen extends Phaser.Scene {
 
         //listen if stat2 is clicked on
         this.stat2.on("pointerdown", function(pointer) {
-            game.settings.strength = 50;
-            game.settings.speed = 90;
-            game.settings.soc = 70;
+            game.settings.playerSTRENGTH = 50;
+            game.settings.playerSPEED = 90;
+            game.settings.playerSOCIAL = 70;
             this.scene.start("cutScreenScene");
             console.log(game.settings);
             
@@ -64,9 +64,9 @@ class StatsScreen extends Phaser.Scene {
 
          //listen if stat3 is clicked on
          this.stat3.on("pointerdown", function(pointer) {
-            game.settings.strength = 70;
-            game.settings.speed = 40;
-            game.settings.soc = 60;
+            game.settings.playerSTRENGTH = 70;
+            game.settings.playerSPEED = 40;
+            game.settings.playerSOCIAL = 60;
             this.scene.start("cutScreenScene");
             console.log(game.settings);
             
@@ -74,9 +74,9 @@ class StatsScreen extends Phaser.Scene {
 
         //listen if stat4 is clicked on
         this.stat4.on("pointerdown", function(pointer) {
-            game.settings.strength = 30;
-            game.settings.speed = 60;
-            game.settings.soc = 90;
+            game.settings.playerSTRENGTH = 30;
+            game.settings.playerSPEED = 60;
+            game.settings.playerSOCIAL = 90;
             this.scene.start("cutScreenScene");
             console.log(game.settings);
             

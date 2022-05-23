@@ -3,6 +3,7 @@
     //fit all planets in one screen hence widescreen, align to middle of screen?
     width: 1000, 
     height: 500,
+    pixelArt: true,
     physics: {
         default: 'arcade',
         arcade: {
@@ -16,7 +17,8 @@
             StatsScreen, 
             ShipPlay, 
             PlanetPlay, 
-            Settings]
+            Settings,
+            Shop]
 }
 
 let game = new Phaser.Game(config); 
@@ -26,7 +28,7 @@ let borderUISize = game.config.height / 15;
 let borderPadding = borderUISize / 3;
 
 //move variables
-let keyLEFT, keyA, keyRIGHT, keyD, keySPACE, keyUP, keyF, keyI, keyJ, keyK, keyL, keyW;
+let keyLEFT, keyA, keyRIGHT, keyD, keySPACE, keyUP, keyF, keyI, keyJ, keyK, keyL, keyW, keyESC;
 
 //timer variables
 let timedEvent, Explore, House;

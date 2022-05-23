@@ -1,0 +1,12 @@
+{
+    "Planets": {
+        "Earth": {
+            "Initial Text": "hello",
+            "NPCs": {
+                "RecordPlayer": { 
+                    "Dialogue": "Wow, this music player is so cool."
+                }
+            }
+        }
+    }
+}

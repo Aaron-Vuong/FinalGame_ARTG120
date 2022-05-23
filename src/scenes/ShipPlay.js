@@ -26,11 +26,7 @@ class ShipPlay extends Phaser.Scene {
         this.player = new Player(this, game.config.width/2, game.config.height/2, "player", 0);
         this.npc = new Alien(this, game.config.width/2, game.config.height - 80, "alien", 0, this.player.sprite, "Shop");
         this.recPlay = new MusicPlayer(this, game.config.width/2, game.config.height - 35, "vinyl", 0, this.player.sprite, "Shop");
-
-        this.recPlay.setInteractive();
-        this.recPlay.on("pointerdown", () => {
-            this.sound.play("vinylAudio");
-        });
+        this.npc = new Alien(this, 280, 370, "alien", 0, this.player.sprite, "Shop");
 
         // Settings Button
         this.booton = this.add.image(game.config.width/2 + 200, game.config.height/2 - 100, "buttonSettings").setOrigin(0);
@@ -38,9 +34,15 @@ class ShipPlay extends Phaser.Scene {
         this.booton.setScrollFactor(0,0);
         this.booton.on("pointerdown", () => {
             game.settings.prevScene = "shipPlayScene";
-            this.scene.pause("shipPlayScene");
-            this.scene.launch("settingsScene");
+            this.scene.pause();
+            this.scene.launch("settingsScene")
         });
+
+        this.settingsfunc = () => {
+            game.settings.prevScene = "shipPlayScene";
+            this.scene.pause();
+            this.scene.launch("settingsScene");
+        }
         
 
         this.floor = this.physics.add.sprite(game.config.width, game.config.height, "floor", 0).setImmovable(true);
@@ -91,6 +93,7 @@ class ShipPlay extends Phaser.Scene {
         keyUP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
+        keyESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
         
         keyI = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.I);
         keyJ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
@@ -104,4 +107,4 @@ class ShipPlay extends Phaser.Scene {
         this.player.update();
         this.recPlay.update();
     }
-}
+}   
