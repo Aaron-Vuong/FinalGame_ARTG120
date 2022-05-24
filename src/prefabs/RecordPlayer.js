@@ -45,4 +45,11 @@ class MusicPlayer extends Phaser.GameObjects.Sprite {
         this.musical.y = this.sprite.y - 20;
     }
 
+    playAudio() {
+        this.sprite.setInteractive();
+
+        this.sprite.on("pointerdown", () => {
+            this.scene.sound.play("vinylAudio");
+        })
+    }
 }
