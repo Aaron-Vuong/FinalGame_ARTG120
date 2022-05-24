@@ -5,7 +5,7 @@ class StatsScreen extends Phaser.Scene {
 
     preload() {
         this.load.image('stars', './assets/stars.png');
-        //this.load.image('planets', './assets/planets.png');
+        this.load.spritesheet('idleShip', './assets/idleShip.png', {frameWidth: 100, frameHeight: 100, startFrame: 0, endFrame: 5});
     }
 
     create() {
@@ -24,6 +24,18 @@ class StatsScreen extends Phaser.Scene {
             },
             fixedWidth: 0
         }
+
+        //create idle ship animation
+        this.anims.create({
+            key: 'idle',
+            frames: this.anims.generateFrameNumbers('idleShip', {start: 0, end: 5, first: 0}),
+            frameRate: 10,
+            repeat: -1
+        });
+        this.idling = this.add.sprite(100,100);
+        this.idling.play('idle');
+
+        this.input.on('pointerdown', _ => console.info(_))
 
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 150, "Choose Your Stats", menuConfig).setOrigin(0.5);
 
@@ -66,6 +78,8 @@ class StatsScreen extends Phaser.Scene {
 
     update() {
         this.space.tilePositionX += 3;
-        //this.planets.tilePositionX += 2;
+
+        this.idling.x = game.input.mousePointer.x;
+        this.idling.y = game.input.mousePointer.y;
     }
 }
