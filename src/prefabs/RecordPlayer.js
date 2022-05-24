@@ -4,7 +4,6 @@ class MusicPlayer extends Phaser.GameObjects.Sprite {
 
         let textureData = this.scene.textures.get(texture).getSourceImage();
         this.obj = playersprite;
-        this.soundPlay = scene.sound.add("vinylAudio");
 
         this.sprite = this.scene.physics.add.sprite(700, 200, texture);
         this.scene.physics.add.collider(this.sprite);
@@ -27,9 +26,18 @@ class MusicPlayer extends Phaser.GameObjects.Sprite {
         this.musical.play('musicPlay');
     }
 
+    preload() {
+        this.load.audio("vinylAudio", "./assets/song_sfx.wav");
+    }
+
+    create() {
+        let vinylPlay = this.sound.add("vinylAudio");
+        vinylPlay.play();
+        console.log("played vinyl music");
+    }
+
     update() {
         this.animPos();
-        this.playAudio();
     }
 
     animPos() {
@@ -37,11 +45,4 @@ class MusicPlayer extends Phaser.GameObjects.Sprite {
         this.musical.y = this.sprite.y - 20;
     }
 
-    playAudio() {
-        this.sprite.setInteractive();
-
-        this.sprite.on("pointerdown", () => {
-            this.sound.play("vinylAudio");
-        })
-    }
 }
