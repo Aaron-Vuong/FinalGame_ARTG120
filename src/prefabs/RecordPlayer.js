@@ -26,18 +26,9 @@ class MusicPlayer extends Phaser.GameObjects.Sprite {
         this.musical.play('musicPlay');
     }
 
-    preload() {
-        this.load.audio("vinylAudio", "./assets/song_sfx.wav");
-    }
-
-    create() {
-        let vinylPlay = this.sound.add("vinylAudio");
-        vinylPlay.play();
-        console.log("played vinyl music");
-    }
-
     update() {
         this.animPos();
+        this.playAudio();
     }
 
     animPos() {
@@ -49,7 +40,9 @@ class MusicPlayer extends Phaser.GameObjects.Sprite {
         this.sprite.setInteractive();
 
         this.sprite.on("pointerdown", () => {
-            this.scene.sound.play("vinylAudio");
-        })
+            this.scene.sound.play("vinylAudio").setVolume(0.5);
+            console.log("playing music from record player scene");
+        });
     }
+
 }
