@@ -6,17 +6,26 @@ class Player extends Phaser.GameObjects.Sprite {
         this.sprite.setCollideWorldBounds(true);
         this.moveSpeed = 300;
 
+        this.activeConversation = false;
+
         this.scene.anims.create({
             key: 'walk',
             frames: this.anims.generateFrameNumbers('AlienAnim', {start: 0, end: 12, first: 0}),
             frameRate: 8
         });
-        
-        this.activeConversation = false;
-
         this.walkAnim = this.scene.add.sprite(this.sprite.x, this.sprite.y);
         this.walkAnim.alpha = 0;
 
+        this.scene.anims.create({
+            key: 'jump',
+            frames: this.anims.generateFrameNumbers('jumpAlienAnim', {start: 0, end: 17, first: 0}),
+            frameRate: 12
+        });
+        this.walkAnim = this.scene.add.sprite(this.sprite.x, this.sprite.y);
+        this.walkAnim.alpha = 0;
+
+        this.jumpAnim = this.scene.add.sprite(this.sprite.x, this.sprite.y);
+        this.jumpAnim.alpha = 0;
     }
 
     update() {
@@ -40,9 +49,17 @@ class Player extends Phaser.GameObjects.Sprite {
     AnimationHandler() {
         this.walkAnim.x = this.sprite.x;
         this.walkAnim.y = this.sprite.y;
+        this.jumpAnim.x = this.sprite.x;
+        this.jumpAnim.y = this.sprite.y;
         if (this.sprite.body.velocity.x != 0 && !this.walkAnim.anims.isPlaying) {
+            this.jumpAnim.alpha = 0;
             this.walkAnim.alpha = 1;
             this.walkAnim.anims.play('walk');
+        }
+        if (!this.jumpAnim.anims.isPlaying && !this.sprite.body.touching.down) {
+            this.walkAnim.alpha = 0;
+            this.jumpAnim.alpha = 1;
+            this.jumpAnim.anims.play('jump');
         }
     }
 }
