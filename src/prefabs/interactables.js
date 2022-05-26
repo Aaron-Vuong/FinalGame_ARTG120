@@ -22,12 +22,12 @@ class Interactable extends Phaser.GameObjects.Sprite {
             repeat: -1
         });
 
-        this.blobSquish = this.scene.add.sprite(this.sprite.x, this.sprite.y);
+        this.blobSquish = this.scene.add.sprite(650, 200);
         this.blobSquish.play('squish');
     }
 
     update() {
-        this.playSquish();
+       this.playSquish();
     }
 
     playSquish() {
