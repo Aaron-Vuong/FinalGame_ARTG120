@@ -123,4 +123,11 @@ class ShipPlay extends Phaser.Scene {
         this.recPlay.update();
         this.blob.update();
     }
+
+    disguiseSpawner(filename) {
+        let texture = this.textures.get(filename).getSourceImage();
+        const disguise = this.physics.add.sprite(Phaser.Math.Between(texture.width, game.config.width - texture.width), 0, filename);
+        this.physics.add.collider(disguise);
+        disguise.body.setAllowGravity();
+    }
 }   
