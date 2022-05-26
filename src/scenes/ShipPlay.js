@@ -11,7 +11,9 @@ class ShipPlay extends Phaser.Scene {
         this.load.image("buttonSettings", "./assets/ButtonX.png");
         this.load.image("Shop", "./assets/Shop.png");
         this.load.image("vinyl", "./assets/vinyl.png");
+        this.load.image("blob", "./assets/blob.png");
         this.load.audio("vinylAudio", "./assets/song_sfx.wav");
+        this.load.spritesheet("blobAnim", "./assets/blobAnim.png", {frameWidth:80, frameHeight:70, startFrame:0, endFrame:3});
         this.load.spritesheet("note", "./assets/note.png", {frameWidth: 20, frameHeight: 20, startFrame: 0, endFrame: 5});
         this.load.spritesheet('dialogueAnim', './assets/talkingDialogueAnim.png', {frameWidth: 15, frameHeight: 15, startFrame: 0, endFrame: 7});
         this.load.spritesheet('AlienAnim', './assets/AlienAnims.png', {frameWidth: 31, frameHeight: 56, startFrame: 0, endFrame: 12});
@@ -27,10 +29,14 @@ class ShipPlay extends Phaser.Scene {
         this.player = new Player(this, game.config.width/2, game.config.height/2 + 100, "player", 0);
         this.npcSHOP = new Alien(this, game.config.width/2, game.config.height - 80, "alien", 0, this.player.sprite, "Shop");
         this.recPlay = new MusicPlayer(this, game.config.width/2, game.config.height - 35, "vinyl", 0, this.player.sprite, "Shop");
+        this.blob = new Interactable(this, game.config.width/2, game.config.height - 35, "blob", 0, this.player.sprite, "Shop");
         this.npc2 = new Alien(this, 280, 370, "alien", 0, this.player.sprite, "Shop");
 
         this.recPlay.setInteractive();
         this.music = this.sound.add("vinylAudio");
+
+        //make blob squish when clicked on
+        this.blob.setInteractive();
 
         // Settings Button
         this.booton = this.add.image(game.config.width/2 + 200, game.config.height/2 - 100, "buttonSettings").setOrigin(0);
@@ -57,6 +63,8 @@ class ShipPlay extends Phaser.Scene {
         this.floorGrp.add(this.floor);
         this.physics.add.collider(this.floorGrp, this.player.sprite);
         this.physics.add.collider(this.player.sprite, this.recPlay.sprite);
+        this.physics.add.collider(this.player.sprite, this.blob.sprite);
+        this.physics.add.collider(this.floorGrp, this.blob.sprite);
         this.physics.add.collider(this.floorGrp, this.recPlay.sprite);
         this.physics.add.collider(this.floorGrp, this.npcSHOP.sprite);
         
@@ -113,5 +121,6 @@ class ShipPlay extends Phaser.Scene {
         this.npc2.update();
         this.player.update();
         this.recPlay.update();
+        this.blob.update();
     }
 }   
