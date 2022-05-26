@@ -7,12 +7,30 @@
                     "Dialogue": "Come see what i'm selling!",
                     "Choices" : [
                     {
-                        "Text": "Sell some things"
+                        "Text": "Shop"
                     }
                 ]
                 },
                 "RandoAlien": {
                     "Dialogue": "(*#&%&*@^)!@&$^)"
+                },
+                "Leader": {
+                    "Dialogue": "Hello, what brings you here?",
+                    "Choices":[
+                        {
+                            "Text":"I want a place to live!"
+                        },
+                        {
+                            "Text": "I lost my home."
+                        },
+                        {
+                            "Text": "Just looking around."
+                        },
+                        {
+                            "Text": "None of your business..."
+                        }
+                    ]
+
                 }
             }
         },

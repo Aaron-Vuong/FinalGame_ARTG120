@@ -53,6 +53,9 @@ class Alien extends Phaser.GameObjects.Sprite {
             if (this.type == "Shop") {
                 this.StartShop();
             }
+            if (this.type == "Leader") {
+                
+            }
     
             console.log(speech.Planets[game.settings.planet].NPCs[this.type].Choices[choice].Text);
             place += 50;

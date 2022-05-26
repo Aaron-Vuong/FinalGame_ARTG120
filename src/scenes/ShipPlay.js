@@ -11,13 +11,12 @@ class ShipPlay extends Phaser.Scene {
         this.load.image("buttonSettings", "./assets/ButtonX.png");
         this.load.image("Shop", "./assets/Shop.png");
         this.load.image("vinyl", "./assets/vinyl.png");
+        this.load.image("dialogueBox", "./assets/PlaceholderDialogueBox.png");
         this.load.audio("vinylAudio", "./assets/song_sfx.wav");
         this.load.spritesheet("note", "./assets/note.png", {frameWidth: 20, frameHeight: 20, startFrame: 0, endFrame: 5});
         this.load.spritesheet('dialogueAnim', './assets/talkingDialogueAnim.png', {frameWidth: 15, frameHeight: 15, startFrame: 0, endFrame: 7});
         this.load.spritesheet('AlienAnim', './assets/AlienAnims.png', {frameWidth: 31, frameHeight: 56, startFrame: 0, endFrame: 12});
         this.load.spritesheet('jumpAlienAnim', './assets/jumpAlienAnim.png', {frameWidth: 31, frameHeight: 56, startFrame: 0, endFrame: 17});
-
-
     }
 
     create() {
@@ -25,7 +24,7 @@ class ShipPlay extends Phaser.Scene {
         this.shop = this.add.tileSprite(100, 350, 240, 136, 'Shop', 0).setOrigin(0,0);
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, "Planet: " + game.settings.planet).setOrigin(0.5);
         this.player = new Player(this, game.config.width/2, game.config.height/2 + 100, "player", 0);
-        this.npcSHOP = new Alien(this, game.config.width/2, game.config.height - 80, "alien", 0, this.player.sprite, "Shop");
+        this.npcSHOP = new Alien(this, game.config.width/2 + 100, game.config.height - 80, "alien", 0, this.player.sprite, "Leader");
         this.recPlay = new MusicPlayer(this, game.config.width/2, game.config.height - 35, "vinyl", 0, this.player.sprite, "Shop");
         this.npc2 = new Alien(this, 280, 370, "alien", 0, this.player.sprite, "Shop");
 
@@ -89,7 +88,6 @@ class ShipPlay extends Phaser.Scene {
         // let button = this.actionsContainer.appendChild(document.createElement("button"));
 
         
-
         // Set up keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);

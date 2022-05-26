@@ -49,17 +49,25 @@ class Player extends Phaser.GameObjects.Sprite {
     AnimationHandler() {
         this.walkAnim.x = this.sprite.x;
         this.walkAnim.y = this.sprite.y;
+
         this.jumpAnim.x = this.sprite.x;
         this.jumpAnim.y = this.sprite.y;
-        if (this.sprite.body.velocity.x != 0 && !this.walkAnim.anims.isPlaying) {
-            this.jumpAnim.alpha = 0;
-            this.walkAnim.alpha = 1;
-            this.walkAnim.anims.play('walk');
-        }
         if (!this.jumpAnim.anims.isPlaying && !this.sprite.body.touching.down) {
-            this.walkAnim.alpha = 0;
+
             this.jumpAnim.alpha = 1;
             this.jumpAnim.anims.play('jump');
         }
+        if ((keyLEFT.isDown || keyA.isDown || keyRIGHT.isDown || keyD.isDown) && !this.walkAnim.anims.isPlaying) {
+            
+            this.walkAnim.alpha = 1;
+            this.walkAnim.anims.play('walk');
+        }
+        if (!this.walkAnim.anims.isPlaying) {
+            this.walkAnim.alpha = 0;
+        }
+        if (!this.jumpAnim.anims.isPlaying) {
+            this.jumpAnim.alpha = 0;
+        }
+
     }
 }
