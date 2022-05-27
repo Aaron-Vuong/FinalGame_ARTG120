@@ -5,7 +5,7 @@
             "NPCs": {
                 "Shop": { 
                     "Dialogue": "Come see what i'm selling!",
-                    "Choices" : [
+                    "InitChoices" : [
                     {
                         "Text": "Shop"
                     }
@@ -16,25 +16,77 @@
                 },
                 "Leader": {
                     "Dialogue": "Hello, what brings you here?",
-                    "Choices":[
+                    "InitChoices":[
                         {
                             "Text":"I want a place to live!",
-                            "GoalMeterEffect": 0
+                            "GoalMeterEffect": 0,
+                            "Target": "2LPlaceLive"
+                            
                         },
                         {
                             "Text": "I lost my home.",
-                            "GoalMeterEffect": 0
+                            "GoalMeterEffect": 0,
+                            "Target": "2LLostHome"
                         },
                         {
                             "Text": "Just looking around.",
-                            "GoalMeterEffect": 0
+                            "GoalMeterEffect": 1,
+                            "Target": "2LLooking"
                         },
                         {
                             "Text": "None of your business...",
-                            "GoalMeterEffect": 0
+                            "GoalMeterEffect": -1,
+                            "Target": "2LNone"
+                        }
+                    ],
+                    "2LPlaceLive":[
+                        {
+                            "Dialogue":"2LPlaceLive",
+                            "Text":"2LPlaceLive",
+                            "GoalMeterEffect": 0,
+                            "Target": "None",
+                            "Parent": "InitChoices"
+                        }
+                    ],
+                    "2LLostHome":[
+                        {
+                            "Dialogue":"2LLostHome",
+                            "Text":"2LLostHome",
+                            "GoalMeterEffect": 0,
+                            "Target": "None",
+                            "Parent": "InitChoices"
+                        }
+                    ],
+                    "2LLooking":[
+                        {
+                            "Dialogue":"2LLooking",
+                            "Text":"2LLooking",
+                            "GoalMeterEffect": 0,
+                            "Target": "None",
+                            "Parent": "InitChoices"
+                        }
+                    ],
+                    "2LNone":[
+                        {
+                            "Dialogue":"2LNone",
+                            "Text":"2LNone",
+                            "GoalMeterEffect": 0,
+                            "Target": "None",
+                            "Parent": "InitChoices"
+                        }
+                    ],
+                    "None":[
+                        {
+                            "Dialogue":"",
+                            "Text":"",
+                            "GoalMeterEffect": 0,
+                            "Target": "End",
+                            "Parent": "???"
                         }
                     ]
+                    
                 }
+                
             }
         },
         "Mars": {

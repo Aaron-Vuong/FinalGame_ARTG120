@@ -3,7 +3,7 @@
 
 class Button {
     constructor(x, y, label, config, scene, callback,) {
-        const button = scene.add.text(x, y, label, config)
+        let button = scene.add.text(x, y, label, config)
             .setOrigin(0.5)
             .setPadding(10)
             .setStyle({ backgroundColor: '#111' })

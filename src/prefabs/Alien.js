@@ -46,8 +46,8 @@ class Alien extends Phaser.GameObjects.Sprite {
     ListChoices(speech) {
         let place = 50;
         
-        for (let choice in speech.Planets[game.settings.planet].NPCs[this.type].Choices) {
-            this.choiceText = this.scene.add.text(this.sprite.x, this.sprite.y + place, speech.Planets[game.settings.planet].NPCs[this.type].Choices[choice].Text, game.settings.textConfig).setOrigin(0.5);
+        for (let choice in speech.Planets[game.settings.planet].NPCs[this.type].InitChoices) {
+            this.choiceText = this.scene.add.text(this.sprite.x, this.sprite.y + place, speech.Planets[game.settings.planet].NPCs[this.type].InitChoices[choice].Text, game.settings.textConfig).setOrigin(0.5);
             this.choiceText.setInteractive();
 
             if (this.type == "Shop") {
@@ -57,7 +57,7 @@ class Alien extends Phaser.GameObjects.Sprite {
                 this.StartDialogue();
             }
     
-            console.log(speech.Planets[game.settings.planet].NPCs[this.type].Choices[choice].Text);
+            console.log(speech.Planets[game.settings.planet].NPCs[this.type].InitChoices[choice].Text);
             place += 50;
         }
     };
