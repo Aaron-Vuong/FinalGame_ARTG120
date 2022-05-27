@@ -10,33 +10,27 @@ class Dialogue extends Phaser.Scene {
         this.label = this.add.text(game.config.width/2, game.config.height/2 + 100, " ").setOrigin(0.5).setWordWrapWidth(650);
         this.buttonGroup = this.add.group();
         this.LDialogue = this.typewriterText(speech.Planets[game.settings.planet].NPCs["Leader"].Dialogue);
-        console.log(speech.Planets[game.settings.planet].NPCs["Leader"].InitChoices[0].Target);
         this.choiceNum = 0;
-        this.choicePicked = -1;
         for (let choice in speech.Planets[game.settings.planet].NPCs["Leader"].InitChoices) {
             switch(this.choiceNum) {
-                case 0:  
-                    this.choicePicked = 0;
+                case 0:
                     this.button = new Button(200, game.config.height/2 + 150, speech.Planets[game.settings.planet].NPCs["Leader"].InitChoices[choice].Text, config, this, 
-                    () => this.ProcessChoice(speech, speech.Planets[game.settings.planet].NPCs["Leader"].InitChoices[0].Target, "InitChoices"));
+                    () => this.ProcessChoice(speech, speech.Planets[game.settings.planet].NPCs["Leader"].InitChoices[0].Target, "InitChoices", 0));
                     this.buttonGroup.add(this.button.button);
                     break;
                 case 1:
-                    this.choicePicked = 1;
                     this.button = new Button(800, game.config.height/2 + 150, speech.Planets[game.settings.planet].NPCs["Leader"].InitChoices[choice].Text, config, this, 
-                    () => this.ProcessChoice(speech, speech.Planets[game.settings.planet].NPCs["Leader"].InitChoices[1].Target, "InitChoices"));
+                    () => this.ProcessChoice(speech, speech.Planets[game.settings.planet].NPCs["Leader"].InitChoices[1].Target, "InitChoices", 1));
                     this.buttonGroup.add(this.button.button);
                     break;
                 case 2:
-                    this.choicePicked = 2;
                     this.button = new Button(200, game.config.height/2 + 200, speech.Planets[game.settings.planet].NPCs["Leader"].InitChoices[choice].Text, config, this, 
-                    () => this.ProcessChoice(speech, speech.Planets[game.settings.planet].NPCs["Leader"].InitChoices[2].Target, "InitChoices"));
+                    () => this.ProcessChoice(speech, speech.Planets[game.settings.planet].NPCs["Leader"].InitChoices[2].Target, "InitChoices", 2));
                     this.buttonGroup.add(this.button.button);
                     break;
                 case 3:
-                    this.choicePicked = 3;
                     this.button = new Button(800, game.config.height/2 + 200, speech.Planets[game.settings.planet].NPCs["Leader"].InitChoices[choice].Text, config, this, 
-                    () => this.ProcessChoice(speech, speech.Planets[game.settings.planet].NPCs["Leader"].InitChoices[3].Target, "InitChoices"));
+                    () => this.ProcessChoice(speech, speech.Planets[game.settings.planet].NPCs["Leader"].InitChoices[3].Target, "InitChoices", 3));
                     this.buttonGroup.add(this.button.button);
                     break;
             }
@@ -78,15 +72,16 @@ class Dialogue extends Phaser.Scene {
         this.typewriterText(wrappedText);
     }
 
-    ProcessChoice(speech, target, parent) {
+    ProcessChoice(speech, target, parent, choicePicked) {
         this.typewriter.remove();
         this.label.text = " ";
         if (game.settings.planet == "Earth") {
-            game.planetEarthSettings.goalMeter += speech.Planets[game.settings.planet].NPCs["Leader"][parent][this.choicePicked].goalMeterEffect;
+            game.planetEarthSettings.goalMeter += speech.Planets[game.settings.planet].NPCs["Leader"][parent][choicePicked].GoalMeterEffect;
         }
         if (game.settings.planet == "Mars") {
-            game.planetMarsSettings.goalMeter += speech.Planets[game.settings.planet].NPCs["Leader"][parent][this.choicePicked].goalMeterEffect;
+            game.planetMarsSettings.goalMeter += speech.Planets[game.settings.planet].NPCs["Leader"][parent][choicePicked].GoalMeterEffect;
         }
+
         this.buttonGroup.clear(true, true);
         
         this.choiceNum = 0;
@@ -96,35 +91,43 @@ class Dialogue extends Phaser.Scene {
             }
             switch(this.choiceNum) {
                 case 0:
+                    this.choicePicked = 0;
                     this.typewriterText(speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Dialogue);
                     this.button = new Button(200, game.config.height/2 + 150, speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Text, config, this, 
                     () => this.ProcessChoice(speech, 
                         speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Target, 
-                        speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Parent));
+                        speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Parent,
+                        0));
                     this.buttonGroup.add(this.button.button);
                     break;
                 case 1:
+                    this.choicePicked = 1;
                     this.typewriterText(speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Dialogue);
                     this.button = new Button(800, game.config.height/2 + 150, speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Text, config, this, 
                     () => this.ProcessChoice(speech, 
                         speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Target, 
-                        speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Parent));
+                        speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Parent,
+                        1));
                     this.buttonGroup.add(this.button.button);
                     break;
                 case 2:
+                    this.choicePicked = 2;
                     this.typewriterText(speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Dialogue);
                     this.button = new Button(200, game.config.height/2 + 200, speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Text, config, this, 
                     () => this.ProcessChoice(speech, 
                         speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Target, 
-                        speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Parent));
+                        speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Parent,
+                        2));
                     this.buttonGroup.add(this.button.button);
                     break;
                 case 3:
+                    this.choicePicked = 3;
                     this.typewriterText(speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Dialogue);
                     this.button = new Button(800, game.config.height/2 + 200, speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Text, config, this, 
                     () => this.ProcessChoice(speech, 
                         speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Target, 
-                        speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Parent));
+                        speech.Planets[game.settings.planet].NPCs["Leader"][target][choice].Parent,
+                        3));
                     this.buttonGroup.add(this.button.button);
                     break;
             }
