@@ -73,8 +73,8 @@ class ShipPlay extends Phaser.Scene {
         this.cam1 = this.cameras.main.setViewport(0, 0, game.config.width, game.config.height);
         this.cameras.main.setBounds(0, 0, 2000, 3000);
         this.cam1.startFollow(this.player.sprite, true);
-        this.cam1.setLerp(1,0.3);
-        this.cam1.setDeadzone(300);
+        this.cam1.setLerp(1,0.1);
+        this.cam1.setDeadzone(400);
         this.cam1.setZoom(2);
 
         let controlConfig = {

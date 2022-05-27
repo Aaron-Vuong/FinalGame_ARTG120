@@ -14,12 +14,9 @@ class Shop extends Phaser.Scene {
         });
 
         this.settingsRectangle = this.add.rectangle(game.config.width/2, game.config.height/2, 500, 400, 0x6904ff).setInteractive();
-        
+        this.add.text(game.config.width/2, game.config.height/2, "SHOP", 0);
     }
     update() {
-        if (keyESC.isDown) {
-            this.RestartMainScene();
-        }
     }
 
     RestartMainScene() {

@@ -14,18 +14,16 @@ class Player extends Phaser.GameObjects.Sprite {
             frameRate: 8
         });
         this.walkAnim = this.scene.add.sprite(this.sprite.x, this.sprite.y);
-        this.walkAnim.alpha = 0;
+        this.walkAnim.setVisible(false);
 
         this.scene.anims.create({
             key: 'jump',
             frames: this.anims.generateFrameNumbers('jumpAlienAnim', {start: 0, end: 17, first: 0}),
             frameRate: 12
         });
-        this.walkAnim = this.scene.add.sprite(this.sprite.x, this.sprite.y);
-        this.walkAnim.alpha = 0;
-
+        
         this.jumpAnim = this.scene.add.sprite(this.sprite.x, this.sprite.y);
-        this.jumpAnim.alpha = 0;
+        this.jumpAnim.setVisible(false);
     }
 
     update() {
@@ -54,19 +52,19 @@ class Player extends Phaser.GameObjects.Sprite {
         this.jumpAnim.y = this.sprite.y;
         if (!this.jumpAnim.anims.isPlaying && !this.sprite.body.touching.down) {
 
-            this.jumpAnim.alpha = 1;
+            this.jumpAnim.setVisible(true);
             this.jumpAnim.anims.play('jump');
         }
         if ((keyLEFT.isDown || keyA.isDown || keyRIGHT.isDown || keyD.isDown) && !this.walkAnim.anims.isPlaying) {
             
-            this.walkAnim.alpha = 1;
+            this.walkAnim.setVisible(true);
             this.walkAnim.anims.play('walk');
         }
         if (!this.walkAnim.anims.isPlaying) {
-            this.walkAnim.alpha = 0;
+            this.walkAnim.setVisible(false);
         }
         if (!this.jumpAnim.anims.isPlaying) {
-            this.jumpAnim.alpha = 0;
+            this.jumpAnim.setVisible(false);
         }
 
     }

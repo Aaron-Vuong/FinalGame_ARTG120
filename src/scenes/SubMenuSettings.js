@@ -20,9 +20,6 @@ class Settings extends Phaser.Scene {
     }
 
     update() {
-        if (keyESC.isDown) {
-            this.RestartMainScene();
-        }
     }
 
     RestartMainScene() {
