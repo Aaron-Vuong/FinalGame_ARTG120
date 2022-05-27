@@ -28,7 +28,7 @@ class ShipPlay extends Phaser.Scene {
         this.player = new Player(this, game.config.width/2, game.config.height/2 + 100, "player", 0);
         this.npcSHOP = new Alien(this, game.config.width/2 + 100, game.config.height - 80, "alien", 0, this.player.sprite, "Leader");
         this.recPlay = new MusicPlayer(this, game.config.width/2, game.config.height - 35, "vinyl", 0, this.player.sprite, "Shop");
-        this.blob = new Interactable(this, game.config.width/2, game.config.height - 35, "blob", 0, this.player.sprite, "Shop");
+        this.blob = new Interactable(this, game.config.width/2, game.config.height - 35, "blob", 0, this.player.sprite);
         this.npc2 = new Alien(this, 280, 370, "alien", 0, this.player.sprite, "Shop");
 
         this.recPlay.setInteractive();

@@ -54,7 +54,7 @@ class Alien extends Phaser.GameObjects.Sprite {
                 this.StartShop();
             }
             if (this.type == "Leader") {
-                
+                this.StartDialogue();
             }
     
             console.log(speech.Planets[game.settings.planet].NPCs[this.type].Choices[choice].Text);
@@ -78,6 +78,13 @@ class Alien extends Phaser.GameObjects.Sprite {
             game.settings.prevScene = "shipPlayScene";
             this.scene.scene.pause();
             this.scene.scene.launch("shopScene");
+        });
+    }
+    StartDialogue() {
+        this.choiceText.on("pointerdown", () => {
+            game.settings.prevScene = "shipPlayScene";
+            this.scene.scene.pause();
+            this.scene.scene.launch("dialogueScene");
         });
     }
 }

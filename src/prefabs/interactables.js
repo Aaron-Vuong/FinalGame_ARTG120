@@ -37,7 +37,6 @@ class Interactable extends Phaser.GameObjects.Sprite {
         this.blobSquish.y = this.sprite.y;
 
         this.sprite.on("pointerdown", () => {
-            this.blobSquish = this.scene.add.sprite(this.interAct.x, this.interAct.y);
             this.blobSquish.play('squish');
             console.log("playing blob squish");
         });

@@ -18,19 +18,22 @@
                     "Dialogue": "Hello, what brings you here?",
                     "Choices":[
                         {
-                            "Text":"I want a place to live!"
+                            "Text":"I want a place to live!",
+                            "GoalMeterEffect": 0
                         },
                         {
-                            "Text": "I lost my home."
+                            "Text": "I lost my home.",
+                            "GoalMeterEffect": 0
                         },
                         {
-                            "Text": "Just looking around."
+                            "Text": "Just looking around.",
+                            "GoalMeterEffect": 0
                         },
                         {
-                            "Text": "None of your business..."
+                            "Text": "None of your business...",
+                            "GoalMeterEffect": 0
                         }
                     ]
-
                 }
             }
         },

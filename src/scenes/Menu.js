@@ -54,6 +54,13 @@ class Menu extends Phaser.Scene {
             test: 1
         }
 
+        game.planetEarthSettings = {
+            goalMeter: 0
+        }
+        game.planetMarsSettings = {
+            goalMeter: 0
+        }
+
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
