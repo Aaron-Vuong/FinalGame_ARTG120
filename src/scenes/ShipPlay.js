@@ -13,6 +13,10 @@ class ShipPlay extends Phaser.Scene {
         this.load.image("vinyl", "./assets/vinyl.png");
         this.load.image("dialogueBox", "./assets/PlaceholderDialogueBox.png");
         this.load.image("blob", "./assets/blob.png");
+        this.load.image("Goggles", "./assets/goggle.png");
+        this.load.image("topHat", "./assets/topHat.png");
+        this.load.image("bunnyEars", "./assets/bunnyEars.png");
+        this.load.image("Heels", "./assets/heels.png");
         this.load.image("Food", "./assets/FruitFood.png");
         this.load.image("Fuel", "./assets/Fuel.png");
         this.load.image("spike", "./assets/spike.png");
@@ -36,12 +40,13 @@ class ShipPlay extends Phaser.Scene {
         this.blob = new Interactable(this, game.config.width/2, game.config.height - 35, "blob", 0, this.player.sprite);
         this.spike = new Spike(this, game.config.width/2, game.config.height - 35, "spike", 0, this.player.sprite);
         this.npc2 = new Alien(this, 280, 370, "alien", 0, this.player.sprite, "Shop");
+        this.goggle = new Disguise(this, game.config.width/2, game.config.height - 35, "Goggles", 0, this.player.sprite);
+        this.Hat =  new Disguise(this, game.config.width/2, game.config.height - 35, "topHat", 0, this.player.sprite);
+        this.headband = new Disguise(this, game.config.width/2, game.config.height - 35, "bunnyEars", 0, this.player.sprite);
+        this.heels = new Disguise(this, game.config.width/2, game.config.height - 35, "Heels", 0, this.player.sprite);
 
         this.recPlay.setInteractive();
         this.music = this.sound.add("vinylAudio");
-
-        //make blob squish when clicked on
-        
 
         // Settings Button
         this.booton = this.add.image(game.config.width/2 + 200, game.config.height/2 - 100, "buttonSettings").setOrigin(0);
@@ -74,6 +79,26 @@ class ShipPlay extends Phaser.Scene {
         this.physics.add.collider(this.floorGrp, this.blob.sprite);
         this.physics.add.collider(this.floorGrp, this.recPlay.sprite);
         this.physics.add.collider(this.floorGrp, this.npcSHOP.sprite);
+
+        //make sure the goggles don't get stuck behing immovable objects
+        this.physics.add.collider(this.spike, this.goggle);
+        this.physics.add.collider(this.blob, this.goggle);
+        this.physics.add.collider(this.recPlay, this.goggle);
+
+        //make sure the headband doesn't get stuck behind immovable objects
+        this.physics.add.collider(this.spike, this.headband);
+        this.physics.add.collider(this.blob, this.headband);
+        this.physics.add.collider(this.recPlay, this.headband);
+
+        //make sure the heels don't get stuck behind immovable objects
+        this.physics.add.collider(this.spike, this.heels);
+        this.physics.add.collider(this.blob, this.heels);
+        this.physics.add.collider(this.recPlay, this.heels);
+
+        //make sure the hat doesn't get stuck behind immovable objects
+        this.physics.add.collider(this.spike, this.Hat);
+        this.physics.add.collider(this.blob, this.Hat);
+        this.physics.add.collider(this.recPlay, this.Hat);
         
         this.physics.add.collider(this.floorGrp, this.npc2.sprite);
         this.floor.body.setAllowGravity(false);
@@ -128,12 +153,5 @@ class ShipPlay extends Phaser.Scene {
         this.player.update();
         this.recPlay.update();
         this.blob.update();
-    }
-
-    disguiseSpawner(filename) {
-        let texture = this.textures.get(filename).getSourceImage();
-        const disguise = this.physics.add.sprite(Phaser.Math.Between(texture.width, game.config.width - texture.width), 0, filename);
-        this.physics.add.collider(disguise);
-        disguise.body.setAllowGravity();
     }
 }   
