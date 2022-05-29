@@ -5,7 +5,7 @@ class Interactable extends Phaser.GameObjects.Sprite {
         let textureData = this.scene.textures.get(texture).getSourceImage();
         this.interAct = playersprite;
 
-        this.sprite = this.scene.physics.add.sprite(650, 200, texture);
+        this.sprite = this.scene.physics.add.sprite(1350, 200, texture);
         this.scene.physics.add.collider(this.sprite);
         
 
@@ -13,7 +13,7 @@ class Interactable extends Phaser.GameObjects.Sprite {
         this.sprite.body.setAllowGravity(true);
         this.sprite.body.setImmovable(true);
 
-        this.sprite.setSize(70, 80, true);
+        this.sprite.setSize(100, 70, true);
 
         this.scene.anims.create({
             key: 'squish',
@@ -22,7 +22,7 @@ class Interactable extends Phaser.GameObjects.Sprite {
             repeat: -1
         });
 
-        this.blobSquish = this.scene.add.sprite(650, 200);
+        this.blobSquish = this.scene.add.sprite(1350, 200);
         this.blobSquish.play('squish');
     }
 

@@ -5,7 +5,7 @@ class MusicPlayer extends Phaser.GameObjects.Sprite {
         let textureData = this.scene.textures.get(texture).getSourceImage();
         this.obj = playersprite;
 
-        this.sprite = this.scene.physics.add.sprite(700, 200, texture);
+        this.sprite = this.scene.physics.add.sprite(850, 200, texture);
         this.scene.physics.add.collider(this.sprite);
         
 
