@@ -38,49 +38,11 @@ class Alien extends Phaser.GameObjects.Sprite {
 
     OverlapObstacle() {
         if (keyF.isDown && !this.activeConversation) {
-            console.log("blolkbaerp");
             this.StartConversation();
         }
     }
 
-    ListChoices(speech) {
-        let place = 50;
-        if (this.type == "Shop") {
-            game.settings.prevScene = "shipPlayScene";
-            this.scene.scene.pause();
-            this.scene.scene.launch("shopScene");
-        }
-        if (this.type == "Leader") {
-            game.settings.prevScene = "shipPlayScene";
-            this.scene.scene.pause();
-            this.scene.scene.launch("dialogueScene");
-        }
-
-        // for (let choice in speech.Planets[game.settings.planet].NPCs[this.type].InitChoices) {
-        //     this.choiceText = this.scene.add.text(this.sprite.x, this.sprite.y + place, speech.Planets[game.settings.planet].NPCs[this.type].InitChoices[choice].Text, game.settings.textConfig).setOrigin(0.5);
-        //     this.choiceText.setInteractive();
-
-        //     if (this.type == "Shop") {
-        //         this.StartShop();
-        //     }
-        //     if (this.type == "Leader") {
-        //         this.StartDialogue();
-        //     }
-    
-        //     console.log(speech.Planets[game.settings.planet].NPCs[this.type].InitChoices[choice].Text);
-        //     place += 50;
-        // }
-    };
-
     StartConversation() {
-        // let speech = this.scene.cache.json.get('sampleDialogue');
-        // console.log( speech.Planets[game.settings.planet].NPCs.Shop);
-        // this.activeConversation = true;
-        // this.scene.add.text(this.sprite.x, this.sprite.y - 100, "Welcome to " + game.settings.planet).setOrigin(0.5);
-        // this.scene.add.text(this.sprite.x, this.sprite.y - 50, speech.Planets[game.settings.planet].NPCs[this.type].Dialogue).setOrigin(0.5);
-        
-        // this.ListChoices(speech);
-
         if (this.type == "Shop") {
             game.settings.prevScene = "shipPlayScene";
             this.scene.scene.pause();
@@ -89,23 +51,7 @@ class Alien extends Phaser.GameObjects.Sprite {
         if (this.type == "Leader") {
             game.settings.prevScene = "shipPlayScene";
             this.scene.scene.pause();
-            this.scene.scene.launch("dialogueScene");
+            this.scene.scene.launch("dialogueScene", {type: this.type});
         }
     };
-
-    StartShop() {
-        console.log("aporegkjoapbe");
-        this.choiceText.on("pointerdown", () => {
-            game.settings.prevScene = "shipPlayScene";
-            this.scene.scene.pause();
-            this.scene.scene.launch("shopScene");
-        });
-    }
-    StartDialogue() {
-        this.choiceText.on("pointerdown", () => {
-            game.settings.prevScene = "shipPlayScene";
-            this.scene.scene.pause();
-            this.scene.scene.launch("dialogueScene");
-        });
-    }
 }
