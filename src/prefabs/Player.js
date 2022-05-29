@@ -50,13 +50,12 @@ class Player extends Phaser.GameObjects.Sprite {
 
         this.jumpAnim.x = this.sprite.x;
         this.jumpAnim.y = this.sprite.y;
+        
         if (!this.jumpAnim.anims.isPlaying && !this.sprite.body.touching.down) {
-
             this.jumpAnim.setVisible(true);
             this.jumpAnim.anims.play('jump');
         }
         if ((keyLEFT.isDown || keyA.isDown || keyRIGHT.isDown || keyD.isDown) && !this.walkAnim.anims.isPlaying) {
-            
             this.walkAnim.setVisible(true);
             this.walkAnim.anims.play('walk');
         }
