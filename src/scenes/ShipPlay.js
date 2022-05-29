@@ -21,7 +21,7 @@ class ShipPlay extends Phaser.Scene {
         this.load.spritesheet("note", "./assets/note.png", {frameWidth: 20, frameHeight: 20, startFrame: 0, endFrame: 5});
         this.load.spritesheet('dialogueAnim', './assets/talkingDialogueAnim.png', {frameWidth: 15, frameHeight: 15, startFrame: 0, endFrame: 7});
         this.load.spritesheet('AlienAnim', './assets/AlienAnims.png', {frameWidth: 31, frameHeight: 56, startFrame: 0, endFrame: 12});
-        this.load.spritesheet('jumpAlienAnim', './assets/jumpAlienAnim.png', {frameWidth: 31, frameHeight: 56, startFrame: 0, endFrame: 17});
+        this.load.spritesheet('jumpAlienAnim', './assets/JumpAlienAnim.png', {frameWidth: 31, frameHeight: 56, startFrame: 0, endFrame: 17});
     }
 
     create() {
