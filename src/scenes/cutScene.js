@@ -25,7 +25,7 @@ class CutScreen extends Phaser.Scene {
         this.idling = this.add.sprite(100,100);
         this.idling.play('idle');
 
-        this.input.on('pointerdown', _ => console.info(_))
+        this.input.on('pointerdown', () => this.SkipDialogue())
 
         //text config
         let menuConfig = {
@@ -97,7 +97,7 @@ class CutScreen extends Phaser.Scene {
     typewriterText(text) {
         const length = text.length;
         let i = 0;
-        this.time.addEvent({
+        this.typewriter = this.time.addEvent({
             callback: () => {
                 this.label.text += text[i];
                 ++i;
@@ -114,4 +114,10 @@ class CutScreen extends Phaser.Scene {
 
         this.typewriterText(wrappedText);
     }
+
+    SkipDialogue() {
+        this.typewriter.remove();
+        this.label.text = 'A long time ago you lived on a planet called Planet-284. You loved it there, but you never quite fit in. Since you are all grown up now, it is time to explore the universe to find a new home! You must go around interacting with the locals of each planet and see how well you fit in.';
+    }
+
 }

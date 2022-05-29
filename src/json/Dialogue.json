@@ -15,76 +15,103 @@
                     "Dialogue": "(*#&%&*@^)!@&$^)"
                 },
                 "Leader": {
-                    "Dialogue": "Hello, what brings you here?",
-                    "InitChoices":[
-                        {
-                            "Text":"I want a place to live!",
-                            "GoalMeterEffect": 0,
-                            "Target": "2LPlaceLive"
-                            
+                    "Init": {
+                        "InitChoices": {
+                            "Dialogue": "Hello, what brings you here?",
+                            "Choices": [
+                            {
+                                "Text":"I want a place to live!",
+                                "GoalMeterEffect": 0,
+                                "Target": "2LPlaceLiveChoices",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "Text": "I lost my home.",
+                                "GoalMeterEffect": 0,
+                                "Target": "2LLostHomeChoices",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "Text": "Just looking around.",
+                                "GoalMeterEffect": 0,
+                                "Target": "2LLookingChoices",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "Text": "Exit Conversation",
+                                "GoalMeterEffect": 0,
+                                "Target": "None",
+                                "Parent": "InitChoices"
+                            }]
                         },
-                        {
-                            "Text": "I lost my home.",
-                            "GoalMeterEffect": 0,
-                            "Target": "2LLostHome"
+                        "2LPlaceLiveChoices": {
+                            "Dialogue": "If you want to live here, you should look like one of us.",
+                            "Choices": [
+                            {
+                                "Text":"How do I do that?",
+                                "GoalMeterEffect": 0,
+                                "Target": "3LLookLikeChoices",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "Text":"Okay.",
+                                "GoalMeterEffect": 0,
+                                "Target": "InitChoices",
+                                "Parent": "InitChoices"
+                            }]
                         },
-                        {
-                            "Text": "Just looking around.",
-                            "GoalMeterEffect": 1,
-                            "Target": "2LLooking"
+                        "2LLostHomeChoices": {
+                            "Dialogue": "Aw thats sad.",
+                            "Choices": [
+                            {
+                                "Text":"Go Back",
+                                "GoalMeterEffect": 0,
+                                "Target": "None",
+                                "Parent": "InitChoices"
+                            }]
                         },
-                        {
-                            "Text": "None of your business...",
-                            "GoalMeterEffect": -1,
-                            "Target": "2LNone"
+                        "2LLookingChoices": {
+                            "Dialogue": "Okay...",
+                            "Choices": [
+                            {
+                                "Text":"Go Back",
+                                "GoalMeterEffect": 0,
+                                "Target": "InitChoices",
+                                "Parent": "InitChoices"
+                            }]
+                        },
+                        "2LNoneChoices": {
+                            "Dialogue": "Bye",
+                            "Choices": [
+                            {
+                                "Text":"2LNone",
+                                "GoalMeterEffect": 0,
+                                "Target": "None",
+                                "Parent": "InitChoices"
+                            }
+                            ]
+                        },
+                        "3LLookLikeChoices": {
+                            "Dialogue": "Observe the people.",
+                            "Choices": [
+                            {
+                                "Text":"Okay.",
+                                "GoalMeterEffect": 0,
+                                "Target": "InitChoices",
+                                "Parent": "2LPlaceLiveChoices"
+                            }]
+                        },
+                        "None": {
+                            "Dialogue": "Blop",
+                            "Choices": [
+                            {
+                                "Text":"",
+                                "GoalMeterEffect": 0,
+                                "Target": "End",
+                                "Parent": "???"
+                            }]
                         }
-                    ],
-                    "2LPlaceLive":[
-                        {
-                            "Dialogue":"2LPlaceLive",
-                            "Text":"2LPlaceLive",
-                            "GoalMeterEffect": 0,
-                            "Target": "None",
-                            "Parent": "InitChoices"
-                        }
-                    ],
-                    "2LLostHome":[
-                        {
-                            "Dialogue":"2LLostHome",
-                            "Text":"2LLostHome",
-                            "GoalMeterEffect": 0,
-                            "Target": "None",
-                            "Parent": "InitChoices"
-                        }
-                    ],
-                    "2LLooking":[
-                        {
-                            "Dialogue":"2LLooking",
-                            "Text":"2LLooking",
-                            "GoalMeterEffect": 0,
-                            "Target": "None",
-                            "Parent": "InitChoices"
-                        }
-                    ],
-                    "2LNone":[
-                        {
-                            "Dialogue":"2LNone",
-                            "Text":"2LNone",
-                            "GoalMeterEffect": 0,
-                            "Target": "None",
-                            "Parent": "InitChoices"
-                        }
-                    ],
-                    "None":[
-                        {
-                            "Dialogue":"",
-                            "Text":"",
-                            "GoalMeterEffect": 0,
-                            "Target": "End",
-                            "Parent": "???"
-                        }
-                    ]
-                    
+                    }    
                 }
             }
         },
