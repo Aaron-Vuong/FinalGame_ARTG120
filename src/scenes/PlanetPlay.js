@@ -7,7 +7,7 @@ class PlanetPlay extends Phaser.Scene {
         this.load.image('stars', './assets/stars.png');
         this.load.image('planets', './assets/planets.png');
         this.load.image('Earth', './assets/Planet1.png');
-        this.load.image('planet2', './assets/Planet2.png');
+        this.load.image('Mars', './assets/Planet2.png');
         this.load.audio('boop', './assets/boopAudio.wav');
         this.load.spritesheet('idleShip', './assets/idleShip.png', {frameWidth: 100, frameHeight: 100, startFrame: 0, endFrame: 5});
     }
@@ -18,7 +18,7 @@ class PlanetPlay extends Phaser.Scene {
         this.planets = this.add.tileSprite(0,0, 1000, 500, 'planets').setOrigin(0,0);
 
         this.planet1 = new Planet(this, game.config.width/3, game.config.height/2 + 80, 'Earth');       
-        this.planet1 = new Planet(this, 2*game.config.width/3, game.config.height/2 + 80, 'planet2');
+        this.planet2 = new Planet(this, 2*game.config.width/3, game.config.height/2 + 80, 'Mars');
 
         let music = this.sound.add('boop');
 

@@ -5,7 +5,7 @@ class Interactable extends Phaser.GameObjects.Sprite {
         let textureData = this.scene.textures.get(texture).getSourceImage();
         this.interAct = playersprite;
 
-        this.sprite = this.scene.physics.add.sprite(1350, 200, texture);
+        this.sprite = this.scene.physics.add.sprite(1350, game.config.height/2 + 100, texture);
         this.scene.physics.add.collider(this.sprite);
         
 

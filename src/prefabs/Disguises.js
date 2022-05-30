@@ -6,11 +6,10 @@ class Disguise extends Phaser.GameObjects.Sprite {
 
         this.sprite = this.scene.physics.add.sprite(Phaser.Math.Between(1000, 1800), 200, texture);
         this.speed = speed;
-
+        this.scene.physics.add.collider(this.sprite);
+        
         this.sprite.setCollideWorldBounds(true);
         this.sprite.body.setAllowGravity(true);
-        this.sprite.body.setImmovable(true);
-
         this.sprite.setSize(40, 55, true);
     }
 

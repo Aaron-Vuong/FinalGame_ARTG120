@@ -16,7 +16,6 @@ class Dialogue extends Phaser.Scene {
         this.settingsRectangle = this.add.rectangle(game.config.width/2, game.config.height/2 + 150, 1000, 200, 0x808080).setInteractive();
         this.settingsRectangle.on('pointerdown', () => this.SkipDialogue(speech));
 
-        this.planet = "None";
         if (game.settings.planet == "Earth") {
             this.planet = game.planetEarthSettings;
         }
@@ -104,12 +103,13 @@ class Dialogue extends Phaser.Scene {
     ProcessChoice(speech, target, parent, choicePicked) {
         this.typewriter.remove();
         this.label.text = " ";
-        // if (game.settings.planet == "Earth") {
-        //     game.planetEarthSettings.goalMeter += speech.Planets[game.settings.planet].NPCs[this.type][this.dialogueState][parent][choicePicked].GoalMeterEffect;
-        // }
-        // if (game.settings.planet == "Mars") {
-        //     game.planetMarsSettings.goalMeter += speech.Planets[game.settings.planet].NPCs[this.type][this.dialogueState][parent][choicePicked].GoalMeterEffect;
-        // }
+        if (game.settings.planet == "Earth") {
+            game.planetEarthSettings.goalMeter += speech.Planets[game.settings.planet].NPCs[this.type][this.dialogueState][parent].Choices[choicePicked].GoalMeterEffect;
+        }
+        if (game.settings.planet == "Mars") {
+            game.planetMarsSettings.goalMeter += speech.Planets[game.settings.planet].NPCs[this.type][this.dialogueState][parent].Choices[choicePicked].GoalMeterEffect;
+        }
+
         this.typewriterText(speech.Planets[game.settings.planet].NPCs[this.type][this.dialogueState][target].Dialogue);
 
         this.buttonGroup.clear(true, true);
@@ -118,9 +118,7 @@ class Dialogue extends Phaser.Scene {
         this.choicePicked = choicePicked;
         this.currentChoice = target;
         for (let choice in speech.Planets[game.settings.planet].NPCs[this.type][this.dialogueState][target].Choices) {
-            console.log(choice);
             if (speech.Planets[game.settings.planet].NPCs[this.type][this.dialogueState][target].Choices[choice].Target == "End") {
-
                 this.RestartMainScene();
             }
             switch(this.choiceNum) {

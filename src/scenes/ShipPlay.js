@@ -29,79 +29,55 @@ class ShipPlay extends Phaser.Scene {
     }
 
     create() {
+        if (game.settings.planet == "Earth") {
+            this.planet = game.planetEarthSettings;
+        }
+        if (game.settings.planet == "Mars") {
+            this.planet = game.planetMarsSettings;
+        }
+        this.oldGoalMeter = this.planet.goalMeter;
+
         this.bg = this.add.tileSprite(0, 200, 2000, 400, 'BG', 0).setOrigin(0,0);
         this.shop = this.add.tileSprite(100, 350, 240, 136, 'Shop', 0).setOrigin(0,0);
         this.food = this.add.tileSprite(302, 435, 29, 31, 'Food', 0).setOrigin(0,0);
         this.fuel = this.add.tileSprite(235, 430, 29, 31, 'Fuel', 0).setOrigin(0,0);
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, "Planet: " + game.settings.planet).setOrigin(0.5);
+
         this.player = new Player(this, game.config.width/2, game.config.height/2 + 100, "player", 0);
         this.npcSHOP = new Alien(this, game.config.width/2 + 100, game.config.height - 80, "alien", 0, this.player.sprite, "Leader");
-        this.recPlay = new MusicPlayer(this, game.config.width/2, game.config.height - 35, "vinyl", 0, this.player.sprite, "Shop");
-        this.blob = new Interactable(this, game.config.width/2, game.config.height - 35, "blob", 0, this.player.sprite);
-        this.spike = new Spike(this, game.config.width/2, game.config.height - 35, "spike", 0, this.player.sprite);
         this.npc2 = new Alien(this, 280, 370, "alien", 0, this.player.sprite, "Shop");
-        this.goggle = new Disguise(this, game.config.width/2, game.config.height - 35, "Goggles", 0, this.player.sprite);
-        this.Hat =  new Disguise(this, game.config.width/2, game.config.height - 35, "topHat", 0, this.player.sprite);
-        this.headband = new Disguise(this, game.config.width/2, game.config.height - 35, "bunnyEars", 0, this.player.sprite);
-        this.heels = new Disguise(this, game.config.width/2, game.config.height - 35, "Heels", 0, this.player.sprite);
+        this.recPlay = new MusicPlayer(this, 0, 0, "vinyl", 0, this.player.sprite, "Shop").setInteractive();
+        this.blob = new Interactable(this, 0, 0, "blob", 0, this.player.sprite);
+        this.spike = new Spike(this, 0, 0, "spike", 0, this.player.sprite);
+        this.goggle = new Disguise(this, 0, 0, "Goggles", 0, this.player.sprite);
+        this.hat =  new Disguise(this, 0, 0, "topHat", 0, this.player.sprite);
+        this.headband = new Disguise(this, 0, 0, "bunnyEars", 0, this.player.sprite);
+        this.heels = new Disguise(this, 0, 0, "Heels", 0, this.player.sprite);
 
-        this.recPlay.setInteractive();
+        this.progressBarOutline = this.add.rectangle(game.config.width/2 + 120, game.config.height/2 - 105, 154, 20, 0x000000).setScrollFactor(0);
+        this.progressBar = this.add.rectangle(game.config.width/2 + 120, game.config.height/2 - 105, 150, 15, 0x808080).setScrollFactor(0);
+        this.progressBarComplete = this.add.rectangle(game.config.width/2 + 44, game.config.height/2 - 112.5, 0, 15, 0x228B22).setScrollFactor(0).setOrigin(0);
+        this.progressText = this.add.text(game.config.width/2 + 120, game.config.height/2 - 105, "Planet Acceptance", {fontSize: 8, fontFamily: "Arial", fontStyle: "bold"}).setScrollFactor(0).setOrigin(0.5);
+
         this.music = this.sound.add("vinylAudio");
 
         // Settings Button
-        this.booton = this.add.image(game.config.width/2 + 200, game.config.height/2 - 100, "buttonSettings").setOrigin(0);
-        this.booton.setInteractive();
-        this.booton.setScrollFactor(0,0);
+        this.booton = this.add.image(game.config.width/2 + 210, game.config.height/2 - 120, "buttonSettings").setOrigin(0).setInteractive().setScrollFactor(0);
+
         this.booton.on("pointerdown", () => {
             game.settings.prevScene = "shipPlayScene";
             this.scene.pause();
             this.scene.launch("settingsScene")
         });
 
-        this.settingsfunc = () => {
-            game.settings.prevScene = "shipPlayScene";
-            this.scene.pause();
-            this.scene.launch("settingsScene");
-        }
-        
-
         this.floor = this.physics.add.sprite(game.config.width, game.config.height, "floor", 0).setImmovable(true);
-        this.floorGrp = this.add.group({
-            immovable: true,
-            allowGravity: false
-        });
-        this.floorGrp.add(this.floor);
-        this.physics.add.collider(this.floorGrp, this.player.sprite);
-        this.physics.add.collider(this.player.sprite, this.recPlay.sprite);
-        this.physics.add.collider(this.player.sprite, this.blob.sprite);
-        this.physics.add.collider(this.player.sprite, this.spike.sprite);
-        this.physics.add.collider(this.floorGrp, this.spike.sprite);
-        this.physics.add.collider(this.floorGrp, this.blob.sprite);
-        this.physics.add.collider(this.floorGrp, this.recPlay.sprite);
-        this.physics.add.collider(this.floorGrp, this.npcSHOP.sprite);
-
-        //make sure the goggles don't get stuck behing immovable objects
-        this.physics.add.collider(this.spike, this.goggle);
-        this.physics.add.collider(this.blob, this.goggle);
-        this.physics.add.collider(this.recPlay, this.goggle);
-
-        //make sure the headband doesn't get stuck behind immovable objects
-        this.physics.add.collider(this.spike, this.headband);
-        this.physics.add.collider(this.blob, this.headband);
-        this.physics.add.collider(this.recPlay, this.headband);
-
-        //make sure the heels don't get stuck behind immovable objects
-        this.physics.add.collider(this.spike, this.heels);
-        this.physics.add.collider(this.blob, this.heels);
-        this.physics.add.collider(this.recPlay, this.heels);
-
-        //make sure the hat doesn't get stuck behind immovable objects
-        this.physics.add.collider(this.spike, this.Hat);
-        this.physics.add.collider(this.blob, this.Hat);
-        this.physics.add.collider(this.recPlay, this.Hat);
-        
-        this.physics.add.collider(this.floorGrp, this.npc2.sprite);
         this.floor.body.setAllowGravity(false);
+
+        this.objectsGrp = this.add.group([this.goggle.sprite, this.headband.sprite, this.heels.sprite, this.hat.sprite]);
+        this.peopleGrp = this.add.group([this.player.sprite, this.npcSHOP.sprite, this.npc2.sprite]);
+        this.floorGrp = this.add.group([this.floor, this.recPlay.sprite, this.blob.sprite, this.spike.sprite]);
+
+        this.physics.add.collider(this.floorGrp, this.objectsGrp);
+        this.physics.add.collider(this.floorGrp, this.peopleGrp);
 
         this.cam1 = this.cameras.main.setViewport(0, 0, game.config.width, game.config.height);
         this.cameras.main.setBounds(0, 0, 2000, 3000);
@@ -125,10 +101,8 @@ class ShipPlay extends Phaser.Scene {
         this.camControl = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
         
         this.physics.world.setBounds(0, -3000 + game.config.height, 2000, 3000);
-        // this.actionsContainer = document.body.appendChild(document.createElement("div"));
-        // let button = this.actionsContainer.appendChild(document.createElement("button"));
 
-        
+
         // Set up keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
@@ -148,10 +122,29 @@ class ShipPlay extends Phaser.Scene {
 
     update() {
         this.camControl.update();
+
+        this.updateProgressBar();
+
         this.npcSHOP.update();
         this.npc2.update();
         this.player.update();
         this.recPlay.update();
         this.blob.update();
+    }
+
+    updateProgressBar() {
+        console.log(this.planet.goalMeter);
+        if (this.planet.goalMeter != this.oldGoalMeter) {
+            console.log(this.planet.goalMeter, this.oldGoalMeter);
+            this.tweens.add({
+                targets: this.progressBarComplete,
+                width: {from: 150 * (this.oldGoalMeter/100), to: 150 * (this.planet.goalMeter/100)},
+                ease: 'Linear',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
+                duration: 3000,
+                repeat: 0,            // -1: infinity
+                yoyo: false
+            })
+            this.oldGoalMeter = this.planet.goalMeter
+        }
     }
 }   
