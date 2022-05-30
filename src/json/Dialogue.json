@@ -66,7 +66,7 @@
                             {
                                 "Text":"Go Back",
                                 "GoalMeterEffect": 0,
-                                "Target": "None",
+                                "Target": "InitChoices",
                                 "Parent": "InitChoices"
                             }]
                         },
