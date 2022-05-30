@@ -20,13 +20,121 @@
                             "Dialogue": "Hello, what brings you here?",
                             "Choices": [
                             {
+                                "AlreadyVisited" : false,
                                 "Text":"I want a place to live!",
                                 "GoalMeterEffect": 0,
                                 "Target": "2LPlaceLiveChoices",
                                 "Parent": "InitChoices"
                             },
                             {
+                                "AlreadyVisited" : false,
                                 "Text": "I lost my home.",
+                                "GoalMeterEffect": 0,
+                                "Target": "2LLostHomeChoices",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "AlreadyVisited" : false,
+                                "Text": "Just looking around.",
+                                "GoalMeterEffect": 0,
+                                "Target": "2LLookingChoices",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "AlreadyVisited" : false,
+                                "Text": "Exit Conversation",
+                                "GoalMeterEffect": 0,
+                                "Target": "None",
+                                "Parent": "InitChoices"
+                            }]
+                        },
+                        "2LPlaceLiveChoices": {
+                            "Dialogue": "If you want to live here, you should look like one of us.",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"How do I do that?",
+                                "GoalMeterEffect": 0,
+                                "Target": "3LLookLikeChoices",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"Okay.",
+                                "GoalMeterEffect": 0,
+                                "Target": "InitChoices",
+                                "Parent": "InitChoices"
+                            }]
+                        },
+                        "2LLostHomeChoices": {
+                            "Dialogue": "Aw thats sad.",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"Go Back",
+                                "GoalMeterEffect": 0,
+                                "Target": "InitChoices",
+                                "Parent": "InitChoices"
+                            }]
+                        },
+                        "2LLookingChoices": {
+                            "Dialogue": "Okay...",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"Go Back",
+                                "GoalMeterEffect": 0,
+                                "Target": "InitChoices",
+                                "Parent": "InitChoices"
+                            }]
+                        },
+                        "2LNoneChoices": {
+                            "Dialogue": "Bye",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"2LNone",
+                                "GoalMeterEffect": 0,
+                                "Target": "None",
+                                "Parent": "InitChoices"
+                            }
+                            ]
+                        },
+                        "3LLookLikeChoices": {
+                            "Dialogue": "Observe the people.",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"Okay.",
+                                "GoalMeterEffect": 0,
+                                "Target": "InitChoices",
+                                "Parent": "2LPlaceLiveChoices"
+                            }]
+                        },
+                        "None": {
+                            "Dialogue": "Blop",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"",
+                                "GoalMeterEffect": 0,
+                                "Target": "End",
+                                "Parent": "???"
+                            }]
+                        }
+                    },
+                    "Phase 2": {
+                        "InitChoices": {
+                            "Dialogue": "So, you've met others, what do you think?",
+                            "Choices": [
+                            {
+                                "Text":"What else do I need to do?",
+                                "GoalMeterEffect": 0,
+                                "Target": "2LWhatElseChoices",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "Text": "How are you doing?",
                                 "GoalMeterEffect": 0,
                                 "Target": "2LLostHomeChoices",
                                 "Parent": "InitChoices"
@@ -42,63 +150,6 @@
                                 "GoalMeterEffect": 0,
                                 "Target": "None",
                                 "Parent": "InitChoices"
-                            }]
-                        },
-                        "2LPlaceLiveChoices": {
-                            "Dialogue": "If you want to live here, you should look like one of us.",
-                            "Choices": [
-                            {
-                                "Text":"How do I do that?",
-                                "GoalMeterEffect": 0,
-                                "Target": "3LLookLikeChoices",
-                                "Parent": "InitChoices"
-                            },
-                            {
-                                "Text":"Okay.",
-                                "GoalMeterEffect": 0,
-                                "Target": "InitChoices",
-                                "Parent": "InitChoices"
-                            }]
-                        },
-                        "2LLostHomeChoices": {
-                            "Dialogue": "Aw thats sad.",
-                            "Choices": [
-                            {
-                                "Text":"Go Back",
-                                "GoalMeterEffect": 0,
-                                "Target": "InitChoices",
-                                "Parent": "InitChoices"
-                            }]
-                        },
-                        "2LLookingChoices": {
-                            "Dialogue": "Okay...",
-                            "Choices": [
-                            {
-                                "Text":"Go Back",
-                                "GoalMeterEffect": 0,
-                                "Target": "InitChoices",
-                                "Parent": "InitChoices"
-                            }]
-                        },
-                        "2LNoneChoices": {
-                            "Dialogue": "Bye",
-                            "Choices": [
-                            {
-                                "Text":"2LNone",
-                                "GoalMeterEffect": 0,
-                                "Target": "None",
-                                "Parent": "InitChoices"
-                            }
-                            ]
-                        },
-                        "3LLookLikeChoices": {
-                            "Dialogue": "Observe the people.",
-                            "Choices": [
-                            {
-                                "Text":"Okay.",
-                                "GoalMeterEffect": 0,
-                                "Target": "InitChoices",
-                                "Parent": "2LPlaceLiveChoices"
                             }]
                         },
                         "None": {

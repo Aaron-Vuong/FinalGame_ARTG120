@@ -29,7 +29,7 @@ let borderUISize = game.config.height / 15;
 let borderPadding = borderUISize / 3;
 
 //move variables
-let keyLEFT, keyA, keyRIGHT, keyD, keySPACE, keyUP, keyF, keyI, keyJ, keyK, keyL, keyW, keyESC;
+let keyLEFT, keyDOWN, keyRIGHT, keyUP, keyA, keyD, keySPACE, keyF, keyI, keyJ, keyK, keyL, keyW, keyESC;
 
 //timer variables
 let timedEvent, Explore, House;

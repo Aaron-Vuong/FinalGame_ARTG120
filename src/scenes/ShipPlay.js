@@ -26,6 +26,8 @@ class ShipPlay extends Phaser.Scene {
         this.load.spritesheet('dialogueAnim', './assets/talkingDialogueAnim.png', {frameWidth: 15, frameHeight: 15, startFrame: 0, endFrame: 7});
         this.load.spritesheet('AlienAnim', './assets/AlienAnims.png', {frameWidth: 31, frameHeight: 56, startFrame: 0, endFrame: 11});
         this.load.spritesheet('jumpAlienAnim', './assets/JumpAlienAnim.png', {frameWidth: 31, frameHeight: 56, startFrame: 0, endFrame: 16});
+        this.load.spritesheet('fInteract', './assets/FInteractButton.png', {frameWidth: 15, frameHeight: 15, startFrame: 0, endFrame: 1});
+        this.load.spritesheet('downInteract', './assets/DownArrowInteractButton.png', {frameWidth: 15, frameHeight: 15, startFrame: 0, endFrame: 1});
     }
 
     create() {
@@ -106,6 +108,7 @@ class ShipPlay extends Phaser.Scene {
         // Set up keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -133,9 +136,7 @@ class ShipPlay extends Phaser.Scene {
     }
 
     updateProgressBar() {
-        console.log(this.planet.goalMeter);
         if (this.planet.goalMeter != this.oldGoalMeter) {
-            console.log(this.planet.goalMeter, this.oldGoalMeter);
             this.tweens.add({
                 targets: this.progressBarComplete,
                 width: {from: 150 * (this.oldGoalMeter/100), to: 150 * (this.planet.goalMeter/100)},
