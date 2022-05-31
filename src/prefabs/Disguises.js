@@ -19,10 +19,4 @@ class Disguise extends Phaser.GameObjects.Sprite {
             this.sprite.destroy();
         }
     }
-
-    /*disguiseSpawner(filename) {
-        const disguise = this.physics.add.sprite(Phaser.Math.Between(texture.width, game.config.width - texture.width), 0, filename);
-        this.physics.add.collider(disguise);
-        disguise.body.setAllowGravity();
-    }*/
 }
