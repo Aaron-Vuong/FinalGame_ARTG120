@@ -10,7 +10,7 @@ class Disguise extends Phaser.GameObjects.Sprite {
         
         this.sprite.setCollideWorldBounds(true);
         this.sprite.body.setAllowGravity(true);
-        this.sprite.setSize(40, 55, true);
+        this.sprite.setSize(40, 40, true);
     }
 
     update() {
