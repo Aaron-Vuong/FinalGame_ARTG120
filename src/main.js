@@ -19,7 +19,8 @@
             PlanetPlay, 
             Settings,
             Shop,
-            Dialogue]
+            Dialogue,
+            EndGame]
 }
 
 let game = new Phaser.Game(config); 

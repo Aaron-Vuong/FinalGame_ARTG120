@@ -126,7 +126,8 @@ class ShipPlay extends Phaser.Scene {
     update() {
         this.camControl.update();
 
-        this.updateProgressBar();
+        this.UpdateProgressBar();
+        this.CheckProgression();
 
         this.npcSHOP.update();
         this.npc2.update();
@@ -135,7 +136,7 @@ class ShipPlay extends Phaser.Scene {
         this.blob.update();
     }
 
-    updateProgressBar() {
+    UpdateProgressBar() {
         if (this.planet.goalMeter != this.oldGoalMeter) {
             this.tweens.add({
                 targets: this.progressBarComplete,
@@ -146,6 +147,17 @@ class ShipPlay extends Phaser.Scene {
                 yoyo: false
             })
             this.oldGoalMeter = this.planet.goalMeter
+        }
+    }
+
+    CheckProgression() {
+        if (this.planet.goalMeter >= 50 && this.planet.goalMeter < 100) {
+            this.planet.Leader = "Phase 2";
+            this.planet.Other = "Phase 2";
+        }
+        else if (this.planet.goalMeter >= 100) {
+            this.planet.Leader = "End";
+            this.planet.Other = "End";
         }
     }
 }   

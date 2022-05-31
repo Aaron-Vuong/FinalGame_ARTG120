@@ -128,27 +128,42 @@
                             "Dialogue": "So, you've met others, what do you think?",
                             "Choices": [
                             {
+                                "AlreadyVisited" : false,
                                 "Text":"What else do I need to do?",
                                 "GoalMeterEffect": 0,
                                 "Target": "2LWhatElseChoices",
                                 "Parent": "InitChoices"
                             },
                             {
+                                "AlreadyVisited" : false,
                                 "Text": "How are you doing?",
-                                "GoalMeterEffect": 0,
-                                "Target": "2LLostHomeChoices",
+                                "GoalMeterEffect": 5,
+                                "Target": "2HowDoingChoices",
                                 "Parent": "InitChoices"
                             },
                             {
-                                "Text": "Just looking around.",
+                                "AlreadyVisited" : false,
+                                "Text": "...",
                                 "GoalMeterEffect": 0,
                                 "Target": "2LLookingChoices",
                                 "Parent": "InitChoices"
                             },
                             {
+                                "AlreadyVisited" : false,
                                 "Text": "Exit Conversation",
                                 "GoalMeterEffect": 0,
                                 "Target": "None",
+                                "Parent": "InitChoices"
+                            }]
+                        },
+                        "2LWhatElseChoices": {
+                            "Dialogue": "What",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"What else do I need to do?",
+                                "GoalMeterEffect": 0,
+                                "Target": "2LWhatElseChoices",
                                 "Parent": "InitChoices"
                             }]
                         },
@@ -156,6 +171,49 @@
                             "Dialogue": "Blop",
                             "Choices": [
                             {
+                                "AlreadyVisited" : false,
+                                "Text":"",
+                                "GoalMeterEffect": 0,
+                                "Target": "End",
+                                "Parent": "???"
+                            }]
+                        }
+                    },
+                    "End": {
+                        "InitChoices": {
+                            "Dialogue": "Would you like to live here?",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text": "Yes",
+                                "GoalMeterEffect": 0,
+                                "Target": "Ending",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "AlreadyVisited" : false,
+                                "Text": "No",
+                                "GoalMeterEffect": 5,
+                                "Target": "None",
+                                "Parent": "InitChoices"
+                            }]
+                        },
+                        "Ending": {
+                            "Dialogue": "Blop",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"",
+                                "GoalMeterEffect": 0,
+                                "Target": "EndGame",
+                                "Parent": "???"
+                            }]
+                        },
+                        "None": {
+                            "Dialogue": "Blop",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
                                 "Text":"",
                                 "GoalMeterEffect": 0,
                                 "Target": "End",
