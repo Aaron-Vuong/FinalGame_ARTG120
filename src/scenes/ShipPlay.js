@@ -21,6 +21,7 @@ class ShipPlay extends Phaser.Scene {
         this.load.image("Fuel", "./assets/Fuel.png");
         this.load.image("spike", "./assets/spike.png");
         this.load.audio("vinylAudio", "./assets/song_sfx.wav");
+        this.load.audio("ForestBG", "./assets/ForestPlanetBG.wav");
         this.load.spritesheet("blobAnim", "./assets/blobAnim2.png", {frameWidth:90, frameHeight:120, startFrame:0, endFrame:3});
         this.load.spritesheet("note", "./assets/note.png", {frameWidth: 20, frameHeight: 20, startFrame: 0, endFrame: 5});
         this.load.spritesheet('dialogueAnim', './assets/talkingDialogueAnim.png', {frameWidth: 15, frameHeight: 15, startFrame: 0, endFrame: 7});
@@ -31,6 +32,11 @@ class ShipPlay extends Phaser.Scene {
     }
 
     create() {
+        this.Forest = this.sound.add('ForestBG');
+        this.Forest.setLoop(true);
+        this.Forest.volume = 0.2;
+        this.Forest.play();
+        
         if (game.settings.planet == "Earth") {
             this.planet = game.planetEarthSettings;
         }
