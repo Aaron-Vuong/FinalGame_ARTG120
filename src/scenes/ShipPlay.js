@@ -21,6 +21,7 @@ class ShipPlay extends Phaser.Scene {
         this.load.image("Fuel", "./assets/Fuel.png");
         this.load.image("spike", "./assets/spike.png");
         this.load.audio("vinylAudio", "./assets/song_sfx.wav");
+        this.load.audio("ForestBG", "./assets/ForestPlanetBG.wav");
         this.load.spritesheet("blobAnim", "./assets/blobAnim2.png", {frameWidth:90, frameHeight:120, startFrame:0, endFrame:3});
         this.load.spritesheet("note", "./assets/note.png", {frameWidth: 20, frameHeight: 20, startFrame: 0, endFrame: 5});
         this.load.spritesheet('dialogueAnim', './assets/talkingDialogueAnim.png', {frameWidth: 15, frameHeight: 15, startFrame: 0, endFrame: 7});
@@ -31,6 +32,11 @@ class ShipPlay extends Phaser.Scene {
     }
 
     create() {
+        this.Forest = this.sound.add('ForestBG');
+        this.Forest.setLoop(true);
+        this.Forest.volume = 0.2;
+        this.Forest.play();
+        
         if (game.settings.planet == "Earth") {
             this.planet = game.planetEarthSettings;
         }
@@ -77,9 +83,14 @@ class ShipPlay extends Phaser.Scene {
         this.objectsGrp = this.add.group([this.goggle.sprite, this.headband.sprite, this.heels.sprite, this.hat.sprite]);
         this.peopleGrp = this.add.group([this.player.sprite, this.npcSHOP.sprite, this.npc2.sprite]);
         this.floorGrp = this.add.group([this.floor, this.recPlay.sprite, this.blob.sprite, this.spike.sprite]);
+        
 
         this.physics.add.collider(this.floorGrp, this.objectsGrp);
         this.physics.add.collider(this.floorGrp, this.peopleGrp);
+        this.physics.add.collider(this.objectsGrp, this.peopleGrp);
+
+        //get disguises
+        
 
         this.cam1 = this.cameras.main.setViewport(0, 0, game.config.width, game.config.height);
         this.cameras.main.setBounds(0, 0, 2000, 3000);
@@ -159,5 +170,8 @@ class ShipPlay extends Phaser.Scene {
             this.planet.Leader = "End";
             this.planet.Other = "End";
         }
+    }
+    getDisguise() {
+        this.objectsGrp.sprite.destroy();
     }
 }   

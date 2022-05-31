@@ -10,7 +10,7 @@ class Disguise extends Phaser.GameObjects.Sprite {
         
         this.sprite.setCollideWorldBounds(true);
         this.sprite.body.setAllowGravity(true);
-        this.sprite.setSize(40, 55, true);
+        this.sprite.setSize(40, 40, true);
     }
 
     update() {
@@ -20,9 +20,7 @@ class Disguise extends Phaser.GameObjects.Sprite {
         }
     }
 
-    /*disguiseSpawner(filename) {
-        const disguise = this.physics.add.sprite(Phaser.Math.Between(texture.width, game.config.width - texture.width), 0, filename);
-        this.physics.add.collider(disguise);
-        disguise.body.setAllowGravity();
-    }*/
+    updateInventory() {
+        
+    }
 }

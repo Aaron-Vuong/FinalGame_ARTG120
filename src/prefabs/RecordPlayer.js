@@ -40,9 +40,9 @@ class MusicPlayer extends Phaser.GameObjects.Sprite {
         this.sprite.setInteractive();
 
         this.sprite.on("pointerdown", () => {
-            this.scene.sound.play("vinylAudio").setVolume(0.5);
             this.musical = this.scene.add.sprite(this.obj.x - 100, this.obj.y);
             this.musical.play('musicPlay');
+            this.musical.volume = 0.5;
             console.log("playing music from record player scene");
         });
     }

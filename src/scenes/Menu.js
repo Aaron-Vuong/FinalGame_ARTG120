@@ -7,12 +7,18 @@ class Menu extends Phaser.Scene {
         this.load.image('MenuLast', './assets/44.png)');
         this.load.image('stars', './assets/stars.png');
         this.load.audio('SoundButton', './assets/ButtonSoundEffect.wav');
+        this.load.audio('MenuBG', './assets/SpaceBGMusic.wav');
 
         this.load.json("sampleDialogue", "./src/json/Dialogue.json");
         this.load.json("items", "./src/json/ItemList.json");
     }
 
     create() {
+        this.Space = this.sound.add('MenuBG');
+        this.Space.setLoop(true);
+        this.Space.volume = 0.2;
+        this.Space.play();
+
         this.stars = this.add.tileSprite(0, 0, 1000, 500, 'stars').setOrigin(0,0).setInteractive();
         this.stars.on('pointerdown', () => this.EndAnim());
 
