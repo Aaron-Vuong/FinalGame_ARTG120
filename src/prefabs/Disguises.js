@@ -19,4 +19,8 @@ class Disguise extends Phaser.GameObjects.Sprite {
             this.sprite.destroy();
         }
     }
+
+    updateInventory() {
+        
+    }
 }
