@@ -83,9 +83,14 @@ class ShipPlay extends Phaser.Scene {
         this.objectsGrp = this.add.group([this.goggle.sprite, this.headband.sprite, this.heels.sprite, this.hat.sprite]);
         this.peopleGrp = this.add.group([this.player.sprite, this.npcSHOP.sprite, this.npc2.sprite]);
         this.floorGrp = this.add.group([this.floor, this.recPlay.sprite, this.blob.sprite, this.spike.sprite]);
+        
 
         this.physics.add.collider(this.floorGrp, this.objectsGrp);
         this.physics.add.collider(this.floorGrp, this.peopleGrp);
+        this.physics.add.collider(this.objectsGrp, this.peopleGrp);
+
+        //get disguises
+        
 
         this.cam1 = this.cameras.main.setViewport(0, 0, game.config.width, game.config.height);
         this.cameras.main.setBounds(0, 0, 2000, 3000);
@@ -153,5 +158,9 @@ class ShipPlay extends Phaser.Scene {
             })
             this.oldGoalMeter = this.planet.goalMeter
         }
+    }
+
+    getDisguise() {
+        this.objectsGrp.sprite.destroy();
     }
 }   
