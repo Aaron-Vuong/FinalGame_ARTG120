@@ -13,9 +13,7 @@ class ShipPlay extends Phaser.Scene {
         this.load.image("vinyl", "./assets/vinyl.png");
         this.load.image("dialogueBox", "./assets/PlaceholderDialogueBox.png");
         this.load.image("blob", "./assets/blob.png");
-        this.load.image("Goggles", "./assets/goggle.png");
         this.load.image("topHat", "./assets/topHat.png");
-        this.load.image("bunnyEars", "./assets/bunnyEars.png");
         this.load.image("Heels", "./assets/heels.png");
         this.load.image("Food", "./assets/FruitFood.png");
         this.load.image("Fuel", "./assets/Fuel.png");
@@ -56,9 +54,7 @@ class ShipPlay extends Phaser.Scene {
         this.recPlay = new MusicPlayer(this, 0, 0, "vinyl", 0, this.player.sprite, "Shop").setInteractive();
         this.blob = new Interactable(this, 0, 0, "blob", 0, this.player.sprite);
         this.spike = new Spike(this, 0, 0, "spike", 0, this.player.sprite);
-        this.goggle = new Disguise(this, 0, 0, "Goggles", 0, this.player.sprite);
         this.hat =  new Disguise(this, 0, 0, "topHat", 0, this.player.sprite);
-        this.headband = new Disguise(this, 0, 0, "bunnyEars", 0, this.player.sprite);
         this.heels = new Disguise(this, 0, 0, "Heels", 0, this.player.sprite);
 
         this.progressBarOutline = this.add.rectangle(game.config.width/2 + 120, game.config.height/2 - 105, 154, 20, 0x000000).setScrollFactor(0);
@@ -80,7 +76,7 @@ class ShipPlay extends Phaser.Scene {
         this.floor = this.physics.add.sprite(game.config.width, game.config.height, "floor", 0).setImmovable(true);
         this.floor.body.setAllowGravity(false);
 
-        this.objectsGrp = this.add.group([this.goggle.sprite, this.headband.sprite, this.heels.sprite, this.hat.sprite]);
+        this.objectsGrp = this.add.group([this.heels.sprite, this.hat.sprite]);
         this.peopleGrp = this.add.group([this.player.sprite, this.npcSHOP.sprite, this.npc2.sprite]);
         this.floorGrp = this.add.group([this.floor, this.recPlay.sprite, this.blob.sprite, this.spike.sprite]);
         
@@ -141,6 +137,7 @@ class ShipPlay extends Phaser.Scene {
 
         this.UpdateProgressBar();
         this.CheckProgression();
+        //this.getDisguise();
 
         this.npcSHOP.update();
         this.npc2.update();
@@ -174,6 +171,6 @@ class ShipPlay extends Phaser.Scene {
         }
     }
     getDisguise() {
-        this.objectsGrp.disableBody(true, true);
+        //this.objectsGrp.disableBody(true, true);
     }
 }   

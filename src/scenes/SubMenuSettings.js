@@ -33,7 +33,7 @@ class Settings extends Phaser.Scene {
 
         this.settingsRectangle = this.add.rectangle(game.config.width/2, game.config.height/2, 500, 400, 0x6666ff).setInteractive();
 
-        this.settings1 = this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding+100, "Use WASD to move or UPDOWNLEFTRIGHT").setOrigin(0.5);
+        this.settings1 = this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding+100, "Use WASD to move or UP-DOWN-LEFT-RIGHT").setOrigin(0.5);
         this.settings2 = this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding+130, "F to Interact").setOrigin(0.5);
         this.settings1.scale= 1.3;
         this.settings2.scale= 1.3;
