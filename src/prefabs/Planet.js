@@ -10,6 +10,7 @@ class Planet extends Phaser.GameObjects.Sprite {
         this.planet.on("pointerout", () => { this.planet.alpha = 0.7; });
         this.planet.on("pointerdown", () => { game.settings.planet = texture;
                                               this.scene.scene.start("shipPlayScene");
+                                              game.sound.stopAll();
         });
     }
 

@@ -52,6 +52,11 @@ class Dialogue extends Phaser.Scene {
         this.scene.stop();
         this.scene.run(game.settings.prevScene);
     }
+    
+    EndGame() {
+        this.scene.stop();
+        this.scene.start("endGameScene");
+    }
 
     typewriterText(text) {
         const length = text.length;
@@ -102,6 +107,9 @@ class Dialogue extends Phaser.Scene {
             let currChoice = speech.Planets[game.settings.planet].NPCs[this.type][this.dialogueState][target].Choices[choice];
             if (currChoice.Target == "End") {
                 this.RestartMainScene();
+            }
+            if (currChoice.Target == "EndGame") {
+                this.EndGame();
             }
 
             this.button = new Button(this.buttonPositions[choice][0], this.buttonPositions[choice][1], currChoice.Text, config, this, 

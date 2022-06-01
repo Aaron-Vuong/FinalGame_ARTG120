@@ -8,7 +8,7 @@
         default: 'arcade',
         arcade: {
             gravity: {y: 500},
-            debug : true
+            debug : false
         }
     },
     scene: [Menu, 
@@ -19,7 +19,8 @@
             PlanetPlay, 
             Settings,
             Shop,
-            Dialogue]
+            Dialogue,
+            EndGame]
 }
 
 let game = new Phaser.Game(config); 

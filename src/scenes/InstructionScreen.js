@@ -11,6 +11,9 @@ class InstructionScreen extends Phaser.Scene {
     create() {
         this.space = this.add.tileSprite(0, 0, 1000, 500, 'stars').setOrigin(0,0);
 
+        this.add.rectangle(500, 169, 270, 55, 0x4d4dff).setOrigin(0.5);
+        this.add.rectangle(500, 300, 780, 140, 0x4d4dff).setOrigin(0.5);
+
         let menuConfig = {
             fontFamily: 'Courier',
             fontSize: '36px',
@@ -39,7 +42,8 @@ class InstructionScreen extends Phaser.Scene {
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 40, "Instructions", menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2, "Use Mouse to Choose a Planet", menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 + 40, "Use Arrow Keys to Move Around Towns", menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2 + 90, "Press F to interact with locals", menuConfig).setOrigin(0.5);        
+        this.add.text(game.config.width/2, game.config.height/2 + 90, "Press F to interact with locals", menuConfig).setOrigin(0.5); 
+              
 
         const button = new Button(500, 400, 'Continue', config, this, () => this.scene.start("statsScreenScene"));
 
