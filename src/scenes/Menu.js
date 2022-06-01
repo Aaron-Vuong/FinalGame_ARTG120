@@ -116,7 +116,7 @@ class Menu extends Phaser.Scene {
         const button = new MenuButton(540, 300, 'Start Game', config, this, () => {
             this.scene.start("instructionScreenScene");
             this.sound.play('SoundButton')
-            this.Space.stop();
+            // this.Space.stop();
         });
     }
 }
