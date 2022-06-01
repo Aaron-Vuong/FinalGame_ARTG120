@@ -13,6 +13,11 @@ class StatsScreen extends Phaser.Scene {
         this.space = this.add.tileSprite(0, 0, 1000, 500, 'stars').setOrigin(0,0);
         //this.planets = this.add.tileSprite(0, 0, 1000, 500, 'planets').setOrigin(0,0);
 
+        this.add.rectangle(500, 60, 400, 50, 0x3333cc).setOrigin(0.5);
+
+        this.add.rectangle(500, 290, 530, 40, 0x051405).setOrigin(0.5);
+        this.add.rectangle(500, 210, 530, 40, 0x051405).setOrigin(0.5);
+
         let menuConfig = {
             fontFamily: 'Courier',
             fontSize: '36px',

@@ -31,8 +31,10 @@ class CutScreen extends Phaser.Scene {
         let menuConfig = {
             fontFamily: 'Courier',
             fontSize: '36px',
-            color: '#e6c0fc',
+            color: '#f6e272',
             align: 'center',
+            stroke: '#5b5105',
+            strokeThickness: 4,
             padding: {
                 top: 5,
                 bottom: 5,
