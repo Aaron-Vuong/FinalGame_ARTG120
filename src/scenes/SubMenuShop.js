@@ -19,13 +19,13 @@ class Shop extends Phaser.Scene {
             this.scene.run(game.settings.prevScene);
         });
 
-        this.settingsRectangle = this.add.rectangle(game.config.width/2, game.config.height/2, 500, 400, 0x6904ff).setInteractive();
+        this.settingsRectangle = this.add.rectangle(game.config.width/2, game.config.height/2, 500, 400, 0xd5e1e3).setInteractive();
 
         //text config
         let textConfig = {
             fontFamily: 'Courier',
             fontSize: '26px',
-            color: '#f6e272',
+            color: '#ed9a09',
             align: 'center',
             stroke: '#5b5105',
             strokeThickness: 4,
@@ -44,12 +44,18 @@ class Shop extends Phaser.Scene {
         this.add.text(game.config.width/2 + 70, game.config.height/2 + 100, "Price: 60", textConfig, 0);
 
         //items to buy in shop
-        this.item = this.add.image(game.config.width/2 - 130, game.config.height/2, "Goggles");
-        this.item2 = this.add.image(game.config.width/2 + 130, game.config.height/2, "bunnyEars");
+        this.item = this.add.image(game.config.width/2 - 130, game.config.height/2, "Goggles").setInteractive();
+        this.item2 = this.add.image(game.config.width/2 + 130, game.config.height/2, "bunnyEars").setInteractive();
 
-        //set interactive
-        this.item.setInteractive();
-        this.item2.setInteractive();
+        this.item.input.alwaysEnabled = true;
+        this.item.alpha = 0.7;
+        this.item.on("pointerover", () => { this.item.alpha = 1; })
+        this.item.on("pointerout", () => { this.item.alpha = 0.7; });
+
+        this.item2.input.alwaysEnabled = true;
+        this.item2.alpha = 0.7;
+        this.item2.on("pointerover", () => { this.item2.alpha = 1; })
+        this.item2.on("pointerout", () => { this.item2.alpha = 0.7; });
     }
     update() {
     }
