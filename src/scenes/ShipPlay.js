@@ -87,10 +87,12 @@ class ShipPlay extends Phaser.Scene {
 
         this.physics.add.collider(this.floorGrp, this.objectsGrp);
         this.physics.add.collider(this.floorGrp, this.peopleGrp);
-        this.physics.add.collider(this.objectsGrp, this.peopleGrp);
+        this.physics.add.collider(this.objectsGrp, this.peopleGrp, function() {
+            console.log("TEST");
+        });
 
         //get disguises
-        
+        this.physics.add.overlap(this.objectsGrp, this.player.sprite, this.getDisguise, null, this);
 
         this.cam1 = this.cameras.main.setViewport(0, 0, game.config.width, game.config.height);
         this.cameras.main.setBounds(0, 0, 2000, 3000);
@@ -161,6 +163,6 @@ class ShipPlay extends Phaser.Scene {
     }
 
     getDisguise() {
-        this.objectsGrp.sprite.destroy();
+        this.objectsGrp.disableBody(true, true);
     }
 }   
