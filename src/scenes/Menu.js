@@ -113,7 +113,10 @@ class Menu extends Phaser.Scene {
         this.House.delay = 2000;
 
         // test button
-        const button = new MenuButton(540, 300, 'Start Game', config, this, () => this.scene.start("instructionScreenScene"), 
-                                                                            () => this.sound.play('SoundButton'));
+        const button = new MenuButton(540, 300, 'Start Game', config, this, () => {
+            this.scene.start("instructionScreenScene");
+            this.sound.play('SoundButton')
+            this.Space.stop();
+        });
     }
 }
