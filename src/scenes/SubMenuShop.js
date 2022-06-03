@@ -4,8 +4,8 @@ class Shop extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image("Goggles", "./assets/goggle.png");
-        this.load.image("bunnyEars", "./assets/bunnyEars.png");
+        this.load.image("Food", "./assets/FruitFood.png");
+        this.load.image("Fuel", "./assets/Fuel.png");
     }
 
     create() {
@@ -40,12 +40,14 @@ class Shop extends Phaser.Scene {
         this.add.text(game.config.width/2 - 30, game.config.height/2-180, "SHOP", textConfig, 0);
 
         //item prices
-        this.add.text(game.config.width/2 - 210, game.config.height/2 + 100, "Price: 100", textConfig, 0);
-        this.add.text(game.config.width/2 + 70, game.config.height/2 + 100, "Price: 60", textConfig, 0);
+        this.add.text(game.config.width/2 - 210, game.config.height/2 + 100, "Price: 60", textConfig, 0);
+        this.add.text(game.config.width/2 + 70, game.config.height/2 + 100, "Price: 100", textConfig, 0);
 
         //items to buy in shop
-        this.item = this.add.image(game.config.width/2 - 130, game.config.height/2, "Goggles").setInteractive();
-        this.item2 = this.add.image(game.config.width/2 + 130, game.config.height/2, "bunnyEars").setInteractive();
+        this.item = this.add.image(game.config.width/2 - 130, game.config.height/2, "Food").setInteractive();
+        this.item2 = this.add.image(game.config.width/2 + 130, game.config.height/2-15, "Fuel").setInteractive();
+        this.item.scale = 8;
+        this.item2.scale = 6;
 
         this.item.input.alwaysEnabled = true;
         this.item.alpha = 0.7;
