@@ -43,7 +43,7 @@ class ShipPlay extends Phaser.Scene {
         }
         this.oldGoalMeter = this.planet.goalMeter;
 
-        this.bg = this.add.tileSprite(0, 200, 2000, 400, 'BG', 0).setOrigin(0,0);
+        this.bg = this.add.tileSprite(0, 195, 2000, 400, 'BG', 0).setOrigin(0,0);
         this.shop = this.add.tileSprite(100, 350, 240, 136, 'Shop', 0).setOrigin(0,0);
         this.food = this.add.tileSprite(302, 435, 29, 31, 'Food', 0).setOrigin(0,0);
         this.fuel = this.add.tileSprite(235, 430, 29, 31, 'Fuel', 0).setOrigin(0,0);
