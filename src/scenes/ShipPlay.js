@@ -8,6 +8,7 @@ class ShipPlay extends Phaser.Scene {
         this.load.image("alien", "./assets/NPC1.png");
         this.load.image("floor", "./assets/sampleFloor.png");
         this.load.image("BG", "./assets/TestBG.png");
+        this.load.image("BG2", "./assets/FuturisticBG.png");
         this.load.image("buttonSettings", "./assets/ButtonX.png");
         this.load.image("Shop", "./assets/Shop.png");
         this.load.image("vinyl", "./assets/vinyl.png");
@@ -36,14 +37,15 @@ class ShipPlay extends Phaser.Scene {
         this.Forest.play();
         
         if (game.settings.planet == "Earth") {
+            this.bg = this.add.tileSprite(0, 195, 2000, 400, 'BG', 0).setOrigin(0,0);
             this.planet = game.planetEarthSettings;
         }
         if (game.settings.planet == "Mars") {
+            this.bg2 = this.add.tileSprite(0, 195, 2000, 400, 'BG2', 0).setOrigin(0,0);
             this.planet = game.planetMarsSettings;
         }
         this.oldGoalMeter = this.planet.goalMeter;
 
-        this.bg = this.add.tileSprite(0, 195, 2000, 400, 'BG', 0).setOrigin(0,0);
         this.shop = this.add.tileSprite(100, 350, 240, 136, 'Shop', 0).setOrigin(0,0);
         this.food = this.add.tileSprite(302, 435, 29, 31, 'Food', 0).setOrigin(0,0);
         this.fuel = this.add.tileSprite(235, 430, 29, 31, 'Fuel', 0).setOrigin(0,0);
