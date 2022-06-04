@@ -21,6 +21,7 @@ class ShipPlay extends Phaser.Scene {
         this.load.image("spike", "./assets/spike.png");
         this.load.audio("vinylAudio", "./assets/song_sfx.wav");
         this.load.audio("ForestBG", "./assets/ForestPlanetBG.wav");
+        this.load.audio("FutureBG", "./assets/FuturisticPlanetBG.wav");
         this.load.spritesheet("blobAnim", "./assets/blobAnim2.png", {frameWidth:90, frameHeight:120, startFrame:0, endFrame:3});
         this.load.spritesheet("note", "./assets/note.png", {frameWidth: 20, frameHeight: 20, startFrame: 0, endFrame: 5});
         this.load.spritesheet('dialogueAnim', './assets/talkingDialogueAnim.png', {frameWidth: 15, frameHeight: 15, startFrame: 0, endFrame: 7});
@@ -31,17 +32,21 @@ class ShipPlay extends Phaser.Scene {
     }
 
     create() {
-        this.Forest = this.sound.add('ForestBG');
-        this.Forest.setLoop(true);
-        this.Forest.volume = 0.2;
-        this.Forest.play();
         
         if (game.settings.planet == "Earth") {
             this.bg = this.add.tileSprite(0, 195, 2000, 400, 'BG', 0).setOrigin(0,0);
+            this.Forest = this.sound.add('ForestBG');
+            this.Forest.setLoop(true);
+            this.Forest.volume = 0.2;
+            this.Forest.play();
             this.planet = game.planetEarthSettings;
         }
         if (game.settings.planet == "Mars") {
             this.bg2 = this.add.tileSprite(0, 195, 2000, 400, 'BG2', 0).setOrigin(0,0);
+            this.Future = this.sound.add('FutureBG');
+            this.Future.setLoop(true);
+            this.Future.volume = 0.2;
+            this.Future.play();
             this.planet = game.planetMarsSettings;
         }
         this.oldGoalMeter = this.planet.goalMeter;
