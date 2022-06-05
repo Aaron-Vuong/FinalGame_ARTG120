@@ -193,7 +193,6 @@
                                 },
                                 {
                                     "AlreadyVisited" : false,
-                                    "Text":"Oh sorry, thought this was another planet.",
                                     "GoalMeterEffect": -10,
                                     "Target": "3LThoughtAnotherChoices",
                                     "Parent": "InitChoices"
@@ -243,9 +242,9 @@
                             },
                             {
                                 "AlreadyVisited" : false,
-                                "Text": "...",
+                                "Text": "Questionnare",
                                 "GoalMeterEffect": 0,
-                                "Target": "2LSilentChoices",
+                                "Target": "2LQuestionnareChoices",
                                 "Parent": "InitChoices"
                             },
                             {
@@ -261,14 +260,14 @@
                             "Choices": [
                             {
                                 "AlreadyVisited" : false,
-                                "Text":"What else do I need to do?",
+                                "Text":"Okay.",
                                 "GoalMeterEffect": 0,
-                                "Target": "2LWhatElseChoices",
+                                "Target": "InitChoices",
                                 "Parent": "InitChoices"
                             }]
                         },
                         "2LHowDoingChoices": {
-                            "Dialogue": "I guess I'm doing fine. Thanks for checking in on me.",
+                            "Dialogue": "I'm doing great. Thanks for checking in on me.",
                             "Choices": [
                                 {
                                     "AlreadyVisited" : false,
@@ -278,73 +277,69 @@
                                     "Parent": "InitChoices"
                                 }]
                         },
-                        "2LSilentChoices": {
-                            "Dialogue": "...",
+                        "2LQuestionnareChoices": {
+                            "Dialogue": "Do you like trees?",
                             "Choices": [
                                 {
                                     "AlreadyVisited" : false,
-                                    "Text":"...",
+                                    "Text":"Yes",
                                     "GoalMeterEffect": 0,
-                                    "Target": "3LSilentChoices",
+                                    "Target": "3LYesQuestionnareChoices",
                                     "Parent": "InitChoices"
                                 },
                                 {
                                     "AlreadyVisited" : false,
-                                    "Text":"Oh sorry, thinking.",
+                                    "Text":"No",
                                     "GoalMeterEffect": 0,
                                     "Target": "InitChoices",
                                     "Parent": "InitChoices"
                                 }
                             ]
                         },
-                        "3LSilentChoices": {
-                            "Dialogue": "...",
+                        "3LYesQuestionnareChoices": {
+                            "Dialogue": "What's 2781 + 10139054?",
                             "Choices": [
                                 {
                                     "AlreadyVisited" : false,
-                                    "Text":"...",
+                                    "Text":"I think it's 10141835",
                                     "GoalMeterEffect": 0,
-                                    "Target": "4LSilentChoices",
+                                    "Target": "4LYesQuestionnareChoices",
                                     "Parent": "InitChoices"
                                 },
                                 {
                                     "AlreadyVisited" : false,
-                                    "Text":"My bad, just zoned out.",
+                                    "Text":"0100111001101111",
+                                    "GoalMeterEffect": 0,
+                                    "Target": "InitChoices",
+                                    "Parent": "InitChoices"
+                                },
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"I don't know? 2?",
                                     "GoalMeterEffect": 0,
                                     "Target": "InitChoices",
                                     "Parent": "InitChoices"
                                 }
                             ]
                         },
-                        "4LSilentChoices": {
-                            "Dialogue": "Thanks for spending some silent time with me.",
+                        "4LYesQuestionnareChoices": {
+                            "Dialogue": "Okay final question, Yes or No?",
                             "Choices": [
                                 {
                                     "AlreadyVisited" : false,
-                                    "Text":"...",
+                                    "Text":"No.",
                                     "GoalMeterEffect": -10,
                                     "Target": "5LSilentChoices",
                                     "Parent": "InitChoices"
                                 },
                                 {
                                     "AlreadyVisited" : false,
-                                    "Text":"Thank you.",
+                                    "Text":"Yes.",
                                     "GoalMeterEffect": 20,
                                     "Target": "InitChoices",
                                     "Parent": "InitChoices"
                                 }
                             ]
-                        },
-                        "5LSilentChoices": {
-                            "Dialogue": "Okay, stop that.",
-                            "Choices": [
-                                {
-                                    "AlreadyVisited" : false,
-                                    "Text":"...",
-                                    "GoalMeterEffect": 0,
-                                    "Target": "InitChoices",
-                                    "Parent": "InitChoices"
-                                }]
                         },
                         "None": {
                             "Dialogue": "Blop",
@@ -496,7 +491,7 @@
                                 },
                                 {
                                     "AlreadyVisited" : false,
-                                    "Text":"Oh sorry, thought we were doing something there.",
+                                    "Text":"Oh sorry.",
                                     "GoalMeterEffect": 0,
                                     "Target": "InitChoices",
                                     "Parent": "InitChoices"
@@ -826,7 +821,6 @@
                                 },
                                 {
                                     "AlreadyVisited" : false,
-                                    "Text":"Oh sorry, thought this was another planet.",
                                     "GoalMeterEffect": -10,
                                     "Target": "3LThoughtAnotherChoices",
                                     "Parent": "InitChoices"
@@ -876,9 +870,9 @@
                             },
                             {
                                 "AlreadyVisited" : false,
-                                "Text": "...",
+                                "Text": "Questionnare",
                                 "GoalMeterEffect": 0,
-                                "Target": "2LSilentChoices",
+                                "Target": "2LQuestionnareChoices",
                                 "Parent": "InitChoices"
                             },
                             {
@@ -894,14 +888,14 @@
                             "Choices": [
                             {
                                 "AlreadyVisited" : false,
-                                "Text":"What else do I need to do?",
+                                "Text":"Okay.",
                                 "GoalMeterEffect": 0,
-                                "Target": "2LWhatElseChoices",
+                                "Target": "InitChoices",
                                 "Parent": "InitChoices"
                             }]
                         },
                         "2LHowDoingChoices": {
-                            "Dialogue": "I guess I'm doing fine. Thanks for checking in on me.",
+                            "Dialogue": "I'm doing great. Thanks for checking in on me.",
                             "Choices": [
                                 {
                                     "AlreadyVisited" : false,
@@ -911,73 +905,69 @@
                                     "Parent": "InitChoices"
                                 }]
                         },
-                        "2LSilentChoices": {
-                            "Dialogue": "...",
+                        "2LQuestionnareChoices": {
+                            "Dialogue": "Do you like trees?",
                             "Choices": [
                                 {
                                     "AlreadyVisited" : false,
-                                    "Text":"...",
+                                    "Text":"Yes",
                                     "GoalMeterEffect": 0,
-                                    "Target": "3LSilentChoices",
+                                    "Target": "3LYesQuestionnareChoices",
                                     "Parent": "InitChoices"
                                 },
                                 {
                                     "AlreadyVisited" : false,
-                                    "Text":"Oh sorry, thinking.",
+                                    "Text":"No",
                                     "GoalMeterEffect": 0,
                                     "Target": "InitChoices",
                                     "Parent": "InitChoices"
                                 }
                             ]
                         },
-                        "3LSilentChoices": {
-                            "Dialogue": "...",
+                        "3LYesQuestionnareChoices": {
+                            "Dialogue": "What's 2781 + 10139054?",
                             "Choices": [
                                 {
                                     "AlreadyVisited" : false,
-                                    "Text":"...",
+                                    "Text":"I think it's 10141835",
                                     "GoalMeterEffect": 0,
-                                    "Target": "4LSilentChoices",
+                                    "Target": "4LYesQuestionnareChoices",
                                     "Parent": "InitChoices"
                                 },
                                 {
                                     "AlreadyVisited" : false,
-                                    "Text":"My bad, just zoned out.",
+                                    "Text":"0100111001101111",
+                                    "GoalMeterEffect": 0,
+                                    "Target": "InitChoices",
+                                    "Parent": "InitChoices"
+                                },
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"I don't know? 2?",
                                     "GoalMeterEffect": 0,
                                     "Target": "InitChoices",
                                     "Parent": "InitChoices"
                                 }
                             ]
                         },
-                        "4LSilentChoices": {
-                            "Dialogue": "Thanks for spending some silent time with me.",
+                        "4LYesQuestionnareChoices": {
+                            "Dialogue": "Okay final question, Yes or No?",
                             "Choices": [
                                 {
                                     "AlreadyVisited" : false,
-                                    "Text":"...",
+                                    "Text":"No.",
                                     "GoalMeterEffect": -10,
                                     "Target": "5LSilentChoices",
                                     "Parent": "InitChoices"
                                 },
                                 {
                                     "AlreadyVisited" : false,
-                                    "Text":"Thank you.",
+                                    "Text":"Yes.",
                                     "GoalMeterEffect": 20,
                                     "Target": "InitChoices",
                                     "Parent": "InitChoices"
                                 }
                             ]
-                        },
-                        "5LSilentChoices": {
-                            "Dialogue": "Okay, stop that.",
-                            "Choices": [
-                                {
-                                    "AlreadyVisited" : false,
-                                    "Text":"...",
-                                    "GoalMeterEffect": 0,
-                                    "Target": "InitChoices",
-                                    "Parent": "InitChoices"
-                                }]
                         },
                         "None": {
                             "Dialogue": "Blop",
@@ -1129,7 +1119,7 @@
                                 },
                                 {
                                     "AlreadyVisited" : false,
-                                    "Text":"Oh sorry, thought we were doing something there.",
+                                    "Text":"Oh sorry.",
                                     "GoalMeterEffect": 0,
                                     "Target": "InitChoices",
                                     "Parent": "InitChoices"
