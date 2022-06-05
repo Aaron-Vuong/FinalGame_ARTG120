@@ -35,8 +35,6 @@ class PlanetPlay extends Phaser.Scene {
         });
         this.idling = this.add.sprite(100,100);
         this.idling.play('idle');
-
-        this.input.on('pointerdown', _ => console.info(_))
     }
 
     update() {

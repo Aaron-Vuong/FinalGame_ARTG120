@@ -39,9 +39,7 @@ class StatsScreen extends Phaser.Scene {
         });
         this.idling = this.add.sprite(100,100);
         this.idling.play('idle');
-
-        this.input.on('pointerdown', _ => console.info(_))
-
+        
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 150, "Choose Your Stats", menuConfig).setOrigin(0.5);
 
         menuConfig.fontSize = "20px";

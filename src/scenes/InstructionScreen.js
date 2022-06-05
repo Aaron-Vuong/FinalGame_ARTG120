@@ -36,8 +36,6 @@ class InstructionScreen extends Phaser.Scene {
         this.idling = this.add.sprite(100,100);
         this.idling.play('idle');
 
-        this.input.on('pointerdown', _ => console.info(_))
-
         //menu text
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 40, "Instructions", menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2, "Use Mouse to Choose a Planet", menuConfig).setOrigin(0.5);

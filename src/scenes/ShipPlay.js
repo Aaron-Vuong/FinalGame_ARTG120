@@ -39,6 +39,7 @@ class ShipPlay extends Phaser.Scene {
             this.Forest.setLoop(true);
             this.Forest.volume = 0.2;
             this.Forest.play();
+            this.soundz = this.Forest;
             this.planet = game.planetEarthSettings;
         }
         if (game.settings.planet == "Mars") {
@@ -47,6 +48,7 @@ class ShipPlay extends Phaser.Scene {
             this.Future.setLoop(true);
             this.Future.volume = 0.2;
             this.Future.play();
+            this.soundz = this.Future;
             this.planet = game.planetMarsSettings;
         }
         this.oldGoalMeter = this.planet.goalMeter;
@@ -78,7 +80,7 @@ class ShipPlay extends Phaser.Scene {
         this.booton.on("pointerdown", () => {
             game.settings.prevScene = "shipPlayScene";
             this.scene.pause();
-            this.scene.launch("settingsScene")
+            this.scene.launch("settingsScene", {planet: this.planet, song: this.soundz});
         });
 
         this.floor = this.physics.add.sprite(game.config.width, game.config.height, "floor", 0).setImmovable(true);
