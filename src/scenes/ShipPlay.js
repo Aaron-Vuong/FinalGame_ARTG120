@@ -53,11 +53,12 @@ class ShipPlay extends Phaser.Scene {
         this.player = new Player(this, game.config.width/2, game.config.height/2 + 100, "player", 0);
         this.npcSHOP = new Alien(this, game.config.width/2 + 100, game.config.height - 80, "alien", 0, this.player.sprite, "Leader");
         this.npc2 = new Alien(this, 280, 370, "alien", 0, this.player.sprite, "Shop");
+        this.npc3 = new Alien(this, 400, 370, "alien", 0, this.player.sprite, "Other");
         this.recPlay = new MusicPlayer(this, 0, 0, "vinyl", 0, this.player.sprite, "Shop").setInteractive();
         this.blob = new Interactable(this, 0, 0, "blob", 0, this.player.sprite);
         this.spike = new Spike(this, 0, 0, "spike", 0, this.player.sprite);
-        this.hat =  new Disguise(this, 0, 0, "topHat", 0, this.player.sprite);
-        this.heels = new Disguise(this, 0, 0, "Heels", 0, this.player.sprite);
+        this.hat =  new Disguise(this, 0, 0, "topHat", 0, this.player.sprite, 1);
+        this.heels = new Disguise(this, 0, 0, "Heels", 0, this.player.sprite, 0);
 
         this.progressBarOutline = this.add.rectangle(game.config.width/2 + 120, game.config.height/2 - 105, 154, 20, 0x000000).setScrollFactor(0);
         this.progressBar = this.add.rectangle(game.config.width/2 + 120, game.config.height/2 - 105, 150, 15, 0x808080).setScrollFactor(0);
@@ -79,15 +80,12 @@ class ShipPlay extends Phaser.Scene {
         this.floor.body.setAllowGravity(false);
 
         this.objectsGrp = this.add.group([this.heels.sprite, this.hat.sprite]);
-        this.peopleGrp = this.add.group([this.player.sprite, this.npcSHOP.sprite, this.npc2.sprite]);
+        this.peopleGrp = this.add.group([this.player.sprite, this.npcSHOP.sprite, this.npc2.sprite, this.npc3.sprite]);
         this.floorGrp = this.add.group([this.floor, this.recPlay.sprite, this.blob.sprite, this.spike.sprite]);
         
 
         this.physics.add.collider(this.floorGrp, this.objectsGrp);
         this.physics.add.collider(this.floorGrp, this.peopleGrp);
-        this.physics.add.collider(this.objectsGrp, this.peopleGrp, function() {
-            console.log("TEST");
-        });
 
         //get disguises
         this.physics.add.overlap(this.objectsGrp, this.player.sprite, this.getDisguise, null, this);
@@ -140,9 +138,11 @@ class ShipPlay extends Phaser.Scene {
         this.UpdateProgressBar();
         this.CheckProgression();
         //this.getDisguise();
-
+        this.hat.update();
+        console.log(this.planet.goalMeter);
         this.npcSHOP.update();
         this.npc2.update();
+        this.npc3.update();
         this.player.update();
         this.recPlay.update();
         this.blob.update();
@@ -163,6 +163,13 @@ class ShipPlay extends Phaser.Scene {
     }
 
     CheckProgression() {
+        if (this.planet.goalMeter >= 10 && this.planet.goalMeter < 100) {
+            this.planet.Other = "Phase 1";
+        }
+        if (this.planet.goalMeter >= 20 && this.planet.goalMeter < 100) {
+            this.planet.Leader = "Phase 1";
+            this.planet.Other = "Phase 1";
+        }
         if (this.planet.goalMeter >= 50 && this.planet.goalMeter < 100) {
             this.planet.Leader = "Phase 2";
             this.planet.Other = "Phase 2";

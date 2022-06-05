@@ -1,27 +1,45 @@
 class Disguise extends Phaser.GameObjects.Sprite {
     
-    constructor(scene, x, y, texture, frame, speed, playersprite) {
+    constructor(scene, x, y, texture, frame, playersprite, identifier) {
         super(scene, x, y, texture, frame);
+        
+        this.textureData = this.scene.textures.get(texture).getSourceImage();
         this.costume = playersprite;
-
+        this.identifier = identifier;
         this.sprite = this.scene.physics.add.sprite(Phaser.Math.Between(1000, 1800), 200, texture);
-        this.speed = speed;
         this.scene.physics.add.collider(this.sprite);
         
         this.sprite.setCollideWorldBounds(true);
         this.sprite.body.setAllowGravity(true);
-        this.sprite.setImmovable(true);
         this.sprite.setSize(40, 50, true);
+        this.clicked = false;
+        this.sprite.setInteractive();
     }
 
     update() {
-        this.sprite.setVelocityY(-this.speed * 100);
-        if (this.sprite.y == game.config.height) {
-            this.sprite.destroy();
-        }
+        this.updateInventory();
     }
 
     updateInventory() {
-
+        this.sprite.on("pointerdown", () => {
+            console.log("BLOPOPPOSKBOPKPFOBK", this.identifier == 1 );
+            console.log (game.settings.planet == "Earth",
+            (game.planetEarthSettings.Leader == "Phase 1" || game.planetEarthSettings.Leader == "Phase 2"),
+            this.identifier == 1,
+            !this.clicked);
+            if (game.settings.planet == "Earth" && 
+                (game.planetEarthSettings.Leader == "Phase 1" || game.planetEarthSettings.Leader == "Phase 2") &&
+                this.identifier == 1 &&
+                !this.clicked) {
+                game.planetEarthSettings.goalMeter += 20;
+            }
+            else if (game.settings.planet == "Mars" && 
+                    (game.planetMarsSettings.Leader == "Phase 1" || game.planetMarsSettings.Leader == "Phase 2") &&
+                    this.identifier == 0 &&
+                    !this.clicked) {
+                game.planetMarsSettings.goalMeter += 20;
+            }
+            this.clicked = true;
+        });
     }
 }

@@ -39,6 +39,18 @@ class Interactable extends Phaser.GameObjects.Sprite {
         this.sprite.on("pointerdown", () => {
             this.blobSquish.play('squish');
             console.log("playing blob squish");
+            console.log("ROIjgioaejgierjoigjreoi ");
+            if (game.settings.planet == "Earth" && 
+                (game.planetEarthSettings.Leader == "Phase 1" || game.planetEarthSettings.Leader == "Phase 2") &&
+                !this.clicked) {
+                game.planetEarthSettings.goalMeter += 10;
+            }
+            else if (game.settings.planet == "Mars" && 
+                    (game.planetEarthSettings.Leader == "Phase 1" || game.planetEarthSettings.Leader == "Phase 2") &&
+                    !this.clicked) {
+                game.planetMarsSettings.goalMeter += 10;
+            }
+            this.clicked = true;
         });
     }
 

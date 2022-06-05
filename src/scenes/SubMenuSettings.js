@@ -12,21 +12,21 @@ class Settings extends Phaser.Scene {
             this.scene.stop();
             this.scene.run(game.settings.prevScene);
 
-            //Load() {
-                //let settingsConfig = {
-                   // fontFamily: 'Consolas',
-                    //fontSize: '36px',
-                    //color: '#85c7b1',
-                    //align: 'center',
-                    //stroke: '#000000',
-                    //strokeThickness: 6,
-                    //padding: {
-                        //top: 5,
-                       // bottom: 5,
-                    //},
-                    //fixedWidth: 0
-               // }
-                //menu text
+            // Load() {
+            //     let settingsConfig = {
+            //        fontFamily: 'Consolas',
+            //         fontSize: '36px',
+            //         color: '#85c7b1',
+            //         align: 'center',
+            //         stroke: '#000000',
+            //         strokeThickness: 6,
+            //         padding: {
+            //             top: 5,
+            //            bottom: 5,
+            //         },
+            //         fixedWidth: 0
+            //    }
+            //     menu text
                 
             
         });

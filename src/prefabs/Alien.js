@@ -74,7 +74,7 @@ class Alien extends Phaser.GameObjects.Sprite {
             this.scene.scene.pause();
             this.scene.scene.launch("shopScene");
         }
-        if (this.type == "Leader") {
+        if (this.type == "Leader" || this.type == "Other") {
             game.settings.prevScene = "shipPlayScene";
             this.scene.scene.pause();
             this.scene.scene.launch("dialogueScene", {type: this.type});
