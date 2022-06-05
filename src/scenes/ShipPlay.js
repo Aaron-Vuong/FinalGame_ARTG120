@@ -58,9 +58,9 @@ class ShipPlay extends Phaser.Scene {
         this.fuel = this.add.tileSprite(235, 430, 29, 31, 'Fuel', 0).setOrigin(0,0);
 
         this.player = new Player(this, game.config.width/2, game.config.height/2 + 100, "player", 0);
-        this.npcSHOP = new Alien(this, game.config.width/2 + 100, game.config.height - 80, "alien", 0, this.player.sprite, "Leader");
-        this.npc2 = new Alien(this, 280, 370, "alien", 0, this.player.sprite, "Shop");
-        this.npc3 = new Alien(this, 400, 370, "alien", 0, this.player.sprite, "Other");
+        this.npcSHOP = new Alien(this, game.config.width/2 + 100, game.config.height - 80, "alien", 0, this.player.sprite, "Leader", this.planet);
+        this.npc2 = new Alien(this, 280, 370, "alien", 0, this.player.sprite, "Shop", this.planet);
+        this.npc3 = new Alien(this, 400, 370, "alien", 0, this.player.sprite, "Other", this.planet);
         this.recPlay = new MusicPlayer(this, 0, 0, "vinyl", 0, this.player.sprite, "Shop").setInteractive();
         this.blob = new Interactable(this, 0, 0, "blob", 0, this.player.sprite);
         this.spike = new Spike(this, 0, 0, "spike", 0, this.player.sprite);
@@ -146,7 +146,6 @@ class ShipPlay extends Phaser.Scene {
         this.CheckProgression();
         //this.getDisguise();
         this.hat.update();
-        console.log(this.planet.goalMeter);
         this.npcSHOP.update();
         this.npc2.update();
         this.npc3.update();

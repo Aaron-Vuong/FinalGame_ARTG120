@@ -648,29 +648,36 @@
                     "Dialogue": "(*#&%&*@^)!@&$^)"
                 },
                 "Leader": {
+                    "IntimidatedMultiplier": 0.5,
+                    "SocialiteMultiplier": 1.5,
+                    "SpeedyMultiplier": 1.5,
                     "Init": {
                         "InitChoices": {
                             "Dialogue": "Hello, what brings you here?",
                             "Choices": [
                             {
+                                "AlreadyVisited" : false,
                                 "Text":"I want a place to live!",
-                                "GoalMeterEffect": 0,
+                                "GoalMeterEffect": 10,
                                 "Target": "2LPlaceLiveChoices",
                                 "Parent": "InitChoices"
                             },
                             {
+                                "AlreadyVisited" : false,
                                 "Text": "I lost my home.",
                                 "GoalMeterEffect": 0,
                                 "Target": "2LLostHomeChoices",
                                 "Parent": "InitChoices"
                             },
                             {
+                                "AlreadyVisited" : false,
                                 "Text": "Just looking around.",
                                 "GoalMeterEffect": 0,
                                 "Target": "2LLookingChoices",
                                 "Parent": "InitChoices"
                             },
                             {
+                                "AlreadyVisited" : false,
                                 "Text": "Exit Conversation",
                                 "GoalMeterEffect": 0,
                                 "Target": "None",
@@ -681,12 +688,14 @@
                             "Dialogue": "If you want to live here, you should look like one of us.",
                             "Choices": [
                             {
+                                "AlreadyVisited" : false,
                                 "Text":"How do I do that?",
                                 "GoalMeterEffect": 0,
                                 "Target": "3LLookLikeChoices",
                                 "Parent": "InitChoices"
                             },
                             {
+                                "AlreadyVisited" : false,
                                 "Text":"Okay.",
                                 "GoalMeterEffect": 0,
                                 "Target": "InitChoices",
@@ -697,6 +706,7 @@
                             "Dialogue": "Aw thats sad.",
                             "Choices": [
                             {
+                                "AlreadyVisited" : false,
                                 "Text":"Go Back",
                                 "GoalMeterEffect": 0,
                                 "Target": "InitChoices",
@@ -707,6 +717,7 @@
                             "Dialogue": "Okay...",
                             "Choices": [
                             {
+                                "AlreadyVisited" : false,
                                 "Text":"Go Back",
                                 "GoalMeterEffect": 0,
                                 "Target": "InitChoices",
@@ -717,6 +728,7 @@
                             "Dialogue": "Bye",
                             "Choices": [
                             {
+                                "AlreadyVisited" : false,
                                 "Text":"2LNone",
                                 "GoalMeterEffect": 0,
                                 "Target": "None",
@@ -725,9 +737,10 @@
                             ]
                         },
                         "3LLookLikeChoices": {
-                            "Dialogue": "Observe the people.",
+                            "Dialogue": "Talk to the other guy.",
                             "Choices": [
                             {
+                                "AlreadyVisited" : false,
                                 "Text":"Okay.",
                                 "GoalMeterEffect": 0,
                                 "Target": "InitChoices",
@@ -738,6 +751,511 @@
                             "Dialogue": "Blop",
                             "Choices": [
                             {
+                                "AlreadyVisited" : false,
+                                "Text":"",
+                                "GoalMeterEffect": 0,
+                                "Target": "End",
+                                "Parent": "???"
+                            }]
+                        }
+                    },
+                    "Phase 1": {
+                        "InitChoices": {
+                            "Dialogue": "I love talking to other people every once in a while.",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"What do you guys do here?",
+                                "GoalMeterEffect": 0,
+                                "Target": "2LWhatElseChoices",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "AlreadyVisited" : false,
+                                "Text": "How are you doing?",
+                                "GoalMeterEffect": 10,
+                                "Target": "2LHowDoingChoices",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "AlreadyVisited" : false,
+                                "Text": "I love it here!",
+                                "GoalMeterEffect": 10,
+                                "Target": "2LLoveItChoices",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "AlreadyVisited" : false,
+                                "Text": "Exit Conversation",
+                                "GoalMeterEffect": 0,
+                                "Target": "None",
+                                "Parent": "InitChoices"
+                            }]
+                        },
+                        "2LWhatElseChoices": {
+                            "Dialogue": "The people around here like goggles a lot.",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"Okay, I'll go get a goggle",
+                                "GoalMeterEffect": 0,
+                                "Target": "InitChoices",
+                                "Parent": "InitChoices"
+                            }]
+                        },
+                        "2LHowDoingChoices": {
+                            "Dialogue": "I guess I'm doing fine. Thanks for checking in on me.",
+                            "Choices": [
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"No Problem.",
+                                    "GoalMeterEffect": 0,
+                                    "Target": "InitChoices",
+                                    "Parent": "InitChoices"
+                                }]
+                        },
+                        "2LLoveItChoices": {
+                            "Dialogue": "Aw thanks, we've worked hard collectively to really make sure this place is beautiful.",
+                            "Choices": [
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"Yep, very cool!",
+                                    "GoalMeterEffect": 20,
+                                    "Target": "InitChoices",
+                                    "Parent": "InitChoices"
+                                },
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"Oh sorry, thought this was another planet.",
+                                    "GoalMeterEffect": -10,
+                                    "Target": "3LThoughtAnotherChoices",
+                                    "Parent": "InitChoices"
+                                }]
+                        },
+                        "3LThoughtAnotherChoices": {
+                            "Dialogue": "...",
+                            "Choices": [
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"...",
+                                    "GoalMeterEffect": -10,
+                                    "Target": "InitChoices",
+                                    "Parent": "InitChoices"
+                                }
+                            ]
+                        },
+                        "None": {
+                            "Dialogue": "Blop",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"",
+                                "GoalMeterEffect": 0,
+                                "Target": "End",
+                                "Parent": "???"
+                            }]
+                        }
+                    },
+                    "Phase 2": {
+                        "InitChoices": {
+                            "Dialogue": "So, you've met others, what do you think?",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"What else do I need to do?",
+                                "GoalMeterEffect": 0,
+                                "Target": "2LWhatElseChoices",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "AlreadyVisited" : false,
+                                "Text": "How are you doing?",
+                                "GoalMeterEffect": 30,
+                                "Target": "2LHowDoingChoices",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "AlreadyVisited" : false,
+                                "Text": "...",
+                                "GoalMeterEffect": 0,
+                                "Target": "2LSilentChoices",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "AlreadyVisited" : false,
+                                "Text": "Exit Conversation",
+                                "GoalMeterEffect": 0,
+                                "Target": "None",
+                                "Parent": "InitChoices"
+                            }]
+                        },
+                        "2LWhatElseChoices": {
+                            "Dialogue": "Go pick up some disguises and see which one suits you.",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"What else do I need to do?",
+                                "GoalMeterEffect": 0,
+                                "Target": "2LWhatElseChoices",
+                                "Parent": "InitChoices"
+                            }]
+                        },
+                        "2LHowDoingChoices": {
+                            "Dialogue": "I guess I'm doing fine. Thanks for checking in on me.",
+                            "Choices": [
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"No Problem.",
+                                    "GoalMeterEffect": 0,
+                                    "Target": "InitChoices",
+                                    "Parent": "InitChoices"
+                                }]
+                        },
+                        "2LSilentChoices": {
+                            "Dialogue": "...",
+                            "Choices": [
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"...",
+                                    "GoalMeterEffect": 0,
+                                    "Target": "3LSilentChoices",
+                                    "Parent": "InitChoices"
+                                },
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"Oh sorry, thinking.",
+                                    "GoalMeterEffect": 0,
+                                    "Target": "InitChoices",
+                                    "Parent": "InitChoices"
+                                }
+                            ]
+                        },
+                        "3LSilentChoices": {
+                            "Dialogue": "...",
+                            "Choices": [
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"...",
+                                    "GoalMeterEffect": 0,
+                                    "Target": "4LSilentChoices",
+                                    "Parent": "InitChoices"
+                                },
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"My bad, just zoned out.",
+                                    "GoalMeterEffect": 0,
+                                    "Target": "InitChoices",
+                                    "Parent": "InitChoices"
+                                }
+                            ]
+                        },
+                        "4LSilentChoices": {
+                            "Dialogue": "Thanks for spending some silent time with me.",
+                            "Choices": [
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"...",
+                                    "GoalMeterEffect": -10,
+                                    "Target": "5LSilentChoices",
+                                    "Parent": "InitChoices"
+                                },
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"Thank you.",
+                                    "GoalMeterEffect": 20,
+                                    "Target": "InitChoices",
+                                    "Parent": "InitChoices"
+                                }
+                            ]
+                        },
+                        "5LSilentChoices": {
+                            "Dialogue": "Okay, stop that.",
+                            "Choices": [
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"...",
+                                    "GoalMeterEffect": 0,
+                                    "Target": "InitChoices",
+                                    "Parent": "InitChoices"
+                                }]
+                        },
+                        "None": {
+                            "Dialogue": "Blop",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"",
+                                "GoalMeterEffect": 0,
+                                "Target": "End",
+                                "Parent": "???"
+                            }]
+                        }
+                    },
+                    "End": {
+                        "InitChoices": {
+                            "Dialogue": "Would you like to live here?",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text": "Yes",
+                                "GoalMeterEffect": 0,
+                                "Target": "Ending",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "AlreadyVisited" : false,
+                                "Text": "No",
+                                "GoalMeterEffect": 0,
+                                "Target": "None",
+                                "Parent": "InitChoices"
+                            }]
+                        },
+                        "Ending": {
+                            "Dialogue": "Blop",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"",
+                                "GoalMeterEffect": 0,
+                                "Target": "EndGame",
+                                "Parent": "???"
+                            }]
+                        },
+                        "None": {
+                            "Dialogue": "Blop",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"",
+                                "GoalMeterEffect": 0,
+                                "Target": "End",
+                                "Parent": "???"
+                            }]
+                        }
+                    }
+                },
+                "Other": {
+                    "IntimidatedMultiplier": 0.5,
+                    "SocialiteMultiplier": 1.5,
+                    "SpeedyMultiplier": 1.5,
+                    "Init": {
+                        "InitChoices": {
+                            "Dialogue": "Go talk to the Leader first.",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"Okay.",
+                                "GoalMeterEffect": 0,
+                                "Target": "None",
+                                "Parent": "InitChoices"
+                            }]
+                        },
+                        "None": {
+                            "Dialogue": "Blop",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"",
+                                "GoalMeterEffect": 0,
+                                "Target": "End",
+                                "Parent": "???"
+                            }]
+                        }
+                    },
+                    "Phase 1": {
+                        "InitChoices": {
+                            "Dialogue": "So you talked to him then?",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"What else do I need to do?",
+                                "GoalMeterEffect": 0,
+                                "Target": "2LWhatElseChoices",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "AlreadyVisited" : false,
+                                "Text": "How are you doing?",
+                                "GoalMeterEffect": 10,
+                                "Target": "2LHowDoingChoices",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "AlreadyVisited" : false,
+                                "Text": "...",
+                                "GoalMeterEffect": 0,
+                                "Target": "2LSilentChoices",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "AlreadyVisited" : false,
+                                "Text": "Exit Conversation",
+                                "GoalMeterEffect": 0,
+                                "Target": "None",
+                                "Parent": "InitChoices"
+                            }]
+                        },
+                        "2LWhatElseChoices": {
+                            "Dialogue": "The people around here like the pink blob a lot. Go touch it.",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"Okay, I'll go.",
+                                "GoalMeterEffect": 0,
+                                "Target": "InitChoices",
+                                "Parent": "InitChoices"
+                            }]
+                        },
+                        "2LHowDoingChoices": {
+                            "Dialogue": "Thanks for asking, I'm doing okay.",
+                            "Choices": [
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"Alright.",
+                                    "GoalMeterEffect": 0,
+                                    "Target": "InitChoices",
+                                    "Parent": "InitChoices"
+                                }]
+                        },
+                        "2LSilentChoices": {
+                            "Dialogue": "...",
+                            "Choices": [
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"...",
+                                    "GoalMeterEffect": 0,
+                                    "Target": "3LSilentChoices",
+                                    "Parent": "InitChoices"
+                                },
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"Oh sorry, thought we were doing something there.",
+                                    "GoalMeterEffect": 0,
+                                    "Target": "InitChoices",
+                                    "Parent": "InitChoices"
+                                }
+                            ]
+                        },
+                        "3LSilentChoices": {
+                            "Dialogue": "...",
+                            "Choices": [
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"...",
+                                    "GoalMeterEffect": 0,
+                                    "Target": "4LSilentChoices",
+                                    "Parent": "InitChoices"
+                                },
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"My bad, just zoned out.",
+                                    "GoalMeterEffect": 0,
+                                    "Target": "InitChoices",
+                                    "Parent": "InitChoices"
+                                }
+                            ]
+                        },
+                        "4LSilentChoices": {
+                            "Dialogue": "Thanks for spending some silent time with me.",
+                            "Choices": [
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"...",
+                                    "GoalMeterEffect": -10,
+                                    "Target": "5LSilentChoices",
+                                    "Parent": "InitChoices"
+                                },
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"Thank you.",
+                                    "GoalMeterEffect": 20,
+                                    "Target": "InitChoices",
+                                    "Parent": "InitChoices"
+                                }
+                            ]
+                        },
+                        "5LSilentChoices": {
+                            "Dialogue": "Okay, stop that.",
+                            "Choices": [
+                                {
+                                    "AlreadyVisited" : false,
+                                    "Text":"...",
+                                    "GoalMeterEffect": 0,
+                                    "Target": "InitChoices",
+                                    "Parent": "InitChoices"
+                                }]
+                        },
+                        "None": {
+                            "Dialogue": "Blop",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"",
+                                "GoalMeterEffect": 0,
+                                "Target": "End",
+                                "Parent": "???"
+                            }]
+                        }
+                    },
+                    "Phase 2": {
+                        "InitChoices": {
+                            "Dialogue": "I got nothing for you.",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"Okay.",
+                                "GoalMeterEffect": 0,
+                                "Target": "None",
+                                "Parent": "InitChoices"
+                            }]
+                        },
+                        "None": {
+                            "Dialogue": "Blop",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"",
+                                "GoalMeterEffect": 0,
+                                "Target": "End",
+                                "Parent": "???"
+                            }]
+                        }
+                    },
+                    "End": {
+                        "InitChoices": {
+                            "Dialogue": "Would you like to live here?",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text": "Yes",
+                                "GoalMeterEffect": 0,
+                                "Target": "Ending",
+                                "Parent": "InitChoices"
+                            },
+                            {
+                                "AlreadyVisited" : false,
+                                "Text": "No",
+                                "GoalMeterEffect": 0,
+                                "Target": "None",
+                                "Parent": "InitChoices"
+                            }]
+                        },
+                        "Ending": {
+                            "Dialogue": "Blop",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
+                                "Text":"",
+                                "GoalMeterEffect": 0,
+                                "Target": "EndGame",
+                                "Parent": "???"
+                            }]
+                        },
+                        "None": {
+                            "Dialogue": "Blop",
+                            "Choices": [
+                            {
+                                "AlreadyVisited" : false,
                                 "Text":"",
                                 "GoalMeterEffect": 0,
                                 "Target": "End",

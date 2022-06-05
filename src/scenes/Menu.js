@@ -4,13 +4,11 @@ class Menu extends Phaser.Scene {
     }
     preload() {
         this.load.spritesheet('FoldOut', './assets/MenuAnims.png', {frameWidth: 1000, frameHeight: 500, startFrame: 0, endFrame: 44});
-        this.load.image('MenuLast', './assets/44.png)');
         this.load.image('stars', './assets/stars.png');
         this.load.audio('SoundButton', './assets/ButtonSoundEffect.wav');
         this.load.audio('MenuBG', './assets/SpaceBGMusic.wav');
 
         this.load.json("sampleDialogue", "./src/json/Dialogue.json");
-        this.load.json("items", "./src/json/ItemList.json");
     }
 
     create() {
@@ -54,10 +52,6 @@ class Menu extends Phaser.Scene {
             playerSOCIAL: 0,
             playerFUEL: 2,
             playerMONEY: 100
-        }
-
-        game.playerSettings = {
-            test: 1
         }
 
         game.planetEarthSettings = {

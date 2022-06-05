@@ -1,9 +1,11 @@
 class Alien extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y, texture, frame, playersprite, characterType) {
+    constructor(scene, x, y, texture, frame, playersprite, characterType, planet) {
         super(scene, x, y, texture, frame);
 
         let textureData = this.scene.textures.get(texture).getSourceImage();
         this.player = playersprite;
+
+        this.planet = planet;
 
         this.type = characterType;
         // Create and set values for the physics sprite owned by this class.
@@ -72,7 +74,7 @@ class Alien extends Phaser.GameObjects.Sprite {
         if (this.type == "Shop") {
             game.settings.prevScene = "shipPlayScene";
             this.scene.scene.pause();
-            this.scene.scene.launch("shopScene");
+            this.scene.scene.launch("shopScene", {planet: this.planet});
         }
         if (this.type == "Leader" || this.type == "Other") {
             game.settings.prevScene = "shipPlayScene";

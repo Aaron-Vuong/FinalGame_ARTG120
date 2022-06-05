@@ -81,7 +81,6 @@ class Dialogue extends Phaser.Scene {
 
     SkipDialogue(speech) {
         this.typewriter.remove();
-        console.log(this.mostRecentChoice);
         this.label.text = speech.Planets[game.settings.planet].NPCs[this.type][this.dialogueState][this.mostRecentChoice].Dialogue;
     }
 
