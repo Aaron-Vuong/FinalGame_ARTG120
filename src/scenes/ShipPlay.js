@@ -6,6 +6,7 @@ class ShipPlay extends Phaser.Scene {
     preload() {
         this.load.image("player", "./assets/AlienProtag.png");
         this.load.image("alien", "./assets/NPC1.png");
+        this.load.image("marsalien", "./assets/NPC2.png");
         this.load.image("floor", "./assets/sampleFloor.png");
         this.load.image("BG", "./assets/TestBG.png");
         this.load.image("BG2", "./assets/FuturisticBG.png");
@@ -40,6 +41,15 @@ class ShipPlay extends Phaser.Scene {
             this.Forest.volume = 0.2;
             this.Forest.play();
             this.soundz = this.Forest;
+            
+            this.shop = this.add.tileSprite(100, 350, 240, 136, 'Shop', 0).setOrigin(0,0);
+            this.food = this.add.tileSprite(302, 435, 29, 31, 'Food', 0).setOrigin(0,0);
+            this.fuel = this.add.tileSprite(235, 430, 29, 31, 'Fuel', 0).setOrigin(0,0);
+            this.player = new Player(this, game.config.width/2, game.config.height/2 + 100, "player", 0);
+            
+            this.npcSHOP = new Alien(this, game.config.width/2 + 100, game.config.height - 80, "alien", 0, this.player.sprite, "Leader", this.planet);
+            this.npc2 = new Alien(this, 280, 370, "alien", 0, this.player.sprite, "Shop", this.planet);
+            this.npc3 = new Alien(this, 400, 370, "alien", 0, this.player.sprite, "Other", this.planet);
             this.planet = game.planetEarthSettings;
         }
         if (game.settings.planet == "Mars") {
@@ -49,18 +59,19 @@ class ShipPlay extends Phaser.Scene {
             this.Future.volume = 0.2;
             this.Future.play();
             this.soundz = this.Future;
+            
+            this.shop = this.add.tileSprite(100, 350, 240, 136, 'Shop', 0).setOrigin(0,0);
+            this.food = this.add.tileSprite(302, 435, 29, 31, 'Food', 0).setOrigin(0,0);
+            this.fuel = this.add.tileSprite(235, 430, 29, 31, 'Fuel', 0).setOrigin(0,0);
+            this.player = new Player(this, game.config.width/2, game.config.height/2 + 100, "player", 0);
+            
+            this.npcSHOP = new Alien(this, game.config.width/2 + 100, game.config.height - 80, "marsalien", 0, this.player.sprite, "Leader", this.planet);
+            this.npc2 = new Alien(this, 280, 370, "marsalien", 0, this.player.sprite, "Shop", this.planet);
+            this.npc3 = new Alien(this, 400, 370, "marsalien", 0, this.player.sprite, "Other", this.planet);
             this.planet = game.planetMarsSettings;
         }
         this.oldGoalMeter = this.planet.goalMeter;
 
-        this.shop = this.add.tileSprite(100, 350, 240, 136, 'Shop', 0).setOrigin(0,0);
-        this.food = this.add.tileSprite(302, 435, 29, 31, 'Food', 0).setOrigin(0,0);
-        this.fuel = this.add.tileSprite(235, 430, 29, 31, 'Fuel', 0).setOrigin(0,0);
-
-        this.player = new Player(this, game.config.width/2, game.config.height/2 + 100, "player", 0);
-        this.npcSHOP = new Alien(this, game.config.width/2 + 100, game.config.height - 80, "alien", 0, this.player.sprite, "Leader", this.planet);
-        this.npc2 = new Alien(this, 280, 370, "alien", 0, this.player.sprite, "Shop", this.planet);
-        this.npc3 = new Alien(this, 400, 370, "alien", 0, this.player.sprite, "Other", this.planet);
         this.recPlay = new MusicPlayer(this, 0, 0, "vinyl", 0, this.player.sprite, "Shop").setInteractive();
         this.blob = new Interactable(this, 0, 0, "blob", 0, this.player.sprite);
         this.spike = new Spike(this, 0, 0, "spike", 0, this.player.sprite);

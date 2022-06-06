@@ -22,11 +22,6 @@ class Disguise extends Phaser.GameObjects.Sprite {
 
     updateInventory() {
         this.sprite.on("pointerdown", () => {
-            console.log("BLOPOPPOSKBOPKPFOBK", this.identifier == 1 );
-            console.log (game.settings.planet == "Earth",
-            (game.planetEarthSettings.Leader == "Phase 1" || game.planetEarthSettings.Leader == "Phase 2"),
-            this.identifier == 1,
-            !this.clicked);
             if (game.settings.planet == "Earth" && 
                 (game.planetEarthSettings.Leader == "Phase 1" || game.planetEarthSettings.Leader == "Phase 2") &&
                 this.identifier == 1 &&

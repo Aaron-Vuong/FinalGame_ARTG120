@@ -59,7 +59,6 @@ class StatsScreen extends Phaser.Scene {
             game.settings.playerSPEED = 70;
             game.settings.playerSOCIAL = 40;
             this.scene.start("cutScreenScene");
-            console.log(game.settings);
             
         }, this); 
 
@@ -69,13 +68,12 @@ class StatsScreen extends Phaser.Scene {
             game.settings.playerSPEED = 60;
             game.settings.playerSOCIAL = 90;
             this.scene.start("cutScreenScene");
-            console.log(game.settings);
             
         }, this);
 
 
-        this.button = new Button(500, 400, 'Continue', config, this, 
-                                () => this.scene.start("cutScreenScene"));
+        // this.button = new Button(500, 400, 'Continue', config, this, 
+        //                         () => this.scene.start("cutScreenScene"));
         }
         // https://gamedevacademy.org/creating-a-preloading-screen-in-phaser-3/?a=13
 
