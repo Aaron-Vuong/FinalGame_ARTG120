@@ -17,6 +17,7 @@ class ShipPlay extends Phaser.Scene {
         this.load.image("blob", "./assets/blob.png");
         this.load.image("topHat", "./assets/topHat.png");
         this.load.image("Heels", "./assets/heels.png");
+        this.load.image("Goggles", "./assets/goggle.png");
         this.load.image("Food", "./assets/FruitFood.png");
         this.load.image("Fuel", "./assets/Fuel.png");
         this.load.image("spike", "./assets/spike.png");
@@ -76,7 +77,7 @@ class ShipPlay extends Phaser.Scene {
         this.blob = new Interactable(this, 0, 0, "blob", 0, this.player.sprite);
         this.spike = new Spike(this, 0, 0, "spike", 0, this.player.sprite);
         this.hat =  new Disguise(this, 0, 0, "topHat", 0, this.player.sprite, 1);
-        this.heels = new Disguise(this, 0, 0, "Heels", 0, this.player.sprite, 0);
+        this.goggle = new Disguise(this, 0, 0, "Goggles", 0, this.player.sprite, 0);
 
         this.progressBarOutline = this.add.rectangle(game.config.width/2 + 120, game.config.height/2 - 105, 154, 20, 0x000000).setScrollFactor(0);
         this.progressBar = this.add.rectangle(game.config.width/2 + 120, game.config.height/2 - 105, 150, 15, 0x808080).setScrollFactor(0);
@@ -97,7 +98,7 @@ class ShipPlay extends Phaser.Scene {
         this.floor = this.physics.add.sprite(game.config.width, game.config.height, "floor", 0).setImmovable(true);
         this.floor.body.setAllowGravity(false);
 
-        this.objectsGrp = this.add.group([this.heels.sprite, this.hat.sprite]);
+        this.objectsGrp = this.add.group([this.goggle.sprite, this.hat.sprite]);
         this.peopleGrp = this.add.group([this.player.sprite, this.npcSHOP.sprite, this.npc2.sprite, this.npc3.sprite]);
         this.floorGrp = this.add.group([this.floor, this.recPlay.sprite, this.blob.sprite, this.spike.sprite]);
         
