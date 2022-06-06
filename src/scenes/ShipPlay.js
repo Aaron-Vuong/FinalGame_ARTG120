@@ -195,8 +195,10 @@ class ShipPlay extends Phaser.Scene {
         else if (this.planet.goalMeter >= 100) {
             this.planet.Leader = "End";
             this.planet.Other = "End";
+            this.scene.start("endGameScene");
         }
     }
+
     getDisguise() {
         //this.objectsGrp.disableBody(true, true);
     }
