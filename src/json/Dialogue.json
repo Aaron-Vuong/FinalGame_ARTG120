@@ -458,7 +458,7 @@
                             }]
                         },
                         "2LWhatElseChoices": {
-                            "Dialogue": "The people around here like the pink blob a lot. Go touch it.",
+                            "Dialogue": "The people around here like the pink blob a lot. Go touch it if your worthy.",
                             "Choices": [
                             {
                                 "AlreadyVisited" : false,
