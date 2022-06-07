@@ -28,7 +28,7 @@ class EndGame extends Phaser.Scene {
         this.stars = this.add.tileSprite(0, 0, 1000, 500, "stars").setOrigin(0,0);
         this.planets = this.add.tileSprite(0,0, 1000, 500, 'planets').setOrigin(0,0);
 
-        this.endLabel = this.add.text(game.config.width/2, game.config.height/2, "Game Over", textConfig).setOrigin(0.5);
+        this.endLabel = this.add.text(game.config.width/2, game.config.height/2, "Congrats on your new home!!", textConfig).setOrigin(0.5);
     }
 
     update() {
