@@ -10,6 +10,8 @@ class ShipPlay extends Phaser.Scene {
         this.load.image("floor", "./assets/sampleFloor.png");
         this.load.image("BG", "./assets/TestBG.png");
         this.load.image("BG2", "./assets/FuturisticBG.png");
+        this.load.image("Houses1", "./assets/Houses1.png");
+        this.load.image("Houses2", "./assets/Houses2.png");
         this.load.image("buttonSettings", "./assets/ButtonX.png");
         this.load.image("Shop", "./assets/Shop.png");
         this.load.image("vinyl", "./assets/vinyl.png");
@@ -37,6 +39,7 @@ class ShipPlay extends Phaser.Scene {
         
         if (game.settings.planet == "Earth") {
             this.bg = this.add.tileSprite(0, 195, 2000, 400, 'BG', 0).setOrigin(0,0);
+            this.Houses2 = this.add.tileSprite(0, 184, 2000, 400, 'Houses2', 0).setOrigin(0,0);
             this.Forest = this.sound.add('ForestBG');
             this.Forest.setLoop(true);
             this.Forest.volume = 0.2;
@@ -55,6 +58,7 @@ class ShipPlay extends Phaser.Scene {
         }
         if (game.settings.planet == "Mars") {
             this.bg2 = this.add.tileSprite(0, 195, 2000, 400, 'BG2', 0).setOrigin(0,0);
+            this.Houses = this.add.tileSprite(0, 180, 2000, 400, 'Houses1', 0).setOrigin(0,0);
             this.Future = this.sound.add('FutureBG');
             this.Future.setLoop(true);
             this.Future.volume = 0.2;
