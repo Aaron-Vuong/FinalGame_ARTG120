@@ -6,6 +6,8 @@ class ShipPlay extends Phaser.Scene {
     preload() {
         this.load.image("player", "./assets/AlienProtag.png");
         this.load.image("alien", "./assets/NPC1.png");
+        this.load.image("alien2", "./assets/NPC1Spec.png");
+        this.load.image("alien3", "./assets/NPC1Spec2.png");
         this.load.image("marsalien", "./assets/NPC2.png");
         this.load.image("floor", "./assets/sampleFloor.png");
         this.load.image("BG", "./assets/TestBG.png");
@@ -51,8 +53,8 @@ class ShipPlay extends Phaser.Scene {
             this.fuel = this.add.tileSprite(235, 430, 29, 31, 'Fuel', 0).setOrigin(0,0);
             this.player = new Player(this, game.config.width/2, game.config.height/2 + 100, "player", 0);
             
-            this.npcSHOP = new Alien(this, game.config.width/2 + 100, game.config.height - 80, "alien", 0, this.player.sprite, "Leader", this.planet);
-            this.npc2 = new Alien(this, 280, 370, "alien", 0, this.player.sprite, "Shop", this.planet);
+            this.npcSHOP = new Alien(this, game.config.width/2 + 100, game.config.height - 80, "alien3", 0, this.player.sprite, "Leader", this.planet);
+            this.npc2 = new Alien(this, 280, 370, "alien2", 0, this.player.sprite, "Shop", this.planet);
             this.npc3 = new Alien(this, 400, 370, "alien", 0, this.player.sprite, "Other", this.planet);
             this.planet = game.planetEarthSettings;
         }
