@@ -160,7 +160,6 @@ class ShipPlay extends Phaser.Scene {
 
         this.UpdateProgressBar();
         this.CheckProgression();
-        //this.getDisguise();
         this.hat.update();
         this.npcSHOP.update();
         this.npc2.update();
@@ -201,9 +200,5 @@ class ShipPlay extends Phaser.Scene {
             this.planet.Other = "End";
             this.scene.start("endGameScene");
         }
-    }
-
-    getDisguise() {
-        //this.objectsGrp.disableBody(true, true);
     }
 }   
